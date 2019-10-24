@@ -23,10 +23,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[      1088,         20]
-NotebookDataLength[    136384,       3135]
-NotebookOptionsPosition[    136886,       3132]
-NotebookOutlinePosition[    137223,       3147]
-CellTagsIndexPosition[    137180,       3144]
+NotebookDataLength[    138580,       3176]
+NotebookOptionsPosition[    139079,       3173]
+NotebookOutlinePosition[    139416,       3188]
+CellTagsIndexPosition[    139373,       3185]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -51,6 +51,10 @@ Cell[BoxData[
   "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
+    RowBox[{"Off", "[", 
+     StyleBox[
+      RowBox[{"Eigenvalues", "::", "mindet"}], "MessageName"], "]"}], ";", 
+    "\[IndentingNewLine]", 
     RowBox[{"genomeLength", "=", 
      RowBox[{"Range", "[", 
       RowBox[{"L1", ",", "LG", ",", 
@@ -268,7 +272,7 @@ Cell[BoxData[
          RowBox[{"Range", "[", 
           RowBox[{"G", ",", "1", ",", 
            RowBox[{"-", "1"}]}], "]"}]}]}], "]"}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"pp", "=", 
      RowBox[{"(", 
       RowBox[{
@@ -336,64 +340,80 @@ Cell[BoxData[
           RowBox[{"i", ",", "1", ",", 
            RowBox[{"Length", "[", "col1", "]"}]}], "}"}]}], "]"}]}], ")"}]}], 
     ";", "\[IndentingNewLine]", 
-    RowBox[{"BoxWhiskerChart", "[", 
-     RowBox[{
-      RowBox[{"{", "pp", "}"}], ",", 
-      RowBox[{"ChartStyle", "\[Rule]", 
-       RowBox[{"{", 
+    RowBox[{"TableForm", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"BoxWhiskerChart", "[", 
         RowBox[{
-         RowBox[{"Lighter", "[", 
-          RowBox[{"Orange", ",", "0.20"}], "]"}], ",", "\[IndentingNewLine]", 
-         
-         RowBox[{
-          RowBox[{"ColorData", "[", "\"\<ThermometerColors\>\"", "]"}], "[", 
-          "0.15", "]"}], ",", 
-         RowBox[{
-          RowBox[{"ColorData", "[", "24", "]"}], "[", "8", "]"}]}], "}"}]}], 
-      ",", 
-      RowBox[{"BarSpacing", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"0", ",", "2", ",", "4"}], "}"}]}], ",", 
-      RowBox[{"ChartLabels", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"(*", 
-         RowBox[{"\"\<Cell Cycle Duration\>\"", ","}], "*)"}], 
-        RowBox[{
-         RowBox[{"{", "ccT", "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{
-          "\"\<short\>\"", ",", "\"\<medium\>\"", ",", "\"\<long\>\""}], 
-          "}"}]}], "}"}]}], ",", 
-      RowBox[{"ChartLegends", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"\"\<Short \[LessEqual]\>\"", "<>", " ", 
-          RowBox[{"ToString", "[", 
+         RowBox[{"{", "pp", "}"}], ",", 
+         RowBox[{"ChartStyle", "\[Rule]", 
+          RowBox[{"{", 
            RowBox[{
-            RowBox[{"LG", "/", "3"}], "+", "0.05"}], "]"}]}], ",", 
-         RowBox[{"\"\<Medium \[LessEqual]\>\"", "<>", 
-          RowBox[{"ToString", "[", 
+            RowBox[{"Lighter", "[", 
+             RowBox[{"Orange", ",", "0.20"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"ColorData", "[", "\"\<ThermometerColors\>\"", "]"}], 
+             "[", "0.15", "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", "24", "]"}], "[", "8", "]"}]}], 
+           "}"}]}], ",", 
+         RowBox[{"BarSpacing", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "2", ",", "4"}], "}"}]}], ",", 
+         RowBox[{"ChartLabels", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"(*", 
+            RowBox[{"\"\<Cell Cycle Duration\>\"", ","}], "*)"}], 
            RowBox[{
-            RowBox[{"2", "*", 
-             RowBox[{"LG", "/", "3"}]}], "+", "0.05"}], "]"}]}], ",", 
-         RowBox[{"\"\<Long \[LessEqual]\>\"", " ", "<>", 
-          RowBox[{"ToString", "[", 
-           RowBox[{"LG", "+", "0.05"}], "]"}]}]}], "}"}]}], ",", 
-      RowBox[{"FrameStyle", "\[Rule]", "Black"}], ",", 
-      RowBox[{"FrameLabel", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-        "\"\<Cell Cycle Duration (hrs)\>\"", ",", 
-         "\"\<Transcript Count per Cell\>\""}], "}"}]}], ",", 
-      RowBox[{"PlotLabel", "\[Rule]", 
-       RowBox[{"Style", "[", 
-        RowBox[{"\"\<Simulation\>\"", ",", "Black"}], "]"}]}], ",", 
-      RowBox[{"BaseStyle", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"18", ",", "Black", ",", "\"\<Helvetica\>\""}], "}"}]}], ",", 
-      
-      RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], 
-   "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+            RowBox[{"{", "ccT", "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<short\>\"", ",", "\"\<medium\>\"", ",", "\"\<long\>\""}], 
+             "}"}]}], "}"}]}], ",", 
+         RowBox[{"ChartLegends", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<Short \[LessEqual]\>\"", "<>", " ", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"LG", "/", "3"}], "+", "0.05"}], "]"}]}], ",", 
+            RowBox[{"\"\<Medium \[LessEqual]\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"2", "*", 
+                RowBox[{"LG", "/", "3"}]}], "+", "0.05"}], "]"}]}], ",", 
+            RowBox[{"\"\<Long \[LessEqual]\>\"", " ", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"LG", "+", "0.05"}], "]"}]}]}], "}"}]}], ",", 
+         RowBox[{"FrameStyle", "\[Rule]", "Black"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Cell Cycle Duration (hrs)\>\"", ",", 
+            "\"\<Transcript Count per Cell\>\""}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Simulation\>\"", ",", "Black"}], "]"}]}], ",", 
+         RowBox[{"BaseStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"18", ",", "Black", ",", "\"\<Helvetica\>\""}], "}"}]}], 
+         ",", 
+         RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{"\"\<Transcriptome Diversity = \>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Union", "[", "tt", "]"}], "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{"\"\<Clusters = \>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"Length", "[", 
+           RowBox[{"FindClusters", "[", "tt", "]"}], "]"}], "]"}]}], "]"}], 
+       ",", " ", 
+       "\"\<\!\(\*SuperscriptBox[\(\), \(**\)]\)results from one \
+iteration\>\""}], " ", "}"}], "]"}]}], "\[IndentingNewLine]", ",", 
+   "\[IndentingNewLine]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
@@ -2479,8 +2499,14 @@ Cell[BoxData[
    3.779146014311561*^9}, {3.77914606001436*^9, 3.7791460910232983`*^9}, {
    3.779146147086814*^9, 3.7791461506143703`*^9}, {3.7791464199134293`*^9, 
    3.779146421360413*^9}, 3.779146541905778*^9, {3.7791466512487803`*^9, 
-   3.779146662150004*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
+   3.779146662150004*^9}, {3.78087209297688*^9, 3.7808721014719763`*^9}, {
+   3.7808721657039757`*^9, 3.780872209141766*^9}, {3.7808723613031683`*^9, 
+   3.780872362117291*^9}, {3.780872410378112*^9, 3.780872410892103*^9}, {
+   3.780872483989889*^9, 3.7808725687148046`*^9}, {3.780872673371972*^9, 
+   3.7808726743125257`*^9}, {3.7808727808184767`*^9, 3.78087281459166*^9}, {
+   3.780872956545951*^9, 3.7808730004576693`*^9}, {3.780873094293805*^9, 
+   3.780873158191828*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
 
 Cell[BoxData[
  TagBox[
@@ -2501,13 +2527,13 @@ Cell[BoxData[
        Hold[$CellContext`ccT$$], 2, "Cell Cycle"}, 1, 10}, {{
        Hold[$CellContext`incCycle$$], 0, "increments"}, 0, 10}, {{
        Hold[$CellContext`ploidy$$], 1, "ploidy"}, 1, 5, 1}}, 
-    Typeset`size$$ = {519., {157., 161.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = 
-    False, $CellContext`L1$5620$$ = 0, $CellContext`LG$5621$$ = 
-    0, $CellContext`G$5622$$ = 0, $CellContext`maternal$5623$$ = 
-    0, $CellContext`cDivisions$5624$$ = 0, $CellContext`ccTsigma$5625$$ = 
-    0, $CellContext`ccT$5626$$ = 0, $CellContext`incCycle$5627$$ = 
-    0, $CellContext`ploidy$5628$$ = 0}, 
+    Typeset`size$$ = {519., {186.134033203125, 191.865966796875}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`L1$49162$$ = 0, $CellContext`LG$49163$$ = 
+    0, $CellContext`G$49164$$ = 0, $CellContext`maternal$49165$$ = 
+    0, $CellContext`cDivisions$49166$$ = 0, $CellContext`ccTsigma$49167$$ = 
+    0, $CellContext`ccT$49168$$ = 0, $CellContext`incCycle$49169$$ = 
+    0, $CellContext`ploidy$49170$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, 
       "Variables" :> {$CellContext`ccT$$ = 2, $CellContext`ccTsigma$$ = 
@@ -2515,21 +2541,21 @@ Cell[BoxData[
         3, $CellContext`incCycle$$ = 0, $CellContext`L1$$ = 
         1, $CellContext`LG$$ = 3, $CellContext`maternal$$ = 
         0, $CellContext`ploidy$$ = 1}, "ControllerVariables" :> {
-        Hold[$CellContext`L1$$, $CellContext`L1$5620$$, 0], 
-        Hold[$CellContext`LG$$, $CellContext`LG$5621$$, 0], 
-        Hold[$CellContext`G$$, $CellContext`G$5622$$, 0], 
-        Hold[$CellContext`maternal$$, $CellContext`maternal$5623$$, 0], 
-        Hold[$CellContext`cDivisions$$, $CellContext`cDivisions$5624$$, 0], 
-        Hold[$CellContext`ccTsigma$$, $CellContext`ccTsigma$5625$$, 0], 
-        Hold[$CellContext`ccT$$, $CellContext`ccT$5626$$, 0], 
-        Hold[$CellContext`incCycle$$, $CellContext`incCycle$5627$$, 0], 
-        Hold[$CellContext`ploidy$$, $CellContext`ploidy$5628$$, 0]}, 
+        Hold[$CellContext`L1$$, $CellContext`L1$49162$$, 0], 
+        Hold[$CellContext`LG$$, $CellContext`LG$49163$$, 0], 
+        Hold[$CellContext`G$$, $CellContext`G$49164$$, 0], 
+        Hold[$CellContext`maternal$$, $CellContext`maternal$49165$$, 0], 
+        Hold[$CellContext`cDivisions$$, $CellContext`cDivisions$49166$$, 0], 
+        Hold[$CellContext`ccTsigma$$, $CellContext`ccTsigma$49167$$, 0], 
+        Hold[$CellContext`ccT$$, $CellContext`ccT$49168$$, 0], 
+        Hold[$CellContext`incCycle$$, $CellContext`incCycle$49169$$, 0], 
+        Hold[$CellContext`ploidy$$, $CellContext`ploidy$49170$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
         Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, 
-      "Body" :> ($CellContext`genomeLength = 
+         Typeset`skipInitDone$$}, "Body" :> (Off[
+         MessageName[Eigenvalues, "mindet"]]; $CellContext`genomeLength = 
         Range[$CellContext`L1$$, $CellContext`LG$$, \
 $CellContext`LG$$/$CellContext`G$$]; $CellContext`genomeName = Range[1, 
           
@@ -2602,24 +2628,35 @@ $CellContext`xC];
                Max[
                 Part[$CellContext`col1, $CellContext`i]]]]], {
             0}], {$CellContext`i, 1, 
-            Length[$CellContext`col1]}]); 
-       BoxWhiskerChart[{$CellContext`pp}, ChartStyle -> {
-           Lighter[Orange, 0.2], 
-           ColorData["ThermometerColors"][0.15], 
-           ColorData[24][8]}, BarSpacing -> {0, 2, 4}, 
-         ChartLabels -> {{$CellContext`ccT$$}, {"short", "medium", "long"}}, 
-         ChartLegends -> {
-           StringJoin["Short \[LessEqual]", 
-            ToString[$CellContext`LG$$/3 + 0.05]], 
-           StringJoin["Medium \[LessEqual]", 
-            ToString[2 ($CellContext`LG$$/3) + 0.05]], 
-           StringJoin["Long \[LessEqual]", 
-            ToString[$CellContext`LG$$ + 0.05]]}, FrameStyle -> Black, 
-         FrameLabel -> {
-          "Cell Cycle Duration (hrs)", "Transcript Count per Cell"}, 
-         PlotLabel -> Style["Simulation", Black], 
-         BaseStyle -> {18, Black, "Helvetica"}, ImageSize -> 400]), 
-      "Specifications" :> {{{$CellContext`L1$$, 1, "L1"}, 1, 
+            Length[$CellContext`col1]}]); TableForm[{
+          BoxWhiskerChart[{$CellContext`pp}, ChartStyle -> {
+             Lighter[Orange, 0.2], 
+             ColorData["ThermometerColors"][0.15], 
+             ColorData[24][8]}, BarSpacing -> {0, 2, 4}, 
+           ChartLabels -> {{$CellContext`ccT$$}, {"short", "medium", "long"}},
+            ChartLegends -> {
+             StringJoin["Short \[LessEqual]", 
+              ToString[$CellContext`LG$$/3 + 0.05]], 
+             StringJoin["Medium \[LessEqual]", 
+              ToString[2 ($CellContext`LG$$/3) + 0.05]], 
+             StringJoin["Long \[LessEqual]", 
+              ToString[$CellContext`LG$$ + 0.05]]}, FrameStyle -> Black, 
+           FrameLabel -> {
+            "Cell Cycle Duration (hrs)", "Transcript Count per Cell"}, 
+           PlotLabel -> Style["Simulation", Black], 
+           BaseStyle -> {18, Black, "Helvetica"}, ImageSize -> 400], 
+          Text[
+           StringJoin["Transcriptome Diversity = ", 
+            ToString[
+             Length[
+              Union[$CellContext`tt]]]]], 
+          Text[
+           StringJoin["Clusters = ", 
+            ToString[
+             Length[
+              FindClusters[$CellContext`tt]]]]], 
+          "\!\(\*SuperscriptBox[\(\), \(**\)]\)results from one iteration"}]),
+       "Specifications" :> {{{$CellContext`L1$$, 1, "L1"}, 1, 
          10}, {{$CellContext`LG$$, 3, "LG"}, 1, 
          10}, {{$CellContext`G$$, 3, "G"}, 1, 10, 
          1}, {{$CellContext`maternal$$, 0, "Half-Life"}, 0, 
@@ -2634,7 +2671,7 @@ $CellContext`xC];
         AutorunSequencing -> {Automatic, 0}, ContinuousAction -> None, 
         LabelStyle -> Directive[{"Helvetica", 
            GrayLevel[0], 14}]}, "DefaultOptions" :> {}],
-     ImageSizeCache->{892., {186., 192.}},
+     ImageSizeCache->{892., {217., 222.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -2954,6 +2991,7 @@ $CellContext`shortestToMphase = Min[
            Length[$CellContext`oneCycle], 
            
            Increment[$CellContext`cpos], $CellContext`icell = 
+            
             Part[$CellContext`oneCycle, $CellContext`cpos]; \
 $CellContext`cyclePhase = cellRelatedFunctions`getCellPhase[
               
@@ -2967,8 +3005,7 @@ $CellContext`shortestToMphase];
                Part[$CellContext`transcriptionPara, 2] == 0, 
                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1] == {}],
                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = {}, 
-               If[
-                Part[$CellContext`transcriptionPara, 2] < 1, 
+               If[Part[$CellContext`transcriptionPara, 2] < 1, 
                  Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = 
                   cellRelatedFunctions`parentalTranscripts[
                     Part[$CellContext`newtissue, $CellContext`icell, 7, 1], 
@@ -3126,9 +3163,13 @@ $CellContext`timerange, $CellContext`tempCell]; $CellContext`newtissue]};
    3.777064584534823*^9, 3.777064605774994*^9}, {3.777064689993823*^9, 
    3.777064720066184*^9}, {3.777064902273741*^9, 3.777064929046606*^9}, {
    3.777065382317428*^9, 3.777065401578887*^9}, 3.7791463202786617`*^9, 
-   3.779146546699082*^9, {3.7791466920303593`*^9, 3.779146700074847*^9}},
- CellLabel->"Out[2]=",ExpressionUUID->"7a6bdf22-20b7-4e15-b4f8-53f9517c5b33"]
-}, {2}]]
+   3.779146546699082*^9, {3.7791466920303593`*^9, 3.779146700074847*^9}, {
+   3.780872102323893*^9, 3.780872118263418*^9}, 3.780872413996209*^9, 
+   3.780872541483059*^9, 3.7808725752398643`*^9, 3.780872818408827*^9, 
+   3.7808729664782867`*^9, 3.780873002645269*^9, {3.78087313795457*^9, 
+   3.780873159176374*^9}},
+ CellLabel->"Out[68]=",ExpressionUUID->"a9f02e69-51b0-421e-94de-6d62f8a8373f"]
+}, Open  ]]
 },
 WindowSize->{1128, 732},
 WindowMargins->{{38, Automatic}, {Automatic, 0}},
@@ -3147,11 +3188,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[1510, 35, 103116, 2447, 7213, "Input",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
-Cell[104629, 2484, 32244, 645, 397, "Output",ExpressionUUID->"7a6bdf22-20b7-4e15-b4f8-53f9517c5b33"]
-}, {2}]]
+Cell[1510, 35, 104555, 2473, 7297, "Input",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
+Cell[106068, 2510, 32995, 660, 458, "Output",ExpressionUUID->"a9f02e69-51b0-421e-94de-6d62f8a8373f"]
+}, Open  ]]
 }
 ]
 *)
 
-(* NotebookSignature 5vpZS3oIv6uN5Aw@ASyacSxL *)
+(* NotebookSignature 8xD6bAE6JoQ9wBKKHXq4riK0 *)
