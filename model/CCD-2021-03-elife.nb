@@ -1,0 +1,1567 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     74650,       1559]
+NotebookOptionsPosition[     73828,       1538]
+NotebookOutlinePosition[     74268,       1555]
+CellTagsIndexPosition[     74225,       1552]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"$HistoryLength", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"CloseKernels", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"LaunchKernels", "[", "7", "]"}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "number", " ", "of", " ", "Kernels", " ", "you", " ", "can", " ", "use", 
+     " ", "based", " ", "on", " ", "your", " ", "liscence"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"local", "=", 
+     RowBox[{"NotebookDirectory", "[", "]"}]}], ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{
+     "this", " ", "makes", " ", "sure", " ", "that", " ", "the", " ", 
+      "output", " ", "files", " ", "are", " ", "generated", " ", "in", " ", 
+      "the", " ", "sane", " ", "directory", " ", "as", " ", "your", " ", 
+      "progam"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", "local", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"saveDirectory", "=", "\"\</data\>\""}], ";", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{
+      "the", " ", "directory", " ", "to", " ", "save", " ", "the", " ", 
+       "outputs", " ", "in"}], ",", " ", 
+      RowBox[{
+      "noramlly", " ", "mathematica", " ", "can", " ", "create", " ", "it", 
+       " ", "for", " ", "you"}], ",", " ", 
+      RowBox[{"but", " ", "you", " ", "can", " ", 
+       RowBox[{"prepare", "/", "rename"}], " ", "it", " ", "accrodingly"}]}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Off", "[", 
+     RowBox[{"General", "::", "luc"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"General", "::", "stop"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"RowReduce", "::", "luc"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"Off", "[", 
+     StyleBox[
+      RowBox[{"Solve", "::", "svars"}], "MessageName"], 
+     StyleBox["]", "MessageName"]}], 
+    StyleBox[";", "MessageName"]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"Solve", "::", "svars"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"Solve", "::", "ratnz"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"RandomReal", "::", "precw"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SeedRandom", "[", 
+     RowBox[{"Method", "\[Rule]", "\"\<MersenneTwister\>\""}], "]"}], ";"}], 
+   " ", 
+   RowBox[{"(*", 
+    RowBox[{"random", " ", "number", " ", "generators"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"for", " ", "parallel", " ", "simulations"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"ParallelNeeds", "[", "\"\<cellRelatedFunctions`\>\"", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"ParallelNeeds", "[", "\"\<cellCycleHypothesis`\>\"", "]"}], 
+     ";"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "you", " ", "can", " ", "select", " ", "the", " ", "above", " ", "for", 
+      " ", "parallel", " ", "simulation"}], ",", " ", 
+     RowBox[{
+     "the", " ", "code", " ", "is", " ", "written", " ", "with", " ", "that", 
+      " ", "in", " ", "mind"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<cellRelatedFunctions`\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<cellCycleHypothesis`\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.792330611252791*^9, 3.79233062287891*^9}, {
+   3.7923307224012003`*^9, 3.7923307462992764`*^9}, {3.792330776742794*^9, 
+   3.792330780027185*^9}, {3.792798822904594*^9, 3.792798846471334*^9}, {
+   3.792801003895317*^9, 3.7928010115000353`*^9}, {3.792804712117313*^9, 
+   3.7928047167353077`*^9}, {3.792853060130921*^9, 3.792853095285172*^9}, {
+   3.792853892970871*^9, 3.792853903381109*^9}, {3.792861858554225*^9, 
+   3.792861903485366*^9}, {3.7928625135117073`*^9, 3.792862515535833*^9}, {
+   3.7984146434912043`*^9, 3.798414645431313*^9}, {3.798414716616375*^9, 
+   3.798414750660131*^9}, {3.798414800035437*^9, 3.7984148463778257`*^9}, 
+   3.7984197382260933`*^9, {3.8211885701555567`*^9, 3.8211885728549223`*^9}, 
+   3.82154209467479*^9, {3.821708625364284*^9, 3.821708638998106*^9}, 
+   3.821708679500498*^9, {3.821708796142223*^9, 3.821708796893602*^9}, {
+   3.821708837879159*^9, 3.8217088391926126`*^9}, 3.823784570155396*^9, {
+   3.823784694902193*^9, 3.823784857522216*^9}, {3.8237848958805103`*^9, 
+   3.8237849831475477`*^9}},ExpressionUUID->"719fd69d-50d0-4146-8dd6-\
+da1a429ac9df"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "make", " ", "sure", " ", "the", " ", "packages", " ", "are", " ", 
+   "loaded"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.792330851759259*^9, 
+  3.792330861974248*^9}},ExpressionUUID->"10ff81d4-b162-4308-ad17-\
+527aaabef7fa"],
+
+Cell["\<\
+Please make sure all the Packages are loaded before proceeding to the next \
+section .. sometimes mathematica mis-loads\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.776595810448164*^9, 
+  3.7765958500502357`*^9}},ExpressionUUID->"56ff0beb-f2df-4544-be2c-\
+19c6b0ab65c0"],
+
+Cell[CellGroupData[{
+
+Cell["Run Parameters", "Subsubsection",
+ CellChangeTimes->{{3.776595928372099*^9, 
+  3.7765959384838333`*^9}},ExpressionUUID->"febf6fa5-6280-4060-9761-\
+9ed981678eee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Genome", " ", "Length", " ", "is", " ", "all", " ", "the", " ", "genes", 
+     " ", "and", " ", "their", " ", "length", " ", "in", " ", "hours", " ", 
+     "in", " ", "the", " ", "genome"}], ",", " ", 
+    RowBox[{"so", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}], " ", "represents", " ", "3", 
+     " ", "genes", " ", "wih", " ", "3", " ", "different", " ", "length", " ",
+      "while", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "1"}], "}"}], " ", "represents", " ", "3", 
+     " ", "genes", " ", "with", " ", "the", " ", "same", " ", "lengths"}]}], 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"genomeLength", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Range", "[", 
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "10", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1", ",", "0.1"}], "}"}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "ALL", " ", "other", " ", "PARAMETERS", " ", "ARE", " ", "AT", " ", 
+      "THE", " ", "END", " ", "OF", " ", "THE", " ", "LOOP"}], ",", " ", 
+     RowBox[{
+     "in", " ", "a", " ", "mathematica", " ", "TABLE", " ", "Loop"}]}], 
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"gl", "=", "0"}], ",", 
+      RowBox[{"gl", "<", 
+       RowBox[{"Length", "[", "genomeLength", "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"gl", "++"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"genomeIh", "=", 
+        RowBox[{"Tuples", "[", 
+         RowBox[{
+          RowBox[{"{", "1", "}"}], ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"genomeLength", "[", 
+            RowBox[{"[", "gl", "]"}], "]"}], "]"}]}], "]"}]}], ";", " ", 
+       RowBox[{"(*", 
+        RowBox[{"number", " ", "of", " ", "active", " ", "genes"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"genomeName", "=", 
+        RowBox[{"Range", "[", 
+         RowBox[{"1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"genomeLength", "[", 
+            RowBox[{"[", "gl", "]"}], "]"}], "]"}]}], "]"}]}], ";", " ", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"label", " ", "of", " ", "the", " ", "gene"}], ",", " ", 
+         RowBox[{"1", "-", "#"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"gene", " ", "interaction", " ", "motifs"}], ",", " ", 
+         RowBox[{
+         "for", " ", "now", " ", "all", " ", "genes", " ", "just", " ", 
+          "activate", " ", "and", " ", "interact", " ", "with", " ", "each", 
+          " ", "other"}], ",", " ", 
+         RowBox[{"can", " ", "also", " ", "be", " ", "empty"}], ",", " ", 
+         RowBox[{
+         "no", " ", "difference", " ", "for", " ", "this", " ", "model", " ", 
+          "right", " ", "now"}]}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"rp", "=", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Tuples", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"_", "\[Rule]", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Length", "[", "genomeName", "]"}], ",", 
+              RowBox[{"Length", "[", "genomeName", "]"}]}], "}"}]}], "]"}], 
+          "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"initial", " ", "Cell"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"emptList", "=", 
+        RowBox[{"genomeName", "/.", 
+         RowBox[{
+          RowBox[{"_", "?", "NumberQ"}], "\[RuleDelayed]", "0"}]}]}], ";", 
+       " ", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "initialises", " ", "an", " ", "a", " ", "list", " ", "with", " ", 
+          "the", " ", "#", " ", "genes"}], ",", " ", 
+         RowBox[{
+         "you", " ", "can", " ", "use", " ", "a", " ", "constant", " ", 
+          "array", " ", "instead"}]}], "*)"}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"ParallelTable", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"SeedRandom", "[", 
+           RowBox[{"Method", "\[Rule]", "\"\<MersenneTwister\>\""}], "]"}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{"transcription", " ", "parameters"}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"ppgrn", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"rp", "[", 
+              RowBox[{"[", "pr", "]"}], "]"}], ",", "maternal", ",", "ploidy",
+              ",", "rpol"}], "}"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"cell", " ", "cycle", " ", "parameters"}], "..."}], 
+             "sigma", " ", "for", " ", "gaussian"}], ",", " ", 
+            RowBox[{"rate", " ", "of", " ", "inrease"}], ",", " ", 
+            RowBox[{"options", " ", "for", " ", 
+             RowBox[{
+             "function", " ", "?", 
+              "cellRelatedFunctions`cellcycleChangeOPT"}]}], ",", " ", 
+            RowBox[{
+            "the", " ", "cell", " ", "cycle", " ", "duration", " ", "of", " ", 
+             RowBox[{"{", 
+              RowBox[{"stem", ",", " ", 
+               RowBox[{"not", " ", "stem"}]}], "}"}]}]}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"cellcycleoptions", "=", 
+           RowBox[{"{", 
+            RowBox[{"ccTsigma", ",", "incCycle", ",", "cellopt", ",", "ccT"}],
+             "}"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{"initial", " ", "Cell"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"we", " ", "start", " ", "with", " ", 
+              RowBox[{"one", "/", "two"}], " ", "cell"}], ",", " ", "center", 
+             ",", " ", "radius", ",", " ", 
+             RowBox[{"division", " ", "info"}], ",", " ", 
+             RowBox[{"cell", " ", "cycle", " ", "infor"}], ",", " ", 
+             RowBox[{
+             "genome", " ", "and", " ", "transcript", " ", "info", " ", 
+              "where", " ", "we", " ", "can", " ", "even", " ", "begin", " ", 
+              "with", " ", "maternal", " ", "transcripts"}]}], "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"xC", " ", "--"}], "\[Rule]", " ", "center"}], ",", " ",
+              "radius", ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"#", ",", 
+               RowBox[{
+                RowBox[{"Number", " ", "of", " ", "divisions"}], " ", ">", 
+                "0"}], ",", 
+               RowBox[{"{", "}"}]}], "}"}], "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{",", 
+               RowBox[{"cell", " ", "phase"}], ",", " ", 
+               RowBox[{"Length", " ", "of", "  ", "last", " ", "cycle"}], ",", 
+               RowBox[{"next", " ", "cycle"}], ",", " ", 
+               RowBox[{"relative", " ", "time", " ", "passed"}]}], "}"}], ",",
+              " ", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"cycle", " ", "length", " ", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "G1", ",", " ", "S", ",", " ", "G2", ",", " ", "M"}], 
+                  "}"}]}], "}"}], " ", 
+               RowBox[{"(*", 
+                RowBox[{
+                 RowBox[{
+                 "use", " ", "a", " ", "really", " ", "large", " ", 
+                  "negative", " ", "number"}], ",", " ", 
+                 RowBox[{
+                 "since", " ", "zero", " ", "may", " ", "mean", " ", 
+                  "something"}]}], "*)"}], "\n", ",", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", " ", 
+                 RowBox[{"Genea", " ", "ctive", " ", "State"}]}], "}"}], ",", 
+               " ", 
+               RowBox[{"{", "transcripts", "}"}], ",", " ", 
+               RowBox[{"cell", " ", "Name"}], ",", 
+               RowBox[{
+                RowBox[{"{", "}"}], " ", "for", " ", "lineage", " ", 
+                "tracking"}]}]}]}], "*)"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+              "Parameters", " ", "tracked", " ", "for", " ", "each", " ", 
+               "celli"}], "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"number", " ", "of", " ", "division"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{
+                    "current", " ", "cell", " ", "cycle", " ", "phase"}], ",", 
+                    RowBox[{
+                    "current", " ", "time", " ", "in", " ", "cell", " ", 
+                    "cycle"}], ",", 
+                    RowBox[{
+                    "length", " ", "until", " ", "next", " ", "division"}], 
+                    ",", 
+                    RowBox[{"relative", " ", "time", " ", "passed"}]}], "}"}],
+                   ",", 
+                  RowBox[{"Cell", " ", "cycle", " ", "duration", " ", 
+                   RowBox[{"{", 
+                    RowBox[{"G1", ",", "S", ",", "G2", ",", "M"}], "}"}]}], 
+                  ",", 
+                  RowBox[{"{", 
+                   RowBox[{"Transcriptome", " ", "list"}], "}"}], ",", 
+                  RowBox[{"Cell", " ", "name"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"lineage", " ", "history"}], "}"}]}], "}"}], ".", 
+                "All"}], " ", "cells", " ", "are", " ", "set", " ", "with", 
+               " ", "the", " ", "same", " ", "genome"}]}], ",", 
+             RowBox[{"ploidy", " ", "level", " ", "and", " ", "RNApolII", " ", 
+              RowBox[{"rate", "."}]}]}], "*)"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Length", "[", "ccT", "]"}], ">", "1"}], ",", 
+               RowBox[{"(*", 
+                RowBox[{"two", " ", "cells"}], "*)"}], "\[IndentingNewLine]", 
+               
+               RowBox[{
+                RowBox[{"xC", "=", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0.1", ",", 
+                    RowBox[{"{", "}"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"ccT", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}],
+                     ",", "0", ",", "0"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"relative", " ", "time", " ", "passed"}], "*)"}], 
+                    "}"}], ",", 
+                    RowBox[{"{", " ", 
+                    RowBox[{"ccT", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "}"}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "negative", " ", "values", " ", "ensure", " ", "no", " ", 
+                    "transcription", " ", "time"}], "*)"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", " ", 
+                    RowBox[{
+                    RowBox[{"genomeI", "&"}], "/@", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"1", ",", "ploidy"}], "]"}]}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"emptList", ",", "emptList"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"temp", " ", "transcripts"}], "*)"}], "}"}], ",", 
+                    
+                    RowBox[{
+                    RowBox[{"ToString", "[", "iteration", "]"}], "<>", 
+                    "\"\<-1\>\""}], 
+                    RowBox[{"(*", 
+                    RowBox[{"cell", " ", "name"}], "*)"}], ",", 
+                    RowBox[{"{", "}"}]}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "lineage", " ", "tracking", " ", "1", " ", "step"}], 
+                    "*)"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0.6"}], "}"}], ",", "1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0.1", ",", 
+                    RowBox[{"{", "}"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"ccT", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}],
+                     ",", "0", ",", "0"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"relative", " ", "time", " ", "passed"}], "*)"}], 
+                    "}"}], ",", 
+                    RowBox[{"{", " ", 
+                    RowBox[{"ccT", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "}"}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "negative", " ", "values", " ", "ensure", " ", "no", " ", 
+                    "transcription", " ", "time"}], "*)"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", " ", 
+                    RowBox[{
+                    RowBox[{"genomeI", "&"}], "/@", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"1", ",", "ploidy"}], "]"}]}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"emptList", ",", "emptList"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"temp", " ", "transcripts"}], "*)"}], "}"}], ",", 
+                    
+                    RowBox[{
+                    RowBox[{"ToString", "[", "iteration", "]"}], "<>", 
+                    "\"\<-2\>\""}], 
+                    RowBox[{"(*", 
+                    RowBox[{"cell", " ", "name"}], "*)"}], ",", 
+                    RowBox[{"{", "}"}]}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "lineage", " ", "tracking", " ", "1", " ", "step"}], 
+                    "*)"}], "}"}]}], "}"}]}], 
+                StyleBox[";", "Input"]}], 
+               StyleBox[",", "Input"], 
+               StyleBox["\[IndentingNewLine]", "Input"], 
+               StyleBox[
+                RowBox[{"(*", 
+                 RowBox[{"start", " ", "with", " ", "one", " ", "cell"}], 
+                 "*)"}], "Input"], 
+               StyleBox["\[IndentingNewLine]", "Input"], 
+               StyleBox[
+                RowBox[{
+                 RowBox[{"xC", "=", 
+                  RowBox[{"{", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "1", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0.1", ",", 
+                    RowBox[{"{", "}"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"ccT", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}],
+                     ",", "0", ",", "0"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"relative", " ", "time", " ", "passed"}], "*)"}], 
+                    "}"}], ",", 
+                    RowBox[{"{", " ", 
+                    RowBox[{"ccT", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "}"}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "negative", " ", "values", " ", "ensure", " ", "no", " ", 
+                    "transcription", " ", "time"}], "*)"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", " ", 
+                    RowBox[{
+                    RowBox[{"genomeI", "&"}], "/@", 
+                    RowBox[{"Range", "[", 
+                    RowBox[{"1", ",", "ploidy"}], "]"}]}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"(*", 
+                    RowBox[{"genomeLength", "[", 
+                    RowBox[{"[", "gl", "]"}], "]"}], "*)"}], 
+                    RowBox[{"emptList", ",", "emptList"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"temp", " ", "transcripts"}], "*)"}], "}"}], ",", 
+                    
+                    RowBox[{
+                    RowBox[{"ToString", "[", "iteration", "]"}], "<>", 
+                    "\"\<-1\>\""}], 
+                    RowBox[{"(*", 
+                    RowBox[{"cell", " ", "name"}], "*)"}], ",", 
+                    RowBox[{"{", "}"}]}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "lineage", " ", "tracking", " ", "1", " ", "step"}], 
+                    "*)"}], "}"}], "}"}]}], ";"}], "Input"]}], 
+              StyleBox["\[IndentingNewLine]", "Input"], 
+              StyleBox["]", "Input"]}], 
+             StyleBox[";", "Input"], 
+             StyleBox["\[IndentingNewLine]", "Input"], 
+             RowBox[{
+              StyleBox[
+               RowBox[{
+                StyleBox["(", "Input"], 
+                StyleBox["*", "Input"]}]], 
+              StyleBox[
+               RowBox[{
+               "parameters", " ", "to", " ", "put", " ", "in", " ", "the", 
+                " ", "name", " ", "of", " ", "the", " ", "file"}], "Input"], 
+              StyleBox[
+               StyleBox[
+                RowBox[{"*", ")"}]], "Input"]}], "\[IndentingNewLine]", 
+             RowBox[{"fnameBasic", "=", 
+              RowBox[{"\"\<rp\>\"", "<>", 
+               RowBox[{"ToString", "[", "pr", "]"}], "<>", "\"\<-\>\"", "<>", 
+               "\"\<-\>\"", "<>", 
+               RowBox[{"ToString", "[", 
+                RowBox[{"Length", "[", 
+                 RowBox[{"genomeLength", "[", 
+                  RowBox[{"[", "gl", "]"}], "]"}], "]"}], "]"}], "<>", 
+               RowBox[{"ToString", "[", 
+                RowBox[{"Max", "[", 
+                 RowBox[{"genomeLength", "[", 
+                  RowBox[{"[", "gl", "]"}], "]"}], "]"}], "]"}], "<>", 
+               "\"\<-\>\"", "<>", "\[IndentingNewLine]", 
+               RowBox[{"(*", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"genomeLength", "[", 
+                    RowBox[{"[", "gl", "]"}], "]"}], "]"}], ">", "10"}], ",", 
+                    "\"\<1long1\>\"", ",", 
+                    RowBox[{"StringJoin", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"genomeLength", "[", 
+                    RowBox[{"[", "gl", "]"}], "]"}], "]"}]}], "]"}]}], "]"}], 
+                  ")"}], "<>", "\"\<-\>\"", "<>", 
+                 RowBox[{"(", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"genomeLength", "[", 
+                    RowBox[{"[", "gl", "]"}], "]"}], "]"}], ">", "10"}], ",", 
+                    "\"\<1long1\>\"", ",", 
+                    RowBox[{"StringJoin", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", 
+                    "genomeI"}], "]"}]}], "]"}], ")"}], "<>", "\"\<-\>\"", 
+                 "<>"}], "*)"}], 
+               RowBox[{"(", 
+                RowBox[{"StringJoin", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", 
+                  RowBox[{"Flatten", "[", "ccT", "]"}]}], "]"}], ")"}], "<>", 
+               "\"\<-\>\"", "<>", "\[IndentingNewLine]", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"StringJoin", "[", 
+                   RowBox[{
+                    RowBox[{"ToString", "[", "#", "]"}], "<>", "\"\<-\>\""}], 
+                   "]"}], "&"}], "/@", 
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"cellcycleoptions", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"1", ";;", "3"}], "]"}], "]"}], "]"}]}], ")"}], "<>", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"StringJoin", "[", 
+                   RowBox[{
+                    RowBox[{"ToString", "[", "#", "]"}], "<>", "\"\<-\>\""}], 
+                   "]"}], "&"}], "/@", 
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"ppgrn", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ";;", "All"}], "]"}], "]"}], "]"}]}], ")"}], 
+               "<>", 
+               RowBox[{"ToString", "[", "sameLength", "]"}], "<>", 
+               "\"\<.dat\>\""}]}], ";", "\[IndentingNewLine]", 
+             "\[IndentingNewLine]", 
+             RowBox[{"(*", 
+              RowBox[{"stores", " ", "parameters", " ", "in", " ", "file"}], 
+              "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"iteration", "==", "maxIter"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"fileName1", "=", 
+                 RowBox[{"local", "<>", " ", 
+                  RowBox[{"(*", 
+                   RowBox[{"saveDirectory", "<>"}], "*)"}], 
+                  "\"\</cellcycletheory-parameters-Random.dat\>\""}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"cell", " ", "name"}], ",", " ", 
+                  RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                  RowBox[{"transciption", " ", "time"}], ",", 
+                  RowBox[{"cell", " ", "cycle", " ", "phases"}], ",", 
+                  "bins"}], "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"str", " ", "=", " ", 
+                 RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"Write", "[", 
+                 RowBox[{"str", ",", 
+                  RowBox[{"{", 
+                   RowBox[{"(*", 
+                    RowBox[{"pr", ",", 
+                    RowBox[{"rp", "[", 
+                    RowBox[{"[", "pr", "]"}], "]"}], ","}], "*)"}], " ", 
+                   RowBox[{
+                    RowBox[{"genomeLength", "[", 
+                    RowBox[{"[", "gl", "]"}], "]"}], ",", 
+                    RowBox[{"(*", 
+                    RowBox[{"genomeI", ","}], "*)"}], 
+                    RowBox[{"ccT", "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], " ", "\[RuleDelayed]", 
+                    "0"}]}], ",", "ccTsigma", ",", "incCycle", ",", "cellopt",
+                     ",", 
+                    RowBox[{"cellcycleoptions", "[", 
+                    RowBox[{"[", "4", "]"}], "]"}], ",", "maternal", ",", 
+                    "ploidy", ",", "rpol"}], "}"}]}], "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+             "Table", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"timesteps", ">", "0"}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"xC", "=", 
+                    RowBox[{"cellCycleHypothesis`oneFullCycleV01", "[", 
+                    RowBox[{
+                    "xC", ",", "timesteps", ",", "cellcycleoptions", ",", 
+                    RowBox[{"Transpose", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"genomeName", ",", 
+                    RowBox[{"genomeLength", "[", 
+                    RowBox[{"[", "gl", "]"}], "]"}]}], "}"}], "]"}], ",", 
+                    "ppgrn"}], "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}],
+                 ";", "\[IndentingNewLine]", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"**", "**"}], "*", "SAVING"}], "******)"}], 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-sc-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle"}], ",", "bins"}], "*)"}], 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "8", "]"}], "]"}], " ", 
+                    RowBox[{"(*", "name", "*)"}], ",", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"4", ",", "1"}], "]"}], "]"}], 
+                    RowBox[{"(*", "phase", "*)"}], ",", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"4", ",", "5"}], "]"}], "]"}], " ", 
+                    RowBox[{"(*", 
+                    RowBox[{"time", " ", "elapsed"}], "*)"}], 
+                    RowBox[{"(*", 
+                    RowBox[{"StringJoin", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", "#"}], 
+                    ")"}], "<>", "\"\<_\>\""}], "&"}], "/@", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"6", ",", "2"}], "]"}], "]"}]}], "]"}], "*)"}], 
+                    ",", 
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "5", "]"}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}],
+                     ",", 
+                    RowBox[{"Total", "[", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "7", "]"}], "]"}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], "]"}]}], "]"}], "&"}], "/@",
+                     "\[InvisibleSpace]", "xC"}], ";", "\[IndentingNewLine]", 
+                   
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "7", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-cellnumber-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle"}], ",", "bins"}], "*)"}], 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"Normal", "[", 
+                    RowBox[{"Counts", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Total", "[", 
+                    RowBox[{"#", "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}],
+                     "&"}], "/@", "\[InvisibleSpace]", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "5"}], "]"}], "]"}]}], "]"}], "]"}]}],
+                     "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";", 
+                   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-celldiversity-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle"}], ",", "bins"}], "*)"}], 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"Normal", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Length", "[", 
+                    RowBox[{"Union", "[", "#", "]"}], "]"}], "&"}], "/@", 
+                    RowBox[{"GroupBy", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "/.", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}],
+                     ",", 
+                    RowBox[{"Total", "[", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "&"}], "/@", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"5", ",", "7"}], "}"}]}], "]"}], "]"}]}], ",", 
+                    "First"}], "]"}]}], "]"}]}], "]"}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-counts_genotype-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle", " ", "phases"}], ",", 
+                    "bins"}], "*)"}], "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"Prepend", "[", 
+                    RowBox[{
+                    RowBox[{"Normal", "[", 
+                    RowBox[{"Counts", "[", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "6", ",", "2"}], "]"}], "]"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"\"\<iter\>\"", "\[Rule]", "iteration"}]}], 
+                    "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-counts_phenotype-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle", " ", "phases"}], ",", 
+                    "bins"}], "*)"}], "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"Prepend", "[", 
+                    RowBox[{
+                    RowBox[{"Normal", "[", 
+                    RowBox[{"Counts", "[", 
+                    RowBox[{"Total", "/@", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "7"}], "]"}], "]"}]}], "]"}], "]"}], 
+                    ",", 
+                    RowBox[{"\"\<iter\>\"", "\[Rule]", "iteration"}]}], 
+                    "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "4", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-ave_genotype-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle", " ", "phases"}], ",", 
+                    "bins"}], "*)"}], "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"N", "[", 
+                    RowBox[{"Mean", "[", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "6", ",", "2"}], "]"}], "]"}], "]"}], 
+                    "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "5", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-ave_phenotype-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle", " ", "phases"}], ",", 
+                    "bins"}], "*)"}], "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"N", "[", 
+                    RowBox[{"Mean", "[", 
+                    RowBox[{"Total", "/@", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "7"}], "]"}], "]"}]}], "]"}], "]"}]}],
+                     "]"}], ";", "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"allinfoOpt", "[", 
+                    RowBox[{"[", "6", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"(*", 
+                   RowBox[{"lineage", " ", "=", " ", 
+                    RowBox[{"{", 
+                    RowBox[{"timestep", ",", " ", 
+                    RowBox[{"parental", " ", "genotype"}], ",", 
+                    RowBox[{"parental", " ", "phenotype"}], ",", " ", 
+                    RowBox[{"parental", " ", "cell", " ", "cycle"}], ",", " ", 
+                    RowBox[{"offspring1", " ", "phenotype"}], ",", 
+                    RowBox[{"offspring2", " ", "phenotype"}], ",", " ", 
+                    RowBox[{
+                    "offspring1", " ", "cell", " ", "cycle", " ", 
+                    "duration"}], ",", 
+                    RowBox[{
+                    "offspring2", " ", "cell", " ", "cycle", " ", 
+                    "duration"}]}], "}"}]}], "*)"}], "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"fileName1", "=", 
+                    RowBox[{
+                    "local", "<>", " ", "saveDirectory", "<>", 
+                    "\"\</cellcycletheory-lineage-\>\"", "<>", 
+                    RowBox[{"ToString", "[", "timesteps", "]"}], "<>", 
+                    "\"\<-\>\"", "<>", "fnameBasic"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{"cell", " ", "name"}], ",", " ", 
+                    RowBox[{"cycle", " ", "phase"}], ",", " ", 
+                    RowBox[{"transciption", " ", "time"}], ",", 
+                    RowBox[{"cell", " ", "cycle"}], ",", "bins"}], "*)"}], 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"str", " ", "=", " ", 
+                    RowBox[{"OpenAppend", "[", "fileName1", "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Write", "[", 
+                    RowBox[{"str", ",", 
+                    RowBox[{"Prepend", "[", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], ",", 
+                    RowBox[{"\"\<iter\>\"", "\[Rule]", "iteration"}]}], 
+                    "]"}]}], "]"}], "&"}], "/@", "\[InvisibleSpace]", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "9"}], "]"}], "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                "\[IndentingNewLine]", "\[InvisibleSpace]", 
+                RowBox[{
+                 RowBox[{"xC", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"All", ",", "9"}], "]"}], "]"}], "=", 
+                 RowBox[{"Table", "[", 
+                  RowBox[{
+                   RowBox[{"{", "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"x", ",", "1", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"xC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "9"}], "]"}], "]"}], "]"}]}], "}"}]}],
+                   "]"}]}], ";"}], "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", ",", 
+               RowBox[{"{", 
+                RowBox[{"timesteps", ",", "0", ",", "18"}], "}"}]}], "]"}], 
+             ";", " ", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{
+               "this", " ", "is", " ", "#", " ", "of", " ", "cell", " ", 
+                "division", " ", "that", " ", "the", " ", "sims", " ", "will",
+                 " ", "go", " ", "through", " ", "we", " ", "ran", " ", "2", 
+                " ", "for", " ", "most", " ", "sims", " ", "others", " ", 
+                "are", " ", "18"}], "-", "20"}], "*)"}], 
+             "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"xC", "=", 
+              RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+             "\[IndentingNewLine]", 
+             RowBox[{"maxIter", "=", "1"}], ";"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"iteration", ",", "1", ",", "500"}], 
+             RowBox[{"(*", "150", "*)"}], "}"}]}], "]"}], ";"}], 
+         "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{"All", " ", "of", " ", "the", " ", "parameters"}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"genomeI", ",", "genomeIh"}], 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"initial", " ", "active", " ", "genes"}], ",", " ", 
+            RowBox[{"should", " ", "reflect", " ", "ploidy", " ", "too"}]}], 
+           "*)"}], "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"maternal", ",", 
+           RowBox[{"{", "0", 
+            RowBox[{"(*", 
+             RowBox[{",", "0.5"}], "*)"}], 
+            RowBox[{"(*", 
+             RowBox[{",", "0.5", ",", "1"}], "*)"}], 
+            RowBox[{"(*", 
+             RowBox[{",", "1", ",", "0.5", ",", 
+              RowBox[{"-", "0.3"}]}], "*)"}], 
+            RowBox[{"(*", 
+             RowBox[{",", "0.5", ",", "1"}], "*)"}], 
+            RowBox[{"(*", 
+             RowBox[{",", "0.25", ",", "0.5", ",", "0.75", ",", "1"}], "*)"}],
+             "}"}]}], " ", 
+          RowBox[{"(*", 
+           RowBox[{
+           "half", " ", "life", " ", "degredation", " ", "of", " ", 
+            "transcripts", " ", "1", " ", "is", " ", "they", " ", "stay", " ",
+             "and", " ", "get", " ", "passed", " ", "down", " ", "and", " ", 
+            "zero", " ", "they", " ", "disappear", " ", "after", " ", "G1", 
+            " ", "starts"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"cellopt", ",", 
+           RowBox[{"{", 
+            RowBox[{"(*", 
+             RowBox[{"\"\<stemlike\>\"", ","}], "*)"}], 
+            RowBox[{"-", "3"}], "}"}]}], "}"}], " ", 
+         RowBox[{
+         "(*", "\"\<stemlike tells the cells to assymetrically divide, look \
+at cellCycleChangeOpts function for opts\>", "*)"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"ccTsigma", ",", 
+           RowBox[{"{", "0.06", 
+            RowBox[{"(*", "0.06", "*)"}], "}"}]}], 
+          RowBox[{"(*", 
+           RowBox[{"sgma", "=", 
+            RowBox[{"0", " ", "no", " ", "gausian"}]}], "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "increase", " ", "the", " ", "cell", " ", "cycle", " ", "by"}], 
+             " ", "+", 
+             RowBox[{
+             "inc", "*", "sigma", " ", "if", " ", "sigma", " ", "is"}]}], " ",
+             ">", 
+            RowBox[{
+            "0", " ", "or", " ", "just", " ", "by", " ", "inc", "*", " ", 
+             RowBox[{"(", 
+              RowBox[{"current", " ", "cell", " ", "cycle", " ", "time"}], 
+              ")"}]}]}], "*)"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"ccT", ",", 
+           RowBox[{"(*", 
+            RowBox[{"{", 
+             RowBox[{"(*", 
+              RowBox[{"two", " ", 
+               RowBox[{"cells", "/", "\"\<stemlike\>\""}]}], "*)"}], 
+             RowBox[{
+             "you", " ", "put", " ", "two", " ", "different", " ", "cell", 
+              " ", "cycle", " ", "list", " ", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"1", ",", 
+                  RowBox[{"-", "5"}], ",", 
+                  RowBox[{"-", "5"}], ",", 
+                  RowBox[{"-", "5"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"2", ",", 
+                  RowBox[{"-", "5"}], ",", 
+                  RowBox[{"-", "5"}], ",", 
+                  RowBox[{"-", "5"}]}], "}"}]}], "}"}]}]}], "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{"one", " ", "cell"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"{", 
+               RowBox[{"#", ",", 
+                RowBox[{"-", "500"}], ",", 
+                RowBox[{"-", "500"}], ",", 
+                RowBox[{"-", "500"}]}], "}"}], "}"}], "&"}], "/@", 
+            RowBox[{"{", "0.25", 
+             RowBox[{"(*", 
+              RowBox[{
+              "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7",
+                ",", "8", ",", "9", ",", "10"}], "*)"}], 
+             RowBox[{"(*", "0.5", "*)"}], "}"}]}]}], "}"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{"cell", " ", "cycle"}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "cell", " ", "cycle", " ", "time", " ", "in", " ", "hours"}], 
+             ".."}], "or", " ", "some", " ", "unit", " ", "make", " ", "sure",
+             " ", "everything", " ", "else", " ", "matches"}], ",", " ", 
+           RowBox[{
+            RowBox[{"can", " ", "be", " ", "one", " ", "cycle", " ", 
+             RowBox[{"{", 
+              RowBox[{"{", 
+               RowBox[{"G1", ",", " ", "S", ",", "G2", ",", "M"}], "}"}], 
+              "}"}]}], ":", " ", 
+            RowBox[{
+            "negative", " ", "means", " ", "0", " ", "for", " ", "the", " ", 
+             "model", " ", "this", " ", "just", " ", "makes", " ", "sure", 
+             " ", "gausian", " ", "stays", " ", "away", " ", "from", " ", 
+             "positive", " ", "if", " ", "used", " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"{", 
+                 RowBox[{"0.5", ",", 
+                  RowBox[{"-", "5"}], ",", 
+                  RowBox[{"-", "5"}], ",", 
+                  RowBox[{"-", "5"}]}], "}"}], "}"}], " ", "or", 
+               "\[IndentingNewLine]", "you", " ", "can", " ", "start", " ", 
+               "with", " ", "two", " ", "cells", " ", "which", " ", "can", 
+               " ", "have", " ", "different", " ", "cycles", " ", "or", " ", 
+               "the", " ", "same", "\[IndentingNewLine]", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0.5", ",", 
+                   RowBox[{"-", "5"}], ",", 
+                   RowBox[{"-", "5"}], ",", 
+                   RowBox[{"-", "5"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", 
+                   RowBox[{"-", "5"}], ",", 
+                   RowBox[{"-", "5"}], ",", 
+                   RowBox[{"-", "5"}]}], "}"}]}], "}"}]}]}]}]}]}], "*)"}], 
+         "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"pr", ",", 
+           RowBox[{"{", "1", "}"}]}], 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"motif", " ", "grn"}], ",", " ", 
+            RowBox[{"not", " ", "used"}]}], "*)"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"incCycle", ",", 
+           RowBox[{"{", "0", 
+            RowBox[{"(*", " ", 
+             RowBox[{"1", ",", "3", ",", "6", ",", "9"}], "*)"}], "}"}]}], 
+          " ", 
+          RowBox[{"(*", 
+           RowBox[{"cell", " ", "cycle", " ", "increments"}], "*)"}], "}"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"rpol", ",", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0.25"}], "}"}], " ", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{
+              "first", " ", "part", " ", "of", " ", "list", " ", "tells", " ",
+                "it", " ", "what", " ", "rate"}], ",", " ", 
+              RowBox[{
+              "we", " ", "used", " ", "a", " ", "constant", " ", "1"}], ",", 
+              " ", 
+              RowBox[{"-", "1"}], ",", " ", 
+              RowBox[{
+               RowBox[{
+               "to", " ", "use", " ", "random", " ", "changing", " ", "rate", 
+                " ", "use", " ", "any", " ", "number"}], " ", ">", " ", 
+               "0"}]}], "*)"}], 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+               "secon", " ", "slot", " ", "tell", " ", "the", " ", "model", 
+                " ", "the", " ", "distance", " ", "an", " ", "RNA", " ", 
+                "pol", " ", "Ii", " ", "will", " ", "re"}], "-", 
+               RowBox[{"initiate", " ", "on", " ", "a", " ", "gene"}]}], ",", 
+              " ", 
+              RowBox[{
+              "make", " ", "sure", " ", "it", " ", "matches", " ", "kb"}], 
+              ",", " ", 
+              RowBox[{"bp", " ", "..."}]}], "*)"}], "}"}]}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"2", "\[Rule]", " ", 
+             RowBox[{
+             "if", " ", "positive", " ", "means", " ", "baseline", " ", 
+              "rate"}]}], ",", " ", 
+            RowBox[{
+            "because", " ", "gene", " ", "length", " ", "doesnt", " ", 
+             "mattr"}]}], "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{"rna", " ", "Polimeraze"}], " ", "*)"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"ploidy", ",", 
+           RowBox[{"{", "1", "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"allinfoOpt", ",", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{
+             "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+              "1"}], "}"}], " ", "}"}]}], 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"what", " ", "to", " ", "save"}], "..."}], "sinlge", 
+             " ", "cell", " ", "list"}], ",", " ", "counts_geno", ",", 
+            "counts_pheno", ",", "ave_geno", ",", "ave_pheno", ",", "lineage",
+             ",", " ", 
+            RowBox[{
+            "this", " ", "shold", " ", "be", " ", "changed", " ", "according",
+              " ", "to", " ", "users", " ", "need"}]}], "*)"}], "}"}]}], 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+    ";", 
+    RowBox[{"(*", 
+     RowBox[{"genome", " ", "length"}], "*)"}], 
+    "\[IndentingNewLine]"}]}]}]], "Input",
+ CellChangeTimes->{{3.792330888960889*^9, 3.792330923379753*^9}, {
+   3.792330955073724*^9, 3.792330982112216*^9}, {3.7923310172804832`*^9, 
+   3.79233103065423*^9}, {3.7923331902043257`*^9, 3.792333196156617*^9}, {
+   3.7923349822957067`*^9, 3.792335006104961*^9}, {3.7923352080616693`*^9, 
+   3.792335227214992*^9}, 3.792335329633275*^9, {3.7923619668360643`*^9, 
+   3.792361977362381*^9}, {3.7923621127007427`*^9, 3.792362126202176*^9}, {
+   3.792507923974988*^9, 3.792507924928508*^9}, {3.7925079639626713`*^9, 
+   3.792507967051681*^9}, {3.792508215082099*^9, 3.792508228838879*^9}, {
+   3.792516560098922*^9, 3.7925165742801743`*^9}, {3.792767662737458*^9, 
+   3.792767694023888*^9}, {3.792770261170683*^9, 3.792770262703394*^9}, {
+   3.7927826318514023`*^9, 3.792782640447899*^9}, {3.79278269335457*^9, 
+   3.792782734361643*^9}, 3.792796362150085*^9, {3.7927963969397793`*^9, 
+   3.7927964045080023`*^9}, {3.792797736927866*^9, 3.792797843294403*^9}, {
+   3.792798050638288*^9, 3.7927981514422693`*^9}, {3.7927981816233788`*^9, 
+   3.792798185107644*^9}, {3.792798260010748*^9, 3.7927982852888727`*^9}, {
+   3.792798414883786*^9, 3.792798416814436*^9}, {3.792798509985067*^9, 
+   3.792798545582632*^9}, {3.792798617082493*^9, 3.7927986408766813`*^9}, {
+   3.792798736772002*^9, 3.792798768720755*^9}, {3.792798990715332*^9, 
+   3.792798993342194*^9}, {3.792799031833386*^9, 3.7927990618316517`*^9}, {
+   3.792799119803872*^9, 3.792799136864504*^9}, 3.792799216394814*^9, {
+   3.792799282572158*^9, 3.7927993826165524`*^9}, {3.7927994305649977`*^9, 
+   3.7927994478803663`*^9}, {3.7927995184998493`*^9, 3.792799525313237*^9}, {
+   3.7927995772627707`*^9, 3.792799754428946*^9}, {3.792799807937821*^9, 
+   3.792799813719227*^9}, {3.792800137523369*^9, 3.792800191221003*^9}, {
+   3.792800695984467*^9, 3.792800713773817*^9}, 3.7928009853593073`*^9, {
+   3.7928014113788633`*^9, 3.792801434414554*^9}, {3.792802669254253*^9, 
+   3.792802670525113*^9}, {3.792803556598503*^9, 3.792803574135257*^9}, {
+   3.792803921005465*^9, 3.792803933215185*^9}, {3.79280400779617*^9, 
+   3.792804042433769*^9}, {3.792804104340461*^9, 3.792804141599436*^9}, {
+   3.792804219167304*^9, 3.79280422665022*^9}, {3.792804291452598*^9, 
+   3.792804295392963*^9}, {3.792804332495557*^9, 3.7928043379121943`*^9}, {
+   3.792804456799438*^9, 3.7928044758311863`*^9}, {3.792804534230453*^9, 
+   3.792804568315167*^9}, {3.792804599165428*^9, 3.7928046787866592`*^9}, {
+   3.7928047436413918`*^9, 3.7928047475792637`*^9}, {3.792804924248192*^9, 
+   3.792804931798552*^9}, {3.792805091956922*^9, 3.792805130524021*^9}, {
+   3.7928051663001223`*^9, 3.792805192022962*^9}, {3.792805241390984*^9, 
+   3.792805243591107*^9}, {3.792805297944976*^9, 3.7928053413761387`*^9}, {
+   3.792805382516005*^9, 3.7928054354067793`*^9}, {3.792805521493781*^9, 
+   3.792805521877226*^9}, {3.792805628870962*^9, 3.792805654411063*^9}, {
+   3.792805711657756*^9, 3.792805752163558*^9}, {3.792805804282296*^9, 
+   3.792805829541477*^9}, {3.792805907296525*^9, 3.792805945104979*^9}, {
+   3.792840242585266*^9, 3.792840257915785*^9}, {3.792846823803152*^9, 
+   3.79284685124932*^9}, {3.792847022994988*^9, 3.79284704248737*^9}, {
+   3.792847140342992*^9, 3.792847213436387*^9}, {3.792848202525301*^9, 
+   3.792848230795145*^9}, {3.79284843170662*^9, 3.7928484372256737`*^9}, {
+   3.792848543554022*^9, 3.792848572255248*^9}, {3.792850282582934*^9, 
+   3.7928503701791563`*^9}, {3.7928506574345207`*^9, 3.79285073958923*^9}, {
+   3.792850770329446*^9, 3.7928507780624533`*^9}, {3.792850929100244*^9, 
+   3.792850931661715*^9}, {3.7928510887824*^9, 3.792851147011352*^9}, {
+   3.7928514156078787`*^9, 3.792851484278408*^9}, 3.792852671691442*^9, {
+   3.7928527871536903`*^9, 3.792852791009982*^9}, {3.792853114630712*^9, 
+   3.7928531213800497`*^9}, {3.792853214698347*^9, 3.79285329401136*^9}, {
+   3.792853359587543*^9, 3.792853406712575*^9}, 3.792853476773245*^9, 
+   3.792853513563892*^9, {3.7928535493037567`*^9, 3.7928535785349617`*^9}, {
+   3.792853674171398*^9, 3.792853674874277*^9}, {3.792853817447218*^9, 
+   3.792853841149251*^9}, {3.792853938282392*^9, 3.792853966634368*^9}, {
+   3.792859351334916*^9, 3.7928594114874*^9}, {3.792859447373808*^9, 
+   3.792859484813237*^9}, 3.792859530233035*^9, {3.792859582140498*^9, 
+   3.7928596670932617`*^9}, {3.792859873473282*^9, 3.792859879208359*^9}, {
+   3.7928599461810226`*^9, 3.7928599468895607`*^9}, {3.7928600064256973`*^9, 
+   3.7928600320860453`*^9}, 3.7984123626305237`*^9, {3.798412422939784*^9, 
+   3.798412448213684*^9}, {3.7984124791362963`*^9, 3.798412481493264*^9}, {
+   3.798412735665333*^9, 3.798412744417905*^9}, {3.798412818618162*^9, 
+   3.798412857279871*^9}, {3.798412971670348*^9, 3.798412973516672*^9}, {
+   3.798413034694007*^9, 3.7984130354839983`*^9}, 3.7984139991561337`*^9, {
+   3.798414078011091*^9, 3.79841407923529*^9}, 3.7984143767259274`*^9, {
+   3.7984144779625797`*^9, 3.798414491867056*^9}, {3.798414948568145*^9, 
+   3.798414955839794*^9}, {3.7984150066188593`*^9, 3.798415014731613*^9}, {
+   3.798415127726841*^9, 3.7984152518558292`*^9}, {3.798415307677849*^9, 
+   3.7984153714755087`*^9}, 3.7984154015133343`*^9, {3.798415494505884*^9, 
+   3.798415513933321*^9}, 3.798415598681493*^9, {3.798415656516212*^9, 
+   3.798415665719927*^9}, {3.798415786289207*^9, 3.798415786806203*^9}, {
+   3.798415903698645*^9, 3.798415905986637*^9}, 3.798416235555214*^9, {
+   3.798416340238302*^9, 3.798416344326229*^9}, {3.7984165141819572`*^9, 
+   3.798416516539014*^9}, 3.7984165487771187`*^9, {3.798417331862965*^9, 
+   3.798417333354906*^9}, {3.798417396083906*^9, 3.798417397298991*^9}, {
+   3.798417461580118*^9, 3.798417481390848*^9}, {3.798417620687695*^9, 
+   3.7984176744760323`*^9}, {3.798418073638763*^9, 3.798418092677887*^9}, 
+   3.798418260917358*^9, {3.798418479873206*^9, 3.798418521071355*^9}, 
+   3.798418641982553*^9, {3.79841875016477*^9, 3.798418752357841*^9}, {
+   3.7984192827793837`*^9, 3.7984192906419992`*^9}, 3.798419578069058*^9, 
+   3.798420008458934*^9, {3.798422154304096*^9, 3.79842221331026*^9}, {
+   3.7984223008923893`*^9, 3.798422326720809*^9}, {3.798422374531107*^9, 
+   3.798422389847204*^9}, {3.798422507623926*^9, 3.798422510870623*^9}, {
+   3.7984226271294813`*^9, 3.798422642109858*^9}, {3.798422836841339*^9, 
+   3.79842285111104*^9}, {3.798423139355406*^9, 3.798423202163395*^9}, {
+   3.7984232698552923`*^9, 3.798423294737801*^9}, {3.798423380228217*^9, 
+   3.798423394443059*^9}, {3.7984239403009357`*^9, 3.798423940857129*^9}, {
+   3.798441944143326*^9, 3.79844196414015*^9}, {3.7984677282608747`*^9, 
+   3.7984677434519367`*^9}, {3.798467788649626*^9, 3.798467790705192*^9}, {
+   3.7984678780156717`*^9, 3.798467882474778*^9}, {3.798497387927866*^9, 
+   3.798497400758718*^9}, {3.798497885138908*^9, 3.798497895606386*^9}, 
+   3.798498484586732*^9, {3.798498711719139*^9, 3.798498751125489*^9}, {
+   3.7985823276973267`*^9, 3.798582334410239*^9}, {3.798582567700285*^9, 
+   3.7985825720630617`*^9}, {3.798582988411138*^9, 3.7985830125135736`*^9}, {
+   3.798583096360565*^9, 3.798583125007773*^9}, {3.79858324245839*^9, 
+   3.798583282398499*^9}, {3.7986166677013273`*^9, 3.798616685300147*^9}, {
+   3.798616771339467*^9, 3.798616784552709*^9}, {3.7986168682566967`*^9, 
+   3.798616871559485*^9}, {3.7986169072747383`*^9, 3.7986169532609997`*^9}, {
+   3.798710487826715*^9, 3.79871055691847*^9}, 3.799193004223127*^9, {
+   3.799193074217532*^9, 3.799193108327758*^9}, {3.7991933662021427`*^9, 
+   3.799193374576275*^9}, {3.799193490825615*^9, 3.7991935906560297`*^9}, {
+   3.7992237186384153`*^9, 3.7992237833283577`*^9}, {3.79940567511944*^9, 
+   3.799405760139762*^9}, 3.799405925697091*^9, {3.799511675021635*^9, 
+   3.799511746975292*^9}, {3.799511900458976*^9, 3.7995119067574797`*^9}, {
+   3.7996973590730963`*^9, 3.799697363736291*^9}, {3.79969760215504*^9, 
+   3.799697603041691*^9}, {3.799697642452914*^9, 3.799697682781927*^9}, {
+   3.7996977430513783`*^9, 3.799697776530321*^9}, {3.799698088532114*^9, 
+   3.7996980891131153`*^9}, {3.799698240817396*^9, 3.799698241377811*^9}, {
+   3.799698752723744*^9, 3.799698756232915*^9}, {3.799698887591*^9, 
+   3.799698892190248*^9}, 3.799699001464705*^9, 3.799699117296136*^9, {
+   3.799701544605254*^9, 3.7997015638640757`*^9}, {3.799705413893981*^9, 
+   3.7997054537179003`*^9}, {3.800195863312726*^9, 3.800195994841658*^9}, {
+   3.802420767439494*^9, 3.8024207842558937`*^9}, 3.802420855877008*^9, {
+   3.802420948660017*^9, 3.8024209489772043`*^9}, {3.8024210015152807`*^9, 
+   3.802421044677891*^9}, {3.802421084490707*^9, 3.8024211642895327`*^9}, {
+   3.802421468215082*^9, 3.8024215254579353`*^9}, {3.8024234393037243`*^9, 
+   3.8024234541054897`*^9}, {3.802424654883041*^9, 3.802424677783081*^9}, {
+   3.8024256480354156`*^9, 3.802425661228641*^9}, {3.80242569783936*^9, 
+   3.802425705522541*^9}, {3.80242588279535*^9, 3.802425887801272*^9}, 
+   3.802426530457779*^9, 3.802427230817395*^9, {3.802427266497396*^9, 
+   3.802427268111462*^9}, 3.802427425464588*^9, {3.8024276010027437`*^9, 
+   3.802427660104307*^9}, 3.802427741140534*^9, 3.802428528225514*^9, {
+   3.802428617159639*^9, 3.802428625752475*^9}, 3.807516546837373*^9, {
+   3.807516585306746*^9, 3.807516641813692*^9}, {3.808665019676272*^9, 
+   3.808665031721676*^9}, {3.808665605192212*^9, 3.808665623295789*^9}, {
+   3.808665745891569*^9, 3.808665810984891*^9}, {3.8086664409524927`*^9, 
+   3.808666469855845*^9}, 3.8086665488964376`*^9, {3.808666733185932*^9, 
+   3.808666752287613*^9}, {3.80866689271705*^9, 3.808666894985922*^9}, 
+   3.80868920771104*^9, {3.80881928811038*^9, 3.808819294318344*^9}, {
+   3.8088197156369467`*^9, 3.808819747200385*^9}, {3.8088198508535223`*^9, 
+   3.808819887279393*^9}, {3.821184723254491*^9, 3.821184724368575*^9}, {
+   3.821185166155414*^9, 3.821185189575906*^9}, {3.821185602245796*^9, 
+   3.8211856631067743`*^9}, {3.821185729502486*^9, 3.821185753196946*^9}, {
+   3.8211859801170053`*^9, 3.821186046651808*^9}, 3.821187016546565*^9, {
+   3.821188535982975*^9, 3.821188546426252*^9}, {3.8211887040017357`*^9, 
+   3.8211887314857883`*^9}, {3.8211891844927063`*^9, 3.821189293444351*^9}, {
+   3.821189961531212*^9, 3.821189987306464*^9}, 3.821190057831011*^9, {
+   3.821194326966422*^9, 3.821194332755761*^9}, {3.82119447223241*^9, 
+   3.821194516422139*^9}, {3.821195086505458*^9, 3.821195096302019*^9}, {
+   3.821195936690851*^9, 3.821195953603434*^9}, 3.8211961699240627`*^9, {
+   3.821464503334741*^9, 3.821464531126795*^9}, 3.821464593711076*^9, {
+   3.821540637230781*^9, 3.821540719377898*^9}, {3.821616113686276*^9, 
+   3.821616116127936*^9}, {3.821708375012973*^9, 3.821708403169756*^9}, {
+   3.821708497069537*^9, 3.821708560322748*^9}, {3.821708600785844*^9, 
+   3.821708617395422*^9}, {3.821708880208498*^9, 3.821708883303666*^9}, 
+   3.8217089605823936`*^9, {3.8217090101653*^9, 3.8217090329474487`*^9}, {
+   3.8217091234929743`*^9, 3.821709140176673*^9}, {3.8217094749425898`*^9, 
+   3.8217094784171867`*^9}, 3.821715529533957*^9, {3.8217204834315033`*^9, 
+   3.8217204917783823`*^9}, 3.823785059804305*^9, {3.82378510564893*^9, 
+   3.823785395614959*^9}, {3.823785429462306*^9, 3.823785451127677*^9}, {
+   3.8237855948733053`*^9, 3.8237856221526537`*^9}, {3.823785790125814*^9, 
+   3.823785797369877*^9}, {3.8237859411142883`*^9, 3.823785977007579*^9}, {
+   3.823786015501329*^9, 3.823786051395795*^9}, {3.8237860842583733`*^9, 
+   3.823786553174857*^9}, {3.823786591739149*^9, 3.8237866329492903`*^9}, {
+   3.823786901760721*^9, 3.823786933334306*^9}, {3.823786970974111*^9, 
+   3.823787051562505*^9}, {3.823787126186336*^9, 
+   3.8237873173703537`*^9}},ExpressionUUID->"8b6c9526-002f-4780-9c97-\
+29937e7d9de9"]
+}, Open  ]]
+},
+WindowSize->{964, 760},
+WindowMargins->{{Automatic, -1658}, {42, Automatic}},
+TaggingRules->{"TryRealOnly" -> False},
+FrontEndVersion->"12.2 for Mac OS X x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2f89e732-ec81-4e63-b9cb-35e6dacf034e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4727, 107, 535, "Input",ExpressionUUID->"719fd69d-50d0-4146-8dd6-da1a429ac9df"],
+Cell[5288, 129, 269, 7, 30, "Input",ExpressionUUID->"10ff81d4-b162-4308-ad17-527aaabef7fa"],
+Cell[5560, 138, 280, 6, 71, "Subsubsection",ExpressionUUID->"56ff0beb-f2df-4544-be2c-19c6b0ab65c0"],
+Cell[CellGroupData[{
+Cell[5865, 148, 167, 3, 37, "Subsubsection",ExpressionUUID->"febf6fa5-6280-4060-9761-9ed981678eee"],
+Cell[6035, 153, 67777, 1382, 4294, "Input",ExpressionUUID->"8b6c9526-002f-4780-9c97-29937e7d9de9"]
+}, Open  ]]
+}
+]
+*)
+
