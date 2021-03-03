@@ -29,7 +29,7 @@ oneFullCycleV0::usage="Used for the manuscript tittled: Control of tissue develo
 oneFullCycleV01::usage="This Fucntion tests the effects of cell cycle duration, gene length.  
 :=[tissue_,timestep_,cellCycleOpts_,genome_,transcriptionPara_] 
  improved half-life by using dataset associations new to Mathematica 12, improved speed by functionalising more steps and using association. Also by condensing the number of transcripts in the cell list -> {1,1,1,1,2,3,4,1} to a list that carries the total number-> {5,1,1,1} and association functions helped memory alocation.
-   Now genome ploidy affects the system: if the organism is ploidy level two it will carry two copies of each gene Last Edited March 2020";
+   Now genome ploidy affects the system: if the organism is ploidy level two it will carry two copies of each gene Last Edited March 2021";
 
 
 (* ::Input::Initialization:: *)
@@ -47,6 +47,7 @@ oneFullCycleV01[tissue_,timestep_,cellCycleOpts_,genome_,transcriptionPara_]:=Mo
 cellCycleOpts[[1]]]]= sigma
 cellCycleOpts[[2]]= cell cycle increments
 cellCycleOpts[[3]]= \.08cellCycleEquation Opts
+cellCycleOpts[[4]]= \.08for "stem like opts"
 *)
 (*transcriptionPara[[1]] is the gene network
 transcriptionPara[[2]] probability of transcripts remaining in the system
