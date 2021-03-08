@@ -15,4 +15,9 @@ The cdf file will run a single iteration and output a figure similar to Figure 2
 CCD-2021-03-elife.nb is the file used to run simulations for different parameters and call up the model
 The main function is call oneFullCycleV01 found in the cellCycleHypothesis.wl package file
 
+**download the genomes
+we use R, Biomart and ensembl to download the genome and pathway data we analysed in the manuscript
+R version 3.6.1 (2019-07-05)
+file is bioMart_2021.Rmd
+
 
