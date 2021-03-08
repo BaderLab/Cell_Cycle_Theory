@@ -1,0 +1,138 @@
+---
+title: "Get gene length and pathways files 2020"
+output: html_document
+---
+
+```{r}
+
+base_directory <-"/Users/abouchakra/Dropbox/Uoft/UOFT/projects/5-Gene_Length_pathway"
+current_working_directory <- file.path(base_directory, "3-R_directpathwayfiles_mathematica")
+data_directory <- file.path(current_working_directory,"data2020")
+
+gl_filename <- paste(data_directory, "sessioninfo.txt",sep="/")
+
+write.table(as.matrix(sessionInfo()),gl_filename,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE,append=FALSE)
+
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#    install.packages("BiocManager")
+#BiocManager::install(version = "3.10")
+#BiocManager::install(c("GenomicFeatures", "AnnotationDbi"))
+#BiocManager::install("biomaRt")
+#install.packages(c("reticulate", "rlang", "spatstat", "tidyr", "vctrs"))
+
+library("biomaRt")
+
+#listMarts()
+
+#listMarts(host="plants.ensembl.org")
+#listMarts(host="metazoa.ensembl.org")
+#listMarts(host="fungi.ensembl.org")
+#listMarts("bacteria.ensembl.org")
+#listMarts(host="protists.ensembl.org")
+
+```
+
+```{r}
+
+pathwaysOpt<-1 #if you need go and pathways for the species too choose 1
+
+#databases location
+hostList<-c("ensembl.org","plants.ensembl.org","metazoa.ensembl.org","fungi.ensembl.org","protists.ensembl.org")
+#databases
+biomartList<-c("ensembl","plants_mart","metazoa_mart","fungi_mart","protists_mart")
+
+#for(bm in 1:(length(biomartList))){
+bm=4 
+mart = useMart(biomart = biomartList[bm], 
+                   host = hostList[bm]) 
+en_Alldatasets<-listDatasets(mart)
+#All_Spcs_Ensembl
+gl_filename <- paste(data_directory, paste(biomartList[bm], "datasets.txt",sep="_"),sep="/")
+write.table(en_Alldatasets[,1],gl_filename,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE,append=FALSE)
+
+mm<-55 #79 = humans #26 or 39 in meta worm, 106 mouse 50 fruitfly, 54 zebrafish, 70 ggallus, 103 mmulatta, 165 yeast, 179 sscrofa,195 fugu, 203 xtropicalis
+#5 "agossypii", 27 "kpastoris", 55 "ylipolytica",
+#for(mm in 142:(length(en_Alldatasets[,1]))){
+#make sure it connects here. Might have to run below command multiple times.
+mart = useMart(biomart=biomartList[bm],  host = hostList[bm],dataset=en_Alldatasets[mm,1])
+
+  #,'transcript_length'
+#'entrezgene',
+#Using biomart get all transcripts for the given species.
+ genes = getBM(attributes = c('ensembl_gene_id','ensembl_transcript_id', 'external_gene_name', 'start_position','end_position',  'transcript_start', 'transcript_end','transcript_length'), filters=list(biotype='protein_coding',transcript_biotype = 'protein_coding'), mart=mart);
+
+#use ensembl gene ids to get rid of duplcates - do you want to get rid of duplicates?
+# there is a huge difference between number of transcripts and number of genes.  If the 
+# analysis is gene centric then you will be throwing out a lot of information.
+#currently duplicates in transcripts only are removed
+genes <- unique(genes[which(!duplicated(genes[,2])),])
+
+#genes$description = gsub("\\[Source.*", "", genes$description);
+genes$gene_length <- genes$end_position - genes$start_position + 1
+genes$transcript_lengthC <- genes$transcript_end - genes$transcript_start + 1
+genes<- genes[order(genes[,1]),]
+#need to replace empty with something
+#is.null?
+genes[which(genes[,1] == ""),1] <- "NULL"
+genes[which(genes[,3] == ""),3] <- "NULL"
+#
+
+#All_Spcs_Ensembl
+gl_filename <- paste(data_directory, paste(biomartList[bm],"All_Spcs_Ensembl",sep="_"), paste(en_Alldatasets[mm,1], "genelength.txt",sep="_"),sep="/")
+
+write.table(genes,gl_filename,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE,append=FALSE)
+
+
+#The following section gets the go annotations and pathway information we need from ensembl
+if(pathwaysOpt==1){
+  #ensembl_transcript_id'
+go_annotation_bp <- getBM(attributes = c( 'ensembl_gene_id',"go_id","name_1006", "namespace_1003","go_linkage_type"),
+              filters=list(biotype='protein_coding',transcript_biotype = 'protein_coding') 
+             , mart=mart);
+#get just the go biological process subset
+go_annotation_bp <- go_annotation_bp[which(go_annotation_bp$namespace_1003 == "biological_process"),]
+
+#all transcripts are part of the go annotation and doesnt actually distinguish transcripts from one another...transcript version is too noisy
+
+#gl_filename <- paste(data_directory, "All_Spcs_Pathways", paste(en_Alldatasets[mm,1], "gene to_go_pathway.csv",sep="_"),sep="/")
+#write.table(go_annotation_bp[,c(1:2)],file=gl_filename,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE)
+
+#saves go_id and pathway name into one file
+newgoid_name<-subset(go_annotation_bp,select = c("go_id","name_1006"))
+newgoid_name<-unique(newgoid_name[which(!duplicated(newgoid_name[,1])),])
+names(newgoid_name)<-c("go_id","pathway_name")
+gl_filename <- paste(data_directory, "All_Spcs_Pathways", paste(en_Alldatasets[mm,1], "goid_to_go_pathway_name.csv",sep="_"),sep="/")
+write.csv(newgoid_name,file=gl_filename,row.names=FALSE)
+#,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE)
+
+#compute the unique pathway sets
+go_pathway_sets <- aggregate(go_annotation_bp[,1:5],by = list(go_annotation_bp$go_id),FUN = function(x){list(unique(x))})
+#i would like to save the goid to ensembl gene set data and the clean_pathways does that 
+gene.per.goid <- sapply(go_pathway_sets$ensembl_gene_id,length) 
+clean_go_pathway_sets <- go_pathway_sets
+clean_go_pathway_sets$flat_ensembl_geneid<-unlist(lapply(go_pathway_sets$ensembl_gene_id,                                                  function(x){paste0(x,collapse = " ")} ))
+clean_go_pathway_sets<-subset(clean_go_pathway_sets,select = c("Group.1","flat_ensembl_geneid"))
+names(clean_go_pathway_sets)<-c("go_id","ensembl_geneid")
+#save clean_go_pathways
+gl_filename <- paste(data_directory, "All_Spcs_Pathways", paste(en_Alldatasets[mm,1], "goid_to_gene.csv",sep="_"),sep="/")
+write.csv(clean_go_pathway_sets,file=gl_filename,row.names=FALSE)
+#,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE)
+
+#gl_filename <- paste(data_directory, "All_Spcs_Pathways", paste(en_Alldatasets[mm,1], "goid_to_go_pathway_name.csv",sep="_"),sep="/")
+#write.csv(go_pathway_sets[,c(3:4)],file=gl_filename)
+#,col.name=TRUE,sep="\t",row.names=FALSE,quote=FALSE)
+
+#gl_filename <- paste(data_directory, "All_Spcs_Pathways", paste(en_Alldatasets[mm,1], "go_pathway_sets.RData",sep="_"),sep="/")
+#save(go_pathway_sets, file=gl_filename)
+}#pathway
+
+#to save memory
+go_annotation_bp<-c()
+
+
+
+#}#for datasets
+#}#for databases
+```
+
+
