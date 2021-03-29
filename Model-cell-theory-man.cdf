@@ -1,32 +1,12 @@
-(* Content-type: application/vnd.wolfram.cdf.text *)
-
-(*** Wolfram CDF File ***)
-(* http://www.wolfram.com/cdf *)
-
-(* CreatedBy='Mathematica 12.0' *)
-
-(***************************************************************************)
-(*                                                                         *)
-(*                                                                         *)
-(*  Under the Wolfram FreeCDF terms of use, this file and its content are  *)
-(*  bound by the Creative Commons BY-SA Attribution-ShareAlike license.    *)
-(*                                                                         *)
-(*        For additional information concerning CDF licensing, see:        *)
-(*                                                                         *)
-(*         www.wolfram.com/cdf/adopting-cdf/licensing-options.html         *)
-(*                                                                         *)
-(*                                                                         *)
-(***************************************************************************)
-
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[      1088,         20]
-NotebookDataLength[    136384,       3135]
-NotebookOptionsPosition[    136886,       3132]
-NotebookOutlinePosition[    137223,       3147]
-CellTagsIndexPosition[    137180,       3144]
+NotebookDataPosition[         0,          0]
+NotebookDataLength[    133590,       3044]
+NotebookOptionsPosition[    132847,       3019]
+NotebookOutlinePosition[    133243,       3035]
+CellTagsIndexPosition[    133200,       3032]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -51,6 +31,10 @@ Cell[BoxData[
   "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
+    RowBox[{"Off", "[", 
+     StyleBox[
+      RowBox[{"Eigenvalues", "::", "mindet"}], "MessageName"], "]"}], ";", 
+    "\[IndentingNewLine]", 
     RowBox[{"genomeLength", "=", 
      RowBox[{"Range", "[", 
       RowBox[{"L1", ",", "LG", ",", 
@@ -66,10 +50,29 @@ Cell[BoxData[
        RowBox[{
        "#", " ", "if", " ", "it", " ", "is", " ", "not", " ", "based", " ", 
         "on", " ", "a", " ", "system"}]}]}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"emptList", "=", 
+     RowBox[{"genomeName", "/.", 
+      RowBox[{
+       RowBox[{"_", "?", "NumberQ"}], "\[RuleDelayed]", "0"}]}]}], ";", 
+    "\[IndentingNewLine]", 
     StyleBox[
      RowBox[{"(*", 
       RowBox[{"start", " ", "with", " ", "one", " ", "cell"}], "*)"}], 
      "Input"], 
+    StyleBox["\[IndentingNewLine]", "Input"], 
+    StyleBox[
+     RowBox[{"genomeI", "=", 
+      RowBox[{
+       RowBox[{"Tuples", "[", 
+        RowBox[{
+         RowBox[{"{", "1", "}"}], ",", 
+         RowBox[{"Length", "[", "genomeLength", "]"}]}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "Input"], 
+    StyleBox[";", "Input"], 
+    StyleBox["\[IndentingNewLine]", "Input"], 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"Print", "[", "genomeI", "]"}], ";"}], "*)"}], 
     StyleBox["\[IndentingNewLine]", "Input"], 
     StyleBox[
      RowBox[{"xC", "=", 
@@ -77,7 +80,7 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"0", ",", "0", ",", "0"}], "}"}], " ", 
+          RowBox[{"0", ",", "0", ",", "0"}], "}"}], 
          RowBox[{"(*", "center", "*)"}], ",", "1", " ", 
          RowBox[{"(*", "radius", "*)"}], ",", 
          RowBox[{"{", 
@@ -90,76 +93,75 @@ Cell[BoxData[
             RowBox[{"polarity", " ", "direction"}]}], "}"}], "*)"}], ",", 
          RowBox[{"{", 
           RowBox[{"0", ",", "0", ",", 
-           RowBox[{"Total", "[", 
-            RowBox[{"ccT", "/.", 
+           RowBox[{"Total", "[", " ", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"ccT", ",", 
+               RowBox[{"-", "500"}], ",", 
+               RowBox[{"-", "500"}], ",", 
+               RowBox[{"-", "500"}]}], "}"}], "/.", 
              RowBox[{
               RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}], ",", 
-           "0"}], "}"}], ",", 
+           "0", ",", "0"}], 
+          RowBox[{"(*", 
+           RowBox[{"relative", " ", "time", " ", "passed"}], "*)"}], "}"}], 
+         ",", 
          RowBox[{"{", " ", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"ccT", ",", 
-             RowBox[{"-", "5"}], ",", 
-             RowBox[{"-", "5"}], ",", 
-             RowBox[{"-", "5"}]}], "}"}], ",", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"-", "100"}], ",", 
-             RowBox[{"-", "100"}], ",", 
-             RowBox[{"-", "100"}], ",", 
-             RowBox[{"-", "100"}]}], "}"}]}], "}"}], 
+          RowBox[{"{", 
+           RowBox[{"ccT", ",", 
+            RowBox[{"-", "500"}], ",", 
+            RowBox[{"-", "500"}], ",", 
+            RowBox[{"-", "500"}]}], "}"}], "}"}], 
          RowBox[{"(*", 
           RowBox[{
           "negative", " ", "values", " ", "ensure", " ", "no", " ", 
-           "transcription", " ", "time"}], "*)"}], " ", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{",", "phase", ",", " ", 
-             RowBox[{"Length", " ", "of", "  ", "last", " ", "cycle"}], ",", 
-             RowBox[{"next", " ", "cycle"}]}], "}"}], ",", " ", 
-           "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"cycle", " ", "length", " ", "Now"}], "}"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"cycle", " ", "Length", " ", "Next"}], "}"}]}], "}"}]}],
-           "*)"}], " ", ",", 
+           "transcription", " ", "time"}], "*)"}], ",", 
          RowBox[{"{", 
-          RowBox[{"1", ",", 
+          RowBox[{"1", ",", " ", 
            RowBox[{
-            RowBox[{"Tuples", "[", 
-             RowBox[{
-              RowBox[{"{", "1", "}"}], ",", 
-              RowBox[{"Length", "[", "genomeLength", "]"}]}], "]"}], "[", 
-            RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+            RowBox[{"genomeI", "&"}], "/@", 
+            RowBox[{"Range", "[", 
+             RowBox[{"1", ",", "ploidy"}], "]"}]}]}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"(*", "genomeLength", "*)"}], " ", 
-          RowBox[{
-           RowBox[{"{", "}"}], 
-           RowBox[{"(*", "permanent", "*)"}], ",", 
-           RowBox[{"{", "}"}]}], 
           RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"new", "/", "temp"}], " ", "transcripts"}], "*)"}], "}"}],
-          ",", 
+           RowBox[{"genomeLength", "[", 
+            RowBox[{"[", "gl", "]"}], "]"}], "*)"}], 
+          RowBox[{"emptList", ",", "emptList"}], 
+          RowBox[{"(*", 
+           RowBox[{"temp", " ", "transcripts"}], "*)"}], "}"}], ",", 
          RowBox[{
-          RowBox[{"ToString", "[", "0", "]"}], "<>", "\"\<-1\>\""}]}], 
+          RowBox[{"ToString", "[", "1", "]"}], "<>", "\"\<-1\>\""}], 
+         RowBox[{"(*", 
+          RowBox[{"cell", " ", "name"}], "*)"}], ",", 
+         RowBox[{"{", "}"}]}], 
         RowBox[{"(*", 
-         RowBox[{"cell", " ", "name"}], "*)"}], "}"}], "}"}]}], "Input"], 
+         RowBox[{"lineage", " ", "tracking", " ", "1", " ", "step"}], "*)"}], 
+        "}"}], "}"}]}], "Input"], 
     StyleBox[";", "Input"], 
+    StyleBox["\[IndentingNewLine]", "Input"], 
+    RowBox[{"(*", 
+     StyleBox[
+      RowBox[{
+       RowBox[{"Print", "[", "xC", "]"}], ";"}], "Input"], "*)"}], 
     StyleBox["\[IndentingNewLine]", "Input"], 
     RowBox[{"Table", "[", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
        RowBox[{"xC", "=", 
-        RowBox[{"oneFullCycleV0", "[", 
-         RowBox[{"xC", ",", "timestep", ",", "ccTsigma", ",", 
+        RowBox[{"oneFullCycleV01", "[", 
+         RowBox[{"xC", ",", "timestep", ",", 
+          RowBox[{"{", 
+           RowBox[{"ccTsigma", ",", "incCycle", ",", 
+            RowBox[{"-", "3"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"ccT", ",", 
+               RowBox[{"-", "500"}], ",", 
+               RowBox[{"-", "500"}], ",", 
+               RowBox[{"-", "500"}]}], "}"}], "}"}]}], "}"}], ",", 
           RowBox[{"Transpose", "[", 
            RowBox[{"{", 
             RowBox[{"genomeName", ",", "genomeLength"}], "}"}], "]"}], ",", 
-          "\"\<nosave\>\"", ",", 
           RowBox[{"{", 
            RowBox[{
             RowBox[{
@@ -173,37 +175,77 @@ Cell[BoxData[
                  RowBox[{"Length", "[", "genomeName", "]"}]}], "}"}]}], "]"}],
               "[", 
              RowBox[{"[", "1", "]"}], "]"}], ",", "maternal", ",", "ploidy", 
-            ",", "incCycle", ",", 
+            ",", 
             RowBox[{"{", 
-             RowBox[{"0", ",", "0"}], "}"}]}], 
-           RowBox[{"(*", "rpol", "*)"}], "}"}], "\[IndentingNewLine]", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"[", 
-             RowBox[{"[", "1", "]"}], "]"}], " ", "is", " ", "the", " ", 
-            "gene", " ", 
-            RowBox[{"network", "\n", "[", 
-             RowBox[{"[", "2", "]"}], "]"}], " ", "probability", " ", "of", 
-            " ", "transcripts", " ", "remaining", " ", "in", " ", "the", " ", 
-            
-            RowBox[{"system", "\n", "[", 
-             RowBox[{"[", "3", "]"}], "]"}], " ", "ploidy", " ", 
-            RowBox[{"level", "\n", "[", 
-             RowBox[{"[", "4", "]"}], "]"}], " ", "cell", " ", "cycle", " ", 
-            RowBox[{"increments", "\n", "[", 
-             RowBox[{"[", "5", "]"}], "]"}], " ", "rnaPolII", " ", "rate", 
-            " ", "0", " ", "is", " ", "no", " ", "rate"}], "*)"}], ",", 
-          RowBox[{"Join", "[", 
-           RowBox[{
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "\[CapitalOmega]"}], "}"}]}], 
+           RowBox[{"(*", "rpol", "*)"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"[", 
+          RowBox[{"[", "1", "]"}], "]"}], " ", "is", " ", "the", " ", "gene", 
+         " ", 
+         RowBox[{"network", "\n", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], " ", "probability", " ", "of", " ", 
+         "transcripts", " ", "remaining", " ", "in", " ", "the", " ", 
+         RowBox[{"system", "\n", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], " ", "ploidy", " ", 
+         RowBox[{"level", "\n", "[", 
+          RowBox[{"[", "4", "]"}], "]"}], " ", "cell", " ", "cycle", " ", 
+         RowBox[{"increments", "\n", "[", 
+          RowBox[{"[", "5", "]"}], "]"}], " ", "rnaPolII", " ", "rate", " ", 
+         "0", " ", "is", " ", "no", " ", "rate"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        StyleBox[
+         RowBox[{
+          RowBox[{"Print", "[", "xC", "]"}], ";"}], "Input"], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Flatten", "[", 
             RowBox[{"{", 
-             RowBox[{"0", ",", "0.5", ",", 
-              RowBox[{"{", 
-               RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}]}],
-              "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0"}], 
-             "}"}]}], "]"}], ",", 
-          RowBox[{"{", "0", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", "8", "]"}], "]"}], " ", 
+              RowBox[{"(*", "name", "*)"}], ",", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "1"}], "]"}], "]"}], 
+              RowBox[{"(*", "phase", "*)"}], ",", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "5"}], "]"}], "]"}], " ", 
+              RowBox[{"(*", 
+               RowBox[{"time", " ", "elapsed"}], "*)"}], 
+              RowBox[{"(*", 
+               RowBox[{"StringJoin", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", "#"}], 
+                    ")"}], "<>", "\"\<_\>\""}], "&"}], "/@", 
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ",", "2"}], "]"}], "]"}]}], "]"}], "*)"}], 
+              ",", 
+              RowBox[{"Total", "[", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}], "/.", 
+                RowBox[{
+                 RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}], 
+              ",", 
+              RowBox[{"Total", "[", 
+               RowBox[{"#", "[", 
+                RowBox[{"[", "7", "]"}], "]"}], "]"}]}], 
+             "\[IndentingNewLine]", "}"}], "]"}], "&"}], "/@", 
+          "\[InvisibleSpace]", "xC"}], ";"}], "*)"}], "\[IndentingNewLine]", 
        RowBox[{"tt", "=", 
         RowBox[{
          RowBox[{
@@ -215,13 +257,11 @@ Cell[BoxData[
              RowBox[{"#", "[", 
               RowBox[{"[", 
                RowBox[{"4", ",", "1"}], "]"}], "]"}], ",", 
-             RowBox[{"StringJoin", "[", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"ToString", "[", "#", "]"}], "&"}], "/@", 
-               RowBox[{"#", "[", 
-                RowBox[{"[", 
-                 RowBox[{"6", ",", "2"}], "]"}], "]"}]}], "]"}], ",", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "5"}], "]"}], "]"}], " ", 
+             RowBox[{"(*", 
+              RowBox[{"time", " ", "elapsed"}], "*)"}], ",", 
              RowBox[{"Total", "[", 
               RowBox[{
                RowBox[{"#", "[", 
@@ -229,33 +269,11 @@ Cell[BoxData[
                RowBox[{
                 RowBox[{"_", "?", "Negative"}], "\[Rule]", "0"}]}], "]"}], 
              ",", 
-             RowBox[{
-              RowBox[{"temp", "=", 
-               RowBox[{"Counts", "[", 
-                RowBox[{"Flatten", "[", 
-                 RowBox[{"#", "[", 
-                  RowBox[{"[", "7", "]"}], "]"}], "]"}], "]"}]}], ";", 
-              "\[IndentingNewLine]", 
-              RowBox[{"tt", "=", 
-               RowBox[{
-                RowBox[{"Tuples", "[", 
-                 RowBox[{
-                  RowBox[{"{", "0", "}"}], ",", 
-                  RowBox[{"Length", "[", "genomeName", "]"}]}], "]"}], "[", 
-                RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-              
-              RowBox[{
-               RowBox[{
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"tt", "[", 
-                   RowBox[{"[", "#", "]"}], "]"}], "=", 
-                  RowBox[{"temp", "[", "#", "]"}]}], ")"}], "&"}], "/@", 
-               RowBox[{"Keys", "[", "temp", "]"}]}], ";", 
-              "\[IndentingNewLine]", 
-              StyleBox["tt", "Input"]}]}], "\[IndentingNewLine]", "}"}], 
-           "]"}], "&"}], "/@", "\[InvisibleSpace]", "xC"}]}], ";"}], ",", 
-      "\[IndentingNewLine]", 
+             RowBox[{"Total", "[", 
+              RowBox[{"#", "[", 
+               RowBox[{"[", "7", "]"}], "]"}], "]"}]}], "\[IndentingNewLine]",
+             "}"}], "]"}], "&"}], "/@", "\[InvisibleSpace]", "xC"}]}], ";"}], 
+      ",", "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{"timestep", ",", "0", ",", "cDivisions"}], "}"}]}], "]"}], ";",
      "\[IndentingNewLine]", 
@@ -269,6 +287,99 @@ Cell[BoxData[
           RowBox[{"G", ",", "1", ",", 
            RowBox[{"-", "1"}]}], "]"}]}]}], "]"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "1", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1.1`", ",", 
+           RowBox[{"{", "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"4", ",", "2", ",", "2", ",", "0", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", 
+            RowBox[{"-", "500"}], ",", 
+            RowBox[{"-", "500"}], ",", 
+            RowBox[{"-", "500"}]}], "}"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1", ",", "1"}], "}"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], ",", 
+         "\"\<1-111\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "0", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "1"}], "}"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"5", ",", "1", ",", "0"}], "}"}], ",", "2"}], "}"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "1", ",", "0"}], "}"}], ",", "2", ",", "2"}], 
+            "}"}]}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", "1", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1.1`", ",", 
+           RowBox[{"{", "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"4", ",", "2", ",", "2", ",", "0", ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", 
+            RowBox[{"-", "500"}], ",", 
+            RowBox[{"-", "500"}], ",", 
+            RowBox[{"-", "500"}]}], "}"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1", ",", "1"}], "}"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}], ",", 
+         "\"\<1-112\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "0", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "1"}], "}"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"5", ",", "1", ",", "0"}], "}"}], ",", "2"}], "}"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"4", ",", "0", ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "1", ",", "0"}], "}"}], ",", "2", ",", "2"}], 
+            "}"}]}], "}"}]}], "}"}]}], "}"}], "*)"}], "\[IndentingNewLine]", 
     RowBox[{"pp", "=", 
      RowBox[{"(", 
       RowBox[{
@@ -336,63 +447,77 @@ Cell[BoxData[
           RowBox[{"i", ",", "1", ",", 
            RowBox[{"Length", "[", "col1", "]"}]}], "}"}]}], "]"}]}], ")"}]}], 
     ";", "\[IndentingNewLine]", 
-    RowBox[{"BoxWhiskerChart", "[", 
-     RowBox[{
-      RowBox[{"{", "pp", "}"}], ",", 
-      RowBox[{"ChartStyle", "\[Rule]", 
-       RowBox[{"{", 
+    RowBox[{"TableForm", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"BoxWhiskerChart", "[", 
         RowBox[{
-         RowBox[{"Lighter", "[", 
-          RowBox[{"Orange", ",", "0.20"}], "]"}], ",", "\[IndentingNewLine]", 
-         
-         RowBox[{
-          RowBox[{"ColorData", "[", "\"\<ThermometerColors\>\"", "]"}], "[", 
-          "0.15", "]"}], ",", 
-         RowBox[{
-          RowBox[{"ColorData", "[", "24", "]"}], "[", "8", "]"}]}], "}"}]}], 
-      ",", 
-      RowBox[{"BarSpacing", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"0", ",", "2", ",", "4"}], "}"}]}], ",", 
-      RowBox[{"ChartLabels", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"(*", 
-         RowBox[{"\"\<Cell Cycle Duration\>\"", ","}], "*)"}], 
-        RowBox[{
-         RowBox[{"{", "ccT", "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{
-          "\"\<short\>\"", ",", "\"\<medium\>\"", ",", "\"\<long\>\""}], 
-          "}"}]}], "}"}]}], ",", 
-      RowBox[{"ChartLegends", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"\"\<Short \[LessEqual]\>\"", "<>", " ", 
-          RowBox[{"ToString", "[", 
+         RowBox[{"{", "pp", "}"}], ",", 
+         RowBox[{"ChartStyle", "\[Rule]", 
+          RowBox[{"{", 
            RowBox[{
-            RowBox[{"LG", "/", "3"}], "+", "0.05"}], "]"}]}], ",", 
-         RowBox[{"\"\<Medium \[LessEqual]\>\"", "<>", 
-          RowBox[{"ToString", "[", 
+            RowBox[{"Lighter", "[", 
+             RowBox[{"Orange", ",", "0.20"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"ColorData", "[", "\"\<ThermometerColors\>\"", "]"}], 
+             "[", "0.15", "]"}], ",", 
+            RowBox[{
+             RowBox[{"ColorData", "[", "24", "]"}], "[", "8", "]"}]}], 
+           "}"}]}], ",", 
+         RowBox[{"BarSpacing", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "2", ",", "4"}], "}"}]}], ",", 
+         RowBox[{"ChartLabels", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"(*", 
+            RowBox[{"\"\<Cell Cycle Duration\>\"", ","}], "*)"}], 
            RowBox[{
-            RowBox[{"2", "*", 
-             RowBox[{"LG", "/", "3"}]}], "+", "0.05"}], "]"}]}], ",", 
-         RowBox[{"\"\<Long \[LessEqual]\>\"", " ", "<>", 
-          RowBox[{"ToString", "[", 
-           RowBox[{"LG", "+", "0.05"}], "]"}]}]}], "}"}]}], ",", 
-      RowBox[{"FrameStyle", "\[Rule]", "Black"}], ",", 
-      RowBox[{"FrameLabel", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-        "\"\<Cell Cycle Duration (hrs)\>\"", ",", 
-         "\"\<Transcript Count per Cell\>\""}], "}"}]}], ",", 
-      RowBox[{"PlotLabel", "\[Rule]", 
-       RowBox[{"Style", "[", 
-        RowBox[{"\"\<Simulation\>\"", ",", "Black"}], "]"}]}], ",", 
-      RowBox[{"BaseStyle", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"18", ",", "Black", ",", "\"\<Helvetica\>\""}], "}"}]}], ",", 
-      
-      RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]}], 
+            RowBox[{"{", "ccT", "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<short\>\"", ",", "\"\<medium\>\"", ",", "\"\<long\>\""}], 
+             "}"}]}], "}"}]}], ",", 
+         RowBox[{"ChartLegends", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<Short \[LessEqual]\>\"", "<>", " ", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"LG", "/", "3"}], "+", "0.05"}], "]"}]}], ",", 
+            RowBox[{"\"\<Medium \[LessEqual]\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"2", "*", 
+                RowBox[{"LG", "/", "3"}]}], "+", "0.05"}], "]"}]}], ",", 
+            RowBox[{"\"\<Long \[LessEqual]\>\"", " ", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"LG", "+", "0.05"}], "]"}]}]}], "}"}]}], ",", 
+         RowBox[{"FrameStyle", "\[Rule]", "Black"}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Cell Cycle Duration (hrs)\>\"", ",", 
+            "\"\<Transcript Count per Cell\>\""}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Simulation\>\"", ",", "Black"}], "]"}]}], ",", 
+         RowBox[{"BaseStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"18", ",", "Black", ",", "\"\<Helvetica\>\""}], "}"}]}], 
+         ",", 
+         RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{"\"\<Transcriptome Diversity = \>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Union", "[", "tt", "]"}], "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{"\"\<Clusters = \>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"Length", "[", 
+           RowBox[{"FindClusters", "[", "tt", "]"}], "]"}], "]"}]}], "]"}], 
+       ",", " ", "\"\<results from one iteration\>\""}], " ", "}"}], "]"}]}], 
    "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
    RowBox[{"{", 
     RowBox[{
@@ -408,7 +533,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"{", 
       RowBox[{"G", ",", "3", " ", ",", "\"\<G\>\""}], "}"}], ",", "1", ",", 
-     "10", ",", "1"}], "}"}], ",", 
+     "20", ",", "1"}], "}"}], ",", 
    StyleBox["\[IndentingNewLine]", "Input"], 
    RowBox[{"{", 
     RowBox[{
@@ -529,6 +654,22 @@ Cell[BoxData[
      ",", "5", ",", "1"}], "}"}], ",", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "\[Lambda]", ",", "1", ",", "\"\<fixed RNA-pol rate, \[Lambda]\>\""}],
+         "}"}], ",", "1", ",", "5"}], "}"}], ","}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[CapitalOmega]", ",", "0.25", ",", 
+       "\"\<RNA-pol re-initation distance, \[CapitalOmega]\>\""}], "}"}], ",",
+      "0", ",", "5"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
      RowBox[{"SaveDefinitions", "->", "True"}], ","}], "\[IndentingNewLine]", 
     "*)"}], 
    RowBox[{"(*", "PARAMETERs", "*)"}], "\[IndentingNewLine]", 
@@ -551,690 +692,61 @@ Cell[BoxData[
       RowBox[{"ContinuousAction", "\[Rule]", "False"}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"getUnitVector", "[", 
-        RowBox[{"vectA_", ",", "vectB_"}], "]"}], ":=", 
-       RowBox[{"If", "[", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"vectA", "==", "vectB"}], ")"}], "||", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"EuclideanDistance", "[", 
-             RowBox[{"vectA", ",", "vectB"}], "]"}], "==", "0"}], ")"}]}], 
-         ",", "vectA", ",", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"vectA", "-", "vectB"}], ")"}], "/", 
-          RowBox[{"(", 
-           RowBox[{"EuclideanDistance", "[", 
-            RowBox[{"vectA", ",", "vectB"}], "]"}], ")"}]}]}], "]"}]}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"centerDistance", "[", 
-        RowBox[{"rA_", ",", " ", "rB_", ",", " ", "angle_"}], "]"}], ":=", 
-       " ", 
-       RowBox[{"N", "[", 
-        RowBox[{"Sqrt", "[", 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{"rA", "^", "2"}], ")"}], "+", 
-          RowBox[{"(", 
-           RowBox[{"rB", "^", "2"}], ")"}], "-", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"2", "*", "rA", "*", "rB"}], ")"}], "*", 
-           RowBox[{"(", 
-            RowBox[{"Cos", "[", "angle", "]"}], ")"}]}]}], "]"}], "]"}]}], 
-      ",", 
-      RowBox[{
-       RowBox[{"relativeVolume", "[", 
-        RowBox[{"orgRadius_", ",", " ", "sizeRatio_"}], "]"}], ":=", 
+       RowBox[{"cellcycle01", "[", "val_", "]"}], ":=", 
        RowBox[{
-        RowBox[{"(", 
+        RowBox[{"RandomReal", "[", 
          RowBox[{
-          RowBox[{"Abs", "[", "orgRadius", "]"}], "/.", 
-          RowBox[{"Solve", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{"4", "/", "3"}], "Pi", " ", "*", 
-                RowBox[{"(", 
-                 RowBox[{"orgRadius", "^", "3"}], ")"}]}], ")"}], " ", "*", 
-              "sizeRatio"}], "==", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"4", "/", "3"}], "Pi", " ", 
-               RowBox[{"radius", "^", "3"}]}], ")"}]}], ",", "radius", ",", 
-            RowBox[{"WorkingPrecision", "->", "10"}]}], "]"}]}], ")"}], "[", 
-        RowBox[{"[", "1", "]"}], "]"}]}], ",", 
-      RowBox[{
-       RowBox[{"moveTwospheres", "[", 
-        RowBox[{"spheres_", ",", " ", "dist_"}], "]"}], ":=", 
-       RowBox[{"Module", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"cells", ",", "d"}], "}"}], ",", "\n", 
-         RowBox[{
-          RowBox[{"cells", "=", "spheres"}], ";", "\n", 
-          RowBox[{"d", "=", 
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"getUnitVector", "[", 
-              RowBox[{
-               RowBox[{"spheres", "[", 
-                RowBox[{"[", 
-                 RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
-               RowBox[{"spheres", "[", 
-                RowBox[{"[", 
-                 RowBox[{"2", ",", "1"}], "]"}], "]"}]}], "]"}], "*", 
-             "dist"}], ")"}]}], ";", "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"EuclideanDistance", "[", 
-              RowBox[{
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"spheres", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"1", ",", "1"}], "]"}], "]"}], "-", "d"}], ")"}], 
-               ",", 
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"spheres", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"1", ",", "1"}], "]"}], "]"}], "-", 
-                 RowBox[{"spheres", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ")"}]}], "]"}], "<=",
-              "0.01"}], ",", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"cells", "[", 
-               RowBox[{"[", "1", "]"}], "]"}], ",", 
-              RowBox[{"ReplacePart", "[", 
-               RowBox[{
-                RowBox[{"cells", "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], ",", 
-                RowBox[{"1", "->", 
-                 RowBox[{
-                  RowBox[{"cells", "[", 
-                   RowBox[{"[", 
-                    RowBox[{"1", ",", "1"}], "]"}], "]"}], "+", "d"}]}]}], 
-               "]"}]}], "}"}], ",", "\n", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"cells", "[", 
-               RowBox[{"[", "1", "]"}], "]"}], ",", 
-              RowBox[{"ReplacePart", "[", 
-               RowBox[{
-                RowBox[{"cells", "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], ",", 
-                RowBox[{"1", "->", 
-                 RowBox[{
-                  RowBox[{"cells", "[", 
-                   RowBox[{"[", 
-                    RowBox[{"1", ",", "1"}], "]"}], "]"}], "-", "d"}]}]}], 
-               "]"}]}], "}"}]}], "\n", "]"}]}]}], "\n", "]"}]}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"cellDivision", "[", 
-        RowBox[{
-        "icell_", ",", "organtissue_", ",", "sizeRatio_", ",", 
-         "directionVector_", ",", 
-         RowBox[{"cp_:", "-", "2"}]}], "]"}], ":=", 
-       RowBox[{"Module", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"cell1", ",", "cell2"}], "}"}], ",", "\n", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{
-           "one", " ", "i", " ", "calculate", " ", "a", " ", "direction", " ",
-             "to", " ", "divide"}], ",", " ", 
-           RowBox[{
-           "I", " ", "then", " ", "have", " ", "to", " ", "use", " ", "this", 
-            " ", "to", " ", "create", " ", "two", " ", "daugther", " ", 
-            "cells", " ", "in", " ", "opposite", " ", "directions", " ", 
-            "from", " ", "each", " ", "other"}]}], "*)"}], "\n", 
-         RowBox[{
-          RowBox[{"cell2", "=", 
-           RowBox[{"cell1", "=", 
-            RowBox[{"organtissue", "[", 
-             RowBox[{"[", "icell", "]"}], "]"}]}]}], ";", "\n", 
-          RowBox[{"(*", 
-           RowBox[{"does", " ", "the", " ", "volume", " ", 
-            RowBox[{"matter", "?", " ", "and"}], " ", "I", " ", "need", " ", 
-            "to", " ", "replace", " ", "an", " ", "old", " ", "cell", " ", 
-            "with", " ", "2", " ", "new", " ", "ones"}], "*)"}], "\n", 
-          RowBox[{
-           RowBox[{"cell2", "[", 
-            RowBox[{"[", "2", "]"}], "]"}], "=", 
-           RowBox[{"relativeVolume", "[", 
-            RowBox[{
-             RowBox[{"organtissue", "[", 
-              RowBox[{"[", 
-               RowBox[{"icell", ",", "2"}], "]"}], "]"}], ",", 
-             RowBox[{"sizeRatio", "[", 
-              RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";", "\n", 
-          RowBox[{
-           RowBox[{"cell1", "[", 
-            RowBox[{"[", "2", "]"}], "]"}], "=", 
-           RowBox[{"relativeVolume", "[", 
-            RowBox[{
-             RowBox[{"organtissue", "[", 
-              RowBox[{"[", 
-               RowBox[{"icell", ",", "2"}], "]"}], "]"}], ",", 
-             RowBox[{"sizeRatio", "[", 
-              RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";", "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-           "what", " ", "they", " ", "have", " ", "different", " ", 
-            "directions"}], "*)"}], "\n", 
-          RowBox[{
-           RowBox[{"cell1", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "=", 
-           RowBox[{
-            RowBox[{"organtissue", "[", 
-             RowBox[{"[", 
-              RowBox[{"icell", ",", "1"}], "]"}], "]"}], "-", 
-            RowBox[{"directionVector", "*", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"cell1", "[", 
-                RowBox[{"[", "2", "]"}], "]"}], "/", "2"}], ")"}]}]}]}], ";", 
-          "\n", 
-          RowBox[{
-           RowBox[{"cell2", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "=", 
-           RowBox[{
-            RowBox[{"organtissue", "[", 
-             RowBox[{"[", 
-              RowBox[{"icell", ",", "1"}], "]"}], "]"}], "+", 
-            RowBox[{"directionVector", "*", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"cell2", "[", 
-                RowBox[{"[", "2", "]"}], "]"}], "/", "2"}], ")"}]}]}]}], ";", 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{"coalesceTwospheres", "[", 
-            RowBox[{"{", 
-             RowBox[{"cell1", ",", "cell2"}], "}"}], "]"}], "*)"}], "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"Print", "[", 
-             RowBox[{"{", 
-              RowBox[{"cell1", ",", "cell2"}], "}"}], "]"}], ";"}], "*)"}], 
-          "\n", 
-          RowBox[{"moveTwospheres", "[", 
-           RowBox[{
-            RowBox[{"{", 
-             RowBox[{"cell1", ",", "cell2"}], "}"}], ",", 
-            RowBox[{"Which", "[", 
-             RowBox[{
-              RowBox[{"cp", "==", 
-               RowBox[{"-", "1"}]}], ",", 
-              RowBox[{"centerDistance", "[", 
-               RowBox[{
-                RowBox[{"cell1", "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], ",", 
-                RowBox[{"cell2", "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], ",", 
-                RowBox[{"Pi", "*", 
-                 RowBox[{"60", "/", "180"}]}]}], "]"}], ",", 
-              RowBox[{"cp", "==", 
-               RowBox[{"-", "2"}]}], ",", 
-              RowBox[{
-               RowBox[{"cell1", "[", 
-                RowBox[{"[", "2", "]"}], "]"}], "+", 
-               RowBox[{"cell2", "[", 
-                RowBox[{"[", "2", "]"}], "]"}]}], ",", "\n", 
-              RowBox[{"cp", ">=", "0."}], ",", "cp"}], "]"}]}], "]"}]}]}], 
-        "\n", 
-        RowBox[{"(*", 
-         RowBox[{"{", 
-          RowBox[{"cell1", ",", "cell2"}], "}"}], "*)"}], "\n", "]"}]}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"getunitDirectionOfDivision", "[", 
-        RowBox[{
-        "icell_", ",", "sizeR_", ",", "organtissue_", ",", "neighPos_", ",", 
-         "polarityOpt_"}], "]"}], ":=", 
-       RowBox[{"Module", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"c2N", ",", "res", ",", "relv", ",", "uv"}], "}"}], ",", 
-         "\n", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"there", " ", "are", " ", "few", " ", "opts"}], ",", " ", 
-           RowBox[{"0", "\[Rule]", " ", "random"}], ",", " ", 
-           RowBox[{"1", "\[Rule]", " ", 
-            RowBox[{
-            "spindle", " ", "orient", " ", "towards", " ", "the", " ", 
-             "neighbours"}]}], " ", 
-           RowBox[{"(*", 
-            RowBox[{"neighbour", " ", "chosen", " ", "at", " ", "random"}], 
-            "*)"}], ",", 
-           RowBox[{"2", "\[Rule]", 
-            RowBox[{
-            "spindle", " ", "orient", " ", "perpendicular", " ", "to", " ", 
-             RowBox[{"1", "?"}]}]}]}], "*)"}], "\n", 
-         RowBox[{
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{"polarityOpt", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], ">", " ", "0"}], ")"}], "&&", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{"polarityOpt", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], "<=", " ", "3"}], ")"}]}], 
-             ")"}], ",", "\n", 
-            RowBox[{
-             RowBox[{"c2N", "=", 
-              RowBox[{"If", "[", 
-               RowBox[{
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"(", 
-                   RowBox[{
-                    RowBox[{"Length", "[", "neighPos", "]"}], "<", "1"}], " ",
-                    ")"}], "||", 
-                  RowBox[{"(", 
-                   RowBox[{
-                    RowBox[{"Length", "[", "organtissue", "]"}], "<", "2"}], 
-                   ")"}]}], ")"}], ",", 
-                RowBox[{"{", "}"}], ",", 
-                RowBox[{"Complement", "[", 
-                 RowBox[{
-                  RowBox[{"Take", "[", 
-                   RowBox[{
-                    RowBox[{"neighPos", "[", 
-                    RowBox[{"[", "3", "]"}], "]"}], ",", 
-                    RowBox[{"Count", "[", 
-                    RowBox[{
-                    RowBox[{"neighPos", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "1"}], "]"}]}], 
-                   "]"}], ",", 
-                  RowBox[{"{", "icell", "}"}]}], "]"}]}], "]"}]}], ";"}], 
-            "\n", ",", 
-            RowBox[{
-             RowBox[{"c2N", "=", 
-              RowBox[{"{", "}"}]}], ";"}]}], "]"}], ";", "\n", 
-          RowBox[{"relv", "=", 
-           RowBox[{"relativeVolume", "[", 
-            RowBox[{
-             RowBox[{"organtissue", "[", 
-              RowBox[{"[", 
-               RowBox[{"icell", ",", "2"}], "]"}], "]"}], ",", "sizeR"}], 
-            "]"}]}], ";", "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"Print", "[", 
-             RowBox[{"\"\<in \>\"", ",", "polarityOpt", ",", "\"\< \>\"", ",", 
-              RowBox[{"polarityOpt", "[", 
-               RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";"}], "*)"}], "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"RandomChoice", "[", "c2N", "]"}], ";"}], " ", "*)"}], 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{
-            "picks", " ", "a", " ", "neighbour", " ", "for", " ", "the", " ", 
-             "direction"}], ",", " ", 
-            RowBox[{
-            "the", " ", "more", " ", "neighbours", " ", "on", " ", "one", " ",
-              "side", " ", "the", " ", "higher", " ", "the", " ", "prob", " ",
-              "the", " ", "direction", " ", "will", " ", "point", " ", 
-             "twords", " ", "the", " ", "more", " ", "junctions"}]}], "*)"}], 
-          " ", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"this", " ", "resembles", " ", "the", " ", "cell"}], "-", 
-             RowBox[{"cell", " ", "contact", " ", "rule"}]}], ",", " ", 
-            RowBox[{
-            "where", " ", "cells", " ", "divide", " ", "perpendicularly", " ",
-              "to", " ", "the", " ", "area", " ", "of", " ", "contact", " ", 
-             "of", " ", "one", " ", "cell", " ", "with", " ", "another"}]}], 
-           "*)"}], "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"Length", "[", "c2N", "]"}], "<", "1"}], ")"}], "&&", 
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"polarityOpt", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}], "<=", " ", "3"}], ")"}]}], 
-              ")"}], "||", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"organtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "3", ",", "3"}], "]"}], "]"}], "==", 
-                 
-                 RowBox[{"{", "}"}]}], ")"}], "&&", 
-               RowBox[{"(", 
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"polarityOpt", "[", 
-                   RowBox[{"[", "1", "]"}], "]"}], "==", "4"}], ")"}], 
-                ")"}]}], ")"}], "||", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"polarityOpt", "[", 
-                  RowBox[{"[", "2", "]"}], "]"}], "==", 
-                 RowBox[{"{", "}"}]}], ")"}], "&&", 
-               RowBox[{"(", 
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"polarityOpt", "[", 
-                   RowBox[{"[", "1", "]"}], "]"}], "==", "5"}], ")"}], 
-                ")"}]}], ")"}], "||", "\n", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"polarityOpt", "[", 
-                RowBox[{"[", "1", "]"}], "]"}], "==", "0"}], ")"}]}], ",", 
-            "\n", 
-            RowBox[{"(*", 
-             RowBox[{"random", " ", "direction"}], "*)"}], "\n", "\n", 
-            RowBox[{
-             RowBox[{"Do", "[", "\n", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"relv", "=", 
-                 RowBox[{"relativeVolume", "[", 
-                  RowBox[{
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "2"}], "]"}], "]"}], ",", "sizeR"}],
-                   "]"}]}], ";", 
-                RowBox[{"(*", 
-                 RowBox[{
-                  RowBox[{"res", "=", 
-                   RowBox[{"{", " ", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], "+", 
-                    RowBox[{"(*", 
-                    RowBox[{
-                    RowBox[{"RandomChoice", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "1"}], "]"}], 
-                    "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], "**)"}], 
-                    RowBox[{
-                    RowBox[{"coalescingToPackingFunctions`getUnitVector", "[", 
-                    RowBox[{
-                    RowBox[{"RandomReal", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "relv"}], ",", "relv"}], "}"}], ",", "3"}], 
-                    "]"}], ",", 
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}]}], "]"}], "*", 
-                    RowBox[{"(", 
-                    RowBox[{"relv", "/", "2"}], ")"}]}]}], ",", "relv"}], 
-                    "}"}]}], ";"}], "*)"}], 
-                RowBox[{"res", "=", " ", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], ",", 
-                   RowBox[{
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], "+", 
-                    RowBox[{"RandomReal", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "relv"}], ",", "relv"}], "}"}], ",", "3"}], 
-                    "]"}]}]}], "}"}]}], ";", 
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"EuclideanDistance", "[", " ", 
-                    RowBox[{
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], ",", 
-                    RowBox[{"res", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "==", "0"}], ",", 
-                  RowBox[{"k", "=", "0"}]}], "]"}], ";"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"k", ",", "1", ",", "1"}], "}"}]}], "]"}], ";"}], 
-            RowBox[{"(*", "do", "*)"}], "\n", 
-            RowBox[{"(*", 
-             RowBox[{
-              RowBox[{"Print", "[", 
-               RowBox[{"\"\<1\>\"", ",", "res"}], "]"}], ";"}], "*)"}], "\n", 
-            ",", "\n", 
-            RowBox[{
-             RowBox[{"Which", "[", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"polarityOpt", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], "==", "1"}], ",", "\n", 
-               RowBox[{"(*", 
-                RowBox[{"neighbours", " ", "determine", " ", "direction"}], 
-                "*)"}], "\n", 
-               RowBox[{
-                RowBox[{"res", "=", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], ",", 
-                   RowBox[{
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"RandomChoice", "[", "c2N", "]"}], ",", "1"}], 
-                    "]"}], "]"}], "+", 
-                    RowBox[{"RandomReal", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "relv"}], ",", "relv"}], "}"}], ",", "3"}], 
-                    "]"}]}]}], "}"}]}], ";"}], 
-               RowBox[{"(*", 
-                RowBox[{
-                 RowBox[{"Print", "[", 
-                  RowBox[{"\"\<5\>\"", ",", "res"}], "]"}], ";"}], "*)"}], 
-               ",", "\n", 
-               RowBox[{
-                RowBox[{"polarityOpt", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], "==", "2"}], ",", "\n", 
-               RowBox[{"(*", 
-                RowBox[{"neighbours", " ", "determine", " ", "direction"}], 
-                "*)"}], "\n", 
-               RowBox[{
-                RowBox[{"res", "=", " ", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], ",", 
-                   RowBox[{
-                    RowBox[{"Mean", "[", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"#", ",", "1"}], "]"}], "]"}], "&"}], "/@", 
-                    "c2N"}], "]"}], "+", 
-                    RowBox[{"RandomReal", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "relv"}], ",", "relv"}], "}"}], ",", "3"}], 
-                    "]"}]}]}], "}"}]}], ";"}], 
-               RowBox[{"(*", 
-                RowBox[{
-                 RowBox[{"Print", "[", 
-                  RowBox[{"\"\<4\>\"", ",", "res"}], "]"}], ";"}], "*)"}], 
-               ",", "\n", 
-               RowBox[{
-                RowBox[{"polarityOpt", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], "==", "3"}], ",", "\n", 
-               RowBox[{"(*", 
-                RowBox[{"neighbours", " ", "determine", " ", "direction"}], 
-                "*)"}], 
-               RowBox[{
-                RowBox[{"res", "=", " ", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "1"}], "]"}], "]"}], ",", 
-                   RowBox[{
-                    RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"Last", "[", "c2N", "]"}], ",", "1"}], "]"}], 
-                    "]"}], "+", 
-                    RowBox[{"RandomReal", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "relv"}], ",", "relv"}], "}"}], ",", "3"}], 
-                    "]"}]}]}], "}"}]}], ";"}], 
-               RowBox[{"(*", 
-                RowBox[{
-                 RowBox[{"Print", "[", 
-                  RowBox[{"\"\<3\>\"", ",", "res"}], "]"}], ";"}], "*)"}], 
-               ",", "\n", 
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"polarityOpt", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}], "==", "4"}], ")"}], ",", 
-               "\n", 
-               RowBox[{"(*", 
-                RowBox[{"fixed", ",", " ", 
-                 RowBox[{
-                 "each", " ", "cell", " ", "carries", " ", "a", " ", "fixed", 
-                  " ", "direction"}]}], "*)"}], "\n", 
-               RowBox[{
-                RowBox[{"res", "=", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "3", ",", "3"}], "]"}], "]"}], ",", 
-                   
-                   RowBox[{"organtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "3", ",", "3"}], "]"}], "]"}]}], 
-                  "}"}]}], ";"}], ",", "\n", 
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"polarityOpt", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}], "==", "5"}], ")"}], ",", 
-               "\n", 
-               RowBox[{"(*", 
-                RowBox[{
-                "random", " ", "selection", " ", "from", " ", "a", " ", 
-                 "list"}], "*)"}], "\n", 
-               RowBox[{
-                RowBox[{"res", "=", 
-                 RowBox[{
-                  RowBox[{"RandomSample", "[", 
-                   RowBox[{
-                    RowBox[{"polarityOpt", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "1"}], "]"}], "[", 
-                  RowBox[{"[", "1", "]"}], "]"}]}], ";", "\n", 
-                RowBox[{"res", "=", 
-                 RowBox[{"{", 
-                  RowBox[{"res", ",", "res"}], "}"}]}], ";"}]}], "\n", 
-              RowBox[{"(*", 
-               RowBox[{
-                RowBox[{"Print", "[", 
-                 RowBox[{"\"\<2\>\"", ",", "res"}], "]"}], ";"}], "*)"}], 
-              "\n", "]"}], ";"}]}], 
-           RowBox[{"(*", "which", "*)"}], "\n", "]"}], ";", 
-          RowBox[{"(*", "if", "*)"}], "\n", "\n", 
-          RowBox[{"uv", "=", 
-           RowBox[{"getUnitVector", "[", 
-            RowBox[{
-             RowBox[{"organtissue", "[", 
-              RowBox[{"[", 
-               RowBox[{"icell", ",", "1"}], "]"}], "]"}], ",", 
-             RowBox[{"res", "[", 
-              RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";", "\n", 
-          RowBox[{"Which", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"polarityOpt", "[", 
-              RowBox[{"[", "3", "]"}], "]"}], "==", "1"}], ",", "\n", 
-            RowBox[{
-             RowBox[{"uv", "=", 
-              RowBox[{"uv", "*", 
-               RowBox[{"{", 
-                RowBox[{"1", ",", "0", ",", "0"}], "}"}]}]}], ";"}], "\n", 
-            RowBox[{"(*", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"uv", "[", 
-                RowBox[{"[", "3", "]"}], "]"}], "=", 
-               RowBox[{"polarityOpt", "[", 
-                RowBox[{"[", "4", "]"}], "]"}]}], ";"}], "*)"}], ",", "\n", 
-            RowBox[{
-             RowBox[{"polarityOpt", "[", 
-              RowBox[{"[", "3", "]"}], "]"}], "==", "2"}], ",", "\n", 
-            RowBox[{
-             RowBox[{"uv", "=", 
-              RowBox[{"uv", "*", 
-               RowBox[{"{", 
-                RowBox[{"1", ",", "1", ",", "0"}], "}"}]}]}], ";"}]}], "\n", 
-           RowBox[{"(*", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"uv", "[", 
-               RowBox[{"[", "3", "]"}], "]"}], "=", 
-              RowBox[{"polarityOpt", "[", 
-               RowBox[{"[", "4", "]"}], "]"}]}], ";"}], "*)"}], "\n", "]"}], 
-          ";", "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"Print", "[", 
-             RowBox[{"\"\<2\>\"", ",", "uv"}], "]"}], ";"}], "*)"}], "\n", 
-          "uv"}]}], "\n", "]"}]}], ",", 
-      RowBox[{
-       RowBox[{"cellcycle03", "[", "val_", "]"}], ":=", 
-       RowBox[{
-        RowBox[{"RandomVariate", "[", 
-         RowBox[{"NormalDistribution", "[", 
-          RowBox[{
-           RowBox[{"val", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], ",", 
-           RowBox[{"val", "[", 
-            RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "+", 
+          RowBox[{"val", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"WorkingPrecision", "->", "2"}]}], "]"}], "+", 
+        RowBox[{"val", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "+", 
         RowBox[{"val", "[", 
          RowBox[{"[", "3", "]"}], "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"cellcycle02", "[", "val_", "]"}], ":=", 
+       RowBox[{
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{"PoissonDistribution", "[", 
+          RowBox[{"val", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "+", 
+        RowBox[{"val", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "+", 
+        RowBox[{"val", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"cellcycle03", "[", "val_", "]"}], ":=", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"RandomVariate", "[", 
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{
+            RowBox[{"val", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", 
+            RowBox[{"val", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "+", 
+         RowBox[{"val", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+      RowBox[{
+       RowBox[{"cellcycle04", "[", "val_", "]"}], ":=", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"RandomVariate", "[", 
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"val", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "+", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"val", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "*", 
+               RowBox[{"val", "[", 
+                RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{"val", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], "+", 
+         RowBox[{"val", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ",", 
       RowBox[{
        RowBox[{"cellcycleChangeOPT", "[", 
         RowBox[{"val_", ",", "opt_"}], "]"}], ":=", 
@@ -1253,15 +765,36 @@ Cell[BoxData[
           RowBox[{"-", "2"}]}], ",", 
          RowBox[{"cellcycle02", "[", "val", "]"}], ",", "\n", 
          RowBox[{"opt", "==", 
-          RowBox[{"-", "3"}]}], ",", 
-         RowBox[{"cellcycle03", "[", "val", "]"}], ",", "\n", 
+          RowBox[{"-", "3"}]}], ",", " ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"val", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ">", "0"}], ")"}], ",", 
+           RowBox[{"cellcycle03", "[", "val", "]"}], " ", ",", 
+           RowBox[{"val", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "]"}], 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"Normal", " ", 
+            RowBox[{"Distribution", "[", " ", 
+             RowBox[{
+              RowBox[{"mean", "+", 
+               RowBox[{"(", 
+                RowBox[{"increment", " ", "*", "sigma"}], ")"}]}], ",", " ", 
+              "sigma"}], "]"}]}], " ", "+", " ", "increment"}], "*)"}], ",", 
          RowBox[{"opt", "==", 
           RowBox[{"-", "4"}]}], ",", 
-         RowBox[{"Max", "[", 
-          RowBox[{"{", 
-           RowBox[{"1", ",", 
-            RowBox[{"cellcycle03", "[", "val", "]"}]}], "}"}], "]"}], ",", 
-         "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"val", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ">", "0"}], ")"}], ",", 
+           RowBox[{"cellcycle04", "[", "val", "]"}], " ", ",", 
+           RowBox[{"val", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", "\n", 
          RowBox[{"opt", "==", 
           RowBox[{"-", "5"}]}], ",", 
          RowBox[{
@@ -1282,90 +815,102 @@ Cell[BoxData[
              RowBox[{"val", "[", 
               RowBox[{"[", "1", "]"}], "]"}], ",", 
              RowBox[{"val", "[", 
-              RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}]}], "\n", 
-        "]"}]}], ",", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"copiesT", "[", 
-        RowBox[{
-        "ploidy_", ",", "cellactivegeneList_", ",", "rnaPolRate_", ",", 
-         "transcriptionTime_", ",", "genome_"}], "]"}], ":=", 
-       RowBox[{"Block", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"transcriptTime", "=", 
-           RowBox[{"(", 
-            RowBox[{"transcriptionTime", "/", 
-             RowBox[{"If", "[", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"rnaPolRate", "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], ">", "0"}], ",", 
-               RowBox[{
-                RowBox[{"1", "&"}], "/@", 
-                RowBox[{"genome", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ",", 
-               RowBox[{"genome", "[", 
-                RowBox[{"[", 
-                 RowBox[{"All", ",", "2"}], "]"}], "]"}]}], "]"}]}], ")"}]}], 
-          "}"}], ",", "\n", 
-         RowBox[{"(*", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ",", "\n", 
+         RowBox[{"opt", "==", 
+          RowBox[{"-", "6"}]}], ",", 
+         RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"rnaPolRate", "[", 
-            RowBox[{"[", "2", "]"}], "]"}], ">", 
-           RowBox[{
-           "0", " ", "is", " ", "no", " ", "cell", " ", "cycle", " ", "or", 
-            " ", "gene", " ", "length"}]}], "*)"}], "\n", 
-         RowBox[{"(", 
-          RowBox[{"cellactivegeneList", "*", "ploidy", "*", 
-           RowBox[{"(", "\n", 
-            RowBox[{"Floor", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"(", 
-                RowBox[{
-                 RowBox[{"Total", "[", 
-                  RowBox[{"#", "*", 
-                   RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"If", "[", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"rnaPolRate", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ">", "0"}], ",", "0", ",",
-                     "1"}], "]"}], ",", 
-                    RowBox[{"If", "[", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"rnaPolRate", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], "!=", " ", "0"}], ",", 
-                    RowBox[{"RandomReal", "[", 
-                    RowBox[{"Sort", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"0", ",", 
-                    RowBox[{"rnaPolRate", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], "]"}], 
-                    ",", "0"}], "]"}]}], "}"}]}], "]"}], "+", 
-                 RowBox[{"rnaPolRate", "[", 
-                  RowBox[{"[", "2", "]"}], "]"}]}], ")"}], "&"}], "/@", 
-              "transcriptTime"}], "]"}], ")"}]}], ")"}]}], "\n", "]"}]}], ",",
-       "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"parentalTranscripts", "[", 
-        RowBox[{"transcripts_", ",", "probability_"}], "]"}], ":=", 
-       RowBox[{"RandomSample", "[", 
-        RowBox[{"transcripts", ",", 
-         RowBox[{"UpTo", "[", 
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{"Floor", "[", 
-              RowBox[{
-               RowBox[{"Length", "[", "transcripts", "]"}], "*", 
-               "probability"}], "]"}], ")"}], "/.", " ", 
+           RowBox[{"(", 
             RowBox[{
-             RowBox[{"_", "?", "Negative"}], "->", "0"}]}], ")"}], "]"}]}], 
-        "\n", "]"}]}], " ", ",", "\[IndentingNewLine]", 
+             RowBox[{"val", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ">", "0"}], ")"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"val", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "-", "#"}], ",", "#"}], 
+              "}"}], "&"}], "@", 
+            RowBox[{"cellcycle03", "[", "val", "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"val", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "]"}], "*", 
+               RowBox[{"val", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], ")"}], ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                RowBox[{"Abs", "[", 
+                 RowBox[{"val", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ")"}], "*", 
+              RowBox[{"val", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}], ",", "\n", 
+         
+         RowBox[{"opt", "==", 
+          RowBox[{"-", "7"}]}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"1", "-", "#"}], ",", "#"}], "}"}], "&"}], "@", 
+             RowBox[{"cellcycle03", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"val", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], ",", 
+                RowBox[{"val", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], ",", "0"}], "}"}], "]"}]}], 
+            ")"}], ")"}], "*", 
+          RowBox[{"val", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "\n", 
+         RowBox[{"(*", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "split", " ", "between", " ", "two", " ", "daughter", " ", 
+              "cells", " ", "0"}], "\[Rule]", "val"}], ",", 
+            RowBox[{"1", "-"}]}]}], "*)"}], ",", "\n", 
+         RowBox[{"opt", "==", "\"\<stemlike\>\""}], ",", 
+         RowBox[{"(", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"val", "[", 
+              RowBox[{"[", "5", "]"}], "]"}], "==", "1"}], ",", 
+            RowBox[{"val", "[", 
+             RowBox[{"[", "4", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"val", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"val", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}], ")"}]}], 
+        "\n", 
+        RowBox[{"(*", 
+         RowBox[{"{", 
+          RowBox[{
+          "the", " ", "example", " ", "tries", " ", "to", " ", "capture", " ",
+            "stem", " ", "cells", " ", "splitting", " ", "assymetrically", 
+           " ", "basically", " ", 
+           RowBox[{"val", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], " ", "is", " ", "a", " ", 
+           "parameter", " ", "you", " ", "set", " ", "for", " ", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"stem", " ", "cell", " ", "cell", " ", "cycle"}], ",", 
+             " ", 
+             RowBox[{
+             "non", " ", "stem", " ", "cell", " ", "cell", " ", "cycle"}]}], 
+            "}"}]}], "}"}], "*)"}], "\n", "]"}]}], ",", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"transcriptsT", "[", 
         RowBox[{"copies_", ",", "activegenome_"}], "]"}], ":=", 
@@ -1386,29 +931,512 @@ Cell[BoxData[
            RowBox[{"activegenome", ",", "copies"}], "}"}], "]"}]}], "]"}]}], 
       ",", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"randDistofT", "[", "transcriptLength_", "]"}], ":=", 
-       RowBox[{"(", 
+       RowBox[{"randDistofT2", "[", "transcriptValues_", "]"}], ":=", 
+       RowBox[{"With", "[", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"transcriptLength", ",", "0"}], "}"}], "-", 
-         RowBox[{"RandomInteger", "[", 
-          RowBox[{"{", 
-           RowBox[{"1", ",", "transcriptLength"}], "}"}], "]"}]}], ")"}]}], 
-      ",", "\[IndentingNewLine]", 
+          RowBox[{"(", 
+           RowBox[{"tt", "=", 
+            RowBox[{"RandomInteger", "/@", "transcriptValues"}]}], ")"}], 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"transcriptValues", "-", "tt"}], ",", "tt"}], "}"}]}], 
+        "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"transcriptDegredation", "[", 
+        RowBox[{"oneCell_", ",", "prob_"}], "]"}], ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", "newCell", "}"}], ",", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"prob", "=", 
+           RowBox[{
+            RowBox[{"transcriptionPara", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], " ", "probability", " ", "of", 
+            " ", "transcripts", " ", "remaining", " ", "in", " ", "the", " ", 
+            "system"}]}], "*)"}], 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{"maintaining", " ", "trancript", " ", "probability"}], ",",
+            " ", 
+           RowBox[{
+           "trying", " ", "to", " ", "capture", " ", "and", " ", "average", 
+            " ", "degredation", " ", "rate"}], ",", 
+           RowBox[{
+           "this", " ", "may", " ", "be", " ", "improved", " ", "by", " ", 
+            "relating", " ", "it", " ", "to", " ", "length"}]}], "*)"}], "\n", 
+         RowBox[{
+          RowBox[{"newCell", "=", "oneCell"}], ";", "\n", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"prob", "==", "0"}], ")"}], "||", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"newCell", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"7", ",", "1"}], "]"}], "]"}], "==", 
+                RowBox[{"{", "}"}]}], ")"}], "||", 
+              RowBox[{
+               RowBox[{"Union", "[", 
+                RowBox[{"newCell", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"7", ",", "1"}], "]"}], "]"}], "]"}], "==", 
+               RowBox[{"{", "0", "}"}]}]}], ")"}], ",", "\n", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"newCell", "[", 
+               RowBox[{"[", 
+                RowBox[{"7", ",", "1"}], "]"}], "]"}], "=", 
+              RowBox[{
+               RowBox[{"newCell", "[", 
+                RowBox[{"[", 
+                 RowBox[{"7", ",", "1"}], "]"}], "]"}], "/.", 
+               RowBox[{
+                RowBox[{"_", "?", "NumberQ"}], ":>", "0"}]}]}], ";"}], ",", 
+            "\n", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"prob", "<", "1"}], ")"}], ",", "\n", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"newCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"7", ",", "1"}], "]"}], "]"}], "=", 
+                 RowBox[{"parentalTranscriptsAssociation", "[", 
+                  RowBox[{
+                   RowBox[{"newCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"7", ",", "1"}], "]"}], "]"}], ",", "prob"}], 
+                  "]"}]}], ";"}]}], 
+              RowBox[{"(*", 
+               RowBox[{
+               "random", " ", "transcripts", " ", "remain", " ", "upto", " ", 
+                "a", " ", "probability", " ", "returns", " ", "a", " ", 
+                "list", " ", "with", " ", "transcript", " ", "copy", " ", 
+                "numbers", " ", "for", " ", "each", " ", "gene"}], "*)"}], 
+              "]"}], ";"}]}], " ", "\n", "]"}], ";", " ", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"if", " ", "prob"}], "=", 
+            RowBox[{
+            "1", " ", "then", " ", "it", " ", "keeps", " ", "all", " ", "the",
+              " ", "transcripts", " ", "as", " ", "is"}]}], "*)"}], "\n", 
+          "newCell"}]}], "\n", "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"copiesT", "[", 
+        RowBox[{
+        "cellactivegeneList_", ",", "rnaPolRate_", ",", "transcriptionTime_", 
+         ",", "genomeLength_"}], "]"}], ":=", "\n", 
+       RowBox[{"(", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"only", " ", "complete", " ", "transcripts"}], ",", 
+          RowBox[{
+           RowBox[{"rnapol", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], " ", "is", " ", "reinitiation", 
+           " ", "distance"}], ",", " ", 
+          RowBox[{"and", " ", 
+           RowBox[{"rnapol", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], " ", "is", " ", "the", " ", 
+           "rate", " ", "which", " ", "is", " ", "usually", " ", "1"}]}], 
+         "*)"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Floor", "[", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"Total", "[", 
+                 RowBox[{"Map", "[", 
+                  RowBox[{
+                   RowBox[{"Function", "[", 
+                    RowBox[{"dum", ",", 
+                    RowBox[{
+                    RowBox[{"ratePol", "=", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ">", "0"}], ",", 
+                    RowBox[{"Abs", "[", 
+                    RowBox[{"RandomVariate", "[", 
+                    RowBox[{"NormalDistribution", "[", 
+                    RowBox[{
+                    RowBox[{"Abs", "[", 
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+                    RowBox[{"Abs", "[", 
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], "]"}], 
+                    "]"}], 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    RowBox[{
+                    "randomly", " ", "selects", " ", "a", " ", "positive", 
+                    " ", "rate", "  ", "with", " ", "mean"}], "=", "sigma"}], 
+                    "*)"}], ",", 
+                    RowBox[{"Abs", "[", 
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}]}], ";", 
+                    RowBox[{
+                    RowBox[{"Floor", "[", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"transcriptionTime", "*", "ratePol"}], ")"}], "-", 
+                    RowBox[{"(", 
+                    RowBox[{"dum", "/", "ratePol"}], ")"}]}], ")"}], "/", 
+                    "#"}], "]"}], "/.", " ", 
+                    RowBox[{
+                    RowBox[{"_", "?", "Negative"}], ":>", " ", "0"}]}]}]}], 
+                    " ", "]"}], ",", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "<=", "0"}], "||", 
+                    RowBox[{
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "<=", "0."}], "||", 
+                    RowBox[{
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ">", "#"}]}], ",", 
+                    RowBox[{"{", "0", "}"}], ",", 
+                    RowBox[{"DeleteCases", "[", 
+                    RowBox[{
+                    RowBox[{"Range", "[", 
+                    RowBox[{"0", ",", "#", ",", 
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ",", 
+                    RowBox[{"N", "[", "#", "]"}]}], "]"}]}], "]"}]}], "]"}], 
+                 "]"}], ")"}], "&"}], "/@", "genomeLength"}], ")"}], "\n", 
+            RowBox[{"(*", 
+             RowBox[{"*", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"rnaPolRate", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ">", "0"}], ",", 
+                RowBox[{"Abs", "[", 
+                 RowBox[{"RandomVariate", "[", 
+                  RowBox[{
+                   RowBox[{"NormalDistribution", "[", 
+                    RowBox[{
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{"rnaPolRate", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+                   RowBox[{"Length", "[", "genomeLength", "]"}]}], "]"}], 
+                 "]"}]}]}]}], "*)"}], "]"}], "/.", " ", 
+           RowBox[{
+            RowBox[{"_", "?", "Negative"}], ":>", " ", "0"}]}], ")"}], "*", 
+         "cellactivegeneList"}], 
+        RowBox[{"(*", "Active", "*)"}], ")"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"parentalTranscriptsAssociation", "[", 
+        RowBox[{"transcripts_", ",", "probability_"}], "]"}], ":=", 
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"tt", "=", 
+           RowBox[{"RandomChoice", "[", 
+            RowBox[{
+             RowBox[{"transcripts", "->", 
+              RowBox[{"Range", "[", 
+               RowBox[{"1", ",", "transcripts"}], "]"}]}], ",", 
+             RowBox[{"(", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"Floor", "[", 
+                 RowBox[{
+                  RowBox[{"Total", "[", "transcripts", "]"}], "*", 
+                  RowBox[{"(", 
+                   RowBox[{"1", "-", "probability"}], ")"}]}], "]"}], "/.", 
+                RowBox[{
+                 RowBox[{"_", "?", "Negative"}], "->", "0"}]}], ")"}], ")"}]}]
+             , "]"}]}], "}"}], ",", "\n", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"transcripts", "-", 
+            RowBox[{"ReplacePart", "[", 
+             RowBox[{
+              RowBox[{"transcripts", "/.", 
+               RowBox[{
+                RowBox[{"_", "?", "NumberQ"}], "->", "0"}]}], ",", 
+              RowBox[{"Normal", "[", 
+               RowBox[{"Counts", "[", "tt", "]"}], "]"}]}], "]"}]}], ")"}], "/.", 
+          RowBox[{
+           RowBox[{"_", "?", "Negative"}], "->", "0"}]}]}], "\n", "]"}]}], 
+      ",", 
+      RowBox[{
+       RowBox[{"transcriptCopyNumber", "[", 
+        RowBox[{
+        "oneCell_", ",", "shortestToMphase_", ",", "rnapol_", ",", 
+         "genomeLength_"}], "]"}], ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"newCell", ",", "transcriptionTime"}], "}"}], ",", "\n", 
+         RowBox[{
+          RowBox[{"newCell", "=", "oneCell"}], ";", "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+           "calcualte", " ", "current", " ", "trancription", " ", "time", " ",
+             "available", " ", "for", " ", "a", " ", "cell"}], "*)"}], 
+          RowBox[{"transcriptionTime", "=", 
+           RowBox[{"Min", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"newCell", "[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "3"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"newCell", "[", 
+                RowBox[{"[", 
+                 RowBox[{"4", ",", "4"}], "]"}], "]"}], "+", 
+               "shortestToMphase"}]}], "}"}], "]"}]}], ";", "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+           "identifies", " ", "the", " ", "shortest", " ", "cell", " ", 
+            "cycle", " ", "duration"}], "*)"}], "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+            "the", " ", "shortest", " ", "cell", " ", "cycle", " ", "is", " ",
+              "the", " ", "difference", " ", "between", " ", "the", " ", 
+             "total", " ", "cell", " ", "cycle", " ", "time", " ", "and", " ",
+              "the", " ", "time", " ", "that", " ", "has", " ", "passed"}], 
+            ",", " ", 
+            RowBox[{
+             RowBox[{"[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "is", " ", "the", 
+             " ", "total", " ", "cell", " ", "cycle", " ", "duration"}], ",", 
+            " ", 
+            RowBox[{
+             RowBox[{"and", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "is", " ", "the", 
+             " ", "time", " ", "that", " ", "has", " ", "relatively", " ", 
+             "passed", "\n", "example", " ", 
+             RowBox[{"if", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "is", " ", "2", 
+             "hrs", " ", 
+             RowBox[{"and", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "is", " ", "1.5"}],
+             ",", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "3"}], "]"}], "]"}], "-", 
+              RowBox[{"[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "4"}], "]"}], "]"}]}], "=", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"0.5", ".", " ", "it"}], " ", "means", " ", "there", 
+               " ", "is", " ", "only", " ", "half", " ", "hour", " ", "for", 
+               " ", "this", " ", "cell", " ", "to", " ", 
+               RowBox[{"divde", ".", " ", "\n", "We"}], " ", "calcualte", " ",
+                "this", " ", "value", " ", "for", " ", "evey", " ", "cell", 
+               " ", "and", " ", "get", " ", "the", " ", "shortest", " ", "in",
+                " ", "the", " ", 
+               RowBox[{"tissue", ".", " ", "\n", "All"}], " ", "cells", " ", 
+               "that", " ", "have", " ", "a", " ", "value"}], " ", 
+              "\[LessEqual]", " ", 
+              RowBox[{"shortestToMphase", " ", "will", " ", "divide"}]}]}]}], 
+           "\n", "*)"}], "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+            "calculates", " ", "the", " ", "trancripts", " ", "possible", " ",
+              "and", " ", "their", " ", "copies", " ", "based", " ", "on", 
+             " ", "time", " ", "and", " ", "ploidy"}], ",", " ", 
+            RowBox[{
+            "we", " ", "can", " ", "add", " ", "an", " ", "inefficiacy", " ", 
+             "term", " ", "later"}]}], "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"genome", " ", "=", " ", 
+             RowBox[{"Transpose", "[", 
+              RowBox[{"{", 
+               RowBox[{"genomeName", ",", "genomeLength"}], "}"}], "]"}]}], 
+            ",", " ", 
+            RowBox[{
+            "we", " ", "just", " ", "need", " ", "the", " ", 
+             "genomeLength"}]}], "*)"}], "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"active", " ", "genes"}], " ", "=", " ", 
+            RowBox[{
+             RowBox[{"newtissue", "[", 
+              RowBox[{"[", 
+               RowBox[{"icell", ",", "6", ",", "2"}], "]"}], "]"}], " ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"1", ",", "1", ",", "1"}], "}"}], ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "1"}], "}"}], "..."}], 
+                "Ploidy"}]}], "}"}]}]}], "*)"}], "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "transcriptionPara5", " ", "rpolII", " ", "rate", " ", "0"}], 
+             "=", " ", 
+             RowBox[{"no", " ", "change"}]}], ",", " ", 
+            RowBox[{
+             RowBox[{
+             "2", " ", "is", " ", "up", " ", "to", " ", "2", "x", " ", 
+              "faster", " ", "or"}], " ", "-", 
+             RowBox[{"2", " ", "slower"}]}], ",", 
+            RowBox[{
+            "i", " ", "didnt", " ", "try", " ", "both", " ", "fast", " ", 
+             "and", " ", "slow"}]}], "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{
+           "places", " ", "the", " ", "transcripts", " ", "in", " ", "the", 
+            " ", "temp", " ", "sections", " ", "until", " ", "division", " ", 
+            "occurs"}], "*)"}], "\n", "\n", 
+          RowBox[{
+           RowBox[{"newCell", "[", 
+            RowBox[{"[", 
+             RowBox[{"7", ",", "2"}], "]"}], "]"}], "=", 
+           RowBox[{"Total", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"copiesT", "[", 
+               RowBox[{"#", " ", 
+                RowBox[{"(*", "activegenes", "*)"}], ",", "rnapol", ",", 
+                "transcriptionTime", ",", "genomeLength"}], "]"}], "&"}], "/@", 
+             RowBox[{"newCell", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ",", "2"}], "]"}], "]"}]}], "]"}]}], ";", "\n", 
+          "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+            "since", " ", "the", " ", "genome", " ", "contains", " ", "the", 
+             " ", "ploidy", " ", "number", " ", "we", " ", "dont", " ", 
+             "have", " ", "to", " ", "include", " ", "ploidy", " ", "here"}], 
+            ",", " ", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"1", ",", "1", ",", "1"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"1", ",", "0", ",", "1"}], "}"}]}], "}"}], " ", 
+             "tells", " ", "us", " ", "two", " ", "copies"}]}], " ", "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{"Values", "[", 
+            RowBox[{"AssociationThread", "[", 
+             RowBox[{
+              RowBox[{"genome", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", "copies"}], 
+             "]"}], "]"}], "*)"}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+            "temporary", " ", "vs", " ", "fixed", " ", "transcripts"}], ",", 
+            " ", 
+            RowBox[{
+            "they", " ", "only", " ", "become", " ", "fixed", " ", "right", 
+             " ", "before", " ", "division"}]}], "*)"}], "\n", "newCell"}]}], 
+        "\n", "]"}]}], ",", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"getCellPhase", "[", 
         RowBox[{"cell_", ",", "shortestToMphase_"}], "]"}], ":=", 
        RowBox[{"Module", "[", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"leftcc", ",", "a"}], "}"}], ",", 
+          RowBox[{"leftcc", ",", "a"}], "}"}], ",", "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"if", " ", "[", 
+             RowBox[{"[", 
+              RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "<", " ", 
+            RowBox[{
+             RowBox[{"[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "then", " ", 
+             "that", " ", "means", " ", "the", " ", "cell", " ", "has", " ", 
+             "passed", " ", "enough", " ", "time", " ", "to", " ", "divide", 
+             " ", "so", " ", "it", " ", "enters", " ", "Mphase", "\n", 
+             RowBox[{"if", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "3"}], "]"}], "]"}]}], " ", ">", " ", 
+            RowBox[{
+             RowBox[{"[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "then", " ", 
+             "that", " ", "means", " ", "the", " ", "cell", " ", "cannot", 
+             " ", "reach", " ", "Mphase", " ", "and", " ", "it", " ", "will", 
+             " ", "be", " ", "in", " ", "a", " ", "particular", " ", "cell", 
+             " ", "phase", " ", "either", " ", "in", " ", "G1"}]}], ",", " ", 
+           
+           RowBox[{"S", " ", "and", " ", "G2"}]}], "\n", "*)"}], "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+          "Calculated", " ", "the", " ", "amount", " ", "of", " ", "time", 
+           " ", "left", " ", "in", " ", "the", " ", "cell", " ", "cycle"}], 
+          "*)"}], "\n", 
          RowBox[{
           RowBox[{"leftcc", "=", 
            RowBox[{"Subtract", "@@", 
             RowBox[{"cell", "[", 
              RowBox[{"[", 
               RowBox[{"4", ",", 
-               RowBox[{"3", ";;", "4"}]}], "]"}], "]"}]}]}], ";", "\n", 
+               RowBox[{"3", ";;", "4"}]}], "]"}], "]"}]}]}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"example", " ", 
+             RowBox[{"if", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "is", " ", "2", 
+             "hrs", " ", 
+             RowBox[{"and", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "is", " ", "1.5"}],
+             ",", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "3"}], "]"}], "]"}], "-", 
+              RowBox[{"[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "4"}], "]"}], "]"}]}], "=", 
+             RowBox[{
+              RowBox[{"0.5", ".", " ", "it"}], " ", "means", " ", "there", 
+              " ", "is", " ", "only", " ", "half", " ", "hour", " ", "for", 
+              " ", "this", " ", "cell", " ", "to", " ", 
+              RowBox[{"divde", "."}]}]}]}], "*)"}], "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<l-\>\"", ",", "leftcc"}], "]"}], ";", "\n", 
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<s-\>\"", ",", "shortestToMphase"}], "]"}], ";"}], 
+           "*)"}], "\n", 
           RowBox[{"If", "[", 
            RowBox[{
             RowBox[{"leftcc", ">", "shortestToMphase"}], ",", 
@@ -1447,71 +1475,65 @@ Cell[BoxData[
                RowBox[{
                 RowBox[{"Last", "[", "a", "]"}], "[", 
                 RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ",", "4"}], 
-           "]"}]}]}], "\n", "]"}]}], ",", "\[IndentingNewLine]", 
+           "]"}]}]}], "\n", "]"}]}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "cellRelatedFunctions`randDistofT2", "\[IndentingNewLine]", 
+        "cellRelatedFunctions`cellcycleChangeOPT", "\[IndentingNewLine]", 
+        "cellRelatedFunctions`transcriptCopyNumber", "\[IndentingNewLine]", 
+        "cellRelatedFunctions`transcriptDegredation", "\[IndentingNewLine]", 
+        "cellRelatedFunctions`getCellPhase", " ", "\[IndentingNewLine]", 
+        "cellRelatedFunctions`parentalTranscriptsAssociation"}], "*)"}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"oneFullCycleV0", "[", 
+       RowBox[{"oneFullCycleV01", "[", 
         RowBox[{
-        "tissue_", ",", "timestep_", ",", "sigma_", ",", "genome_", ",", 
-         "fileNameSis_", ",", 
-         RowBox[{"transcriptionPara_:", 
-          RowBox[{"{", "}"}]}], ",", 
-         RowBox[{"spaceParameters1_:", 
-          RowBox[{"{", 
-           RowBox[{"1", ",", "0.5", ",", "0", ",", 
-            RowBox[{"-", "2"}], ",", "0.35", ",", 
-            RowBox[{"-", "2"}]}], "}"}]}], ",", 
-         RowBox[{"growthParameters_:", 
-          RowBox[{"{", "0", "}"}]}]}], "]"}], ":=", 
+        "tissue_", ",", "timestep_", ",", "cellCycleOpts_", ",", "genome_", 
+         ",", "transcriptionPara_"}], "]"}], ":=", 
        RowBox[{"Module", "[", 
         RowBox[{
          RowBox[{"{", 
           RowBox[{
-          "newtissue", ",", "oneCycle", ",", "cellCycles", ",", "cellorder", 
-           ",", "cpos", ",", "icell", ",", "transcriptionTime", ",", 
-           "cyclePhase", ",", "copies", ",", "ploidy", ",", "tCell", ",", 
-           "str", ",", "timerange", ",", "tempCell", ",", "spaceParameters", 
-           ",", "polarityOpt", ",", "newcellcylceduration", ",", 
-           "shortestToMphase"}], "}"}], "\n", ",", "\n", 
+          "ploidy", ",", "oneCycle", ",", "shortestToMphase", ",", 
+           "cellCycles", ",", "stemstate", ",", "newtissue", ",", "cpos", ",",
+            "icell", ",", "cyclePhase", ",", "tempCell", ",", "tCell", ",", 
+           "newcellcylceduration", ",", "lineage"}], "}"}], ",", "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\n", 
+             RowBox[{"cellCycleOpts", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], "=", " ", 
+           RowBox[{
+            RowBox[{"sigma", "\n", 
+             RowBox[{"cellCycleOpts", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], "=", " ", 
+            RowBox[{
+             RowBox[{"cell", " ", "cycle", " ", "increments", "\n", 
+              RowBox[{"cellCycleOpts", "[", 
+               RowBox[{"[", "3", "]"}], "]"}]}], "=", " ", 
+             RowBox[{
+              RowBox[{"\.08cellCycleEquation", " ", "Opts", "\n", 
+               RowBox[{"cellCycleOpts", "[", 
+                RowBox[{"[", "4", "]"}], "]"}]}], "=", " ", 
+              RowBox[{"\.08for", " ", "\"\<stem like opts\>\""}]}]}]}]}], 
+          "\n", "*)"}], "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"transcriptionPara", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], " ", "is", " ", "the", " ", 
+           "gene", " ", "network", "\n", 
+           RowBox[{"transcriptionPara", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], " ", "probability", " ", "of", 
+           " ", "transcripts", " ", "remaining", " ", "in", " ", "the", " ", 
+           "system", "\n", 
+           RowBox[{"transcriptionPara", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], " ", "ploidy", " ", "level", "\n", 
+           RowBox[{"transcriptionPara", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], " ", "rnaPolII", " ", "rate", " ",
+            "0", " ", "is", " ", "no", " ", "rate"}], "\n", "*)"}], "\n", 
+         "\n", 
          RowBox[{
-          RowBox[{"spaceParameters", "=", "spaceParameters1"}], ";", "\n", 
-          RowBox[{"polarityOpt", "=", 
-           RowBox[{"spaceParameters1", "[", 
-            RowBox[{"[", "3", "]"}], "]"}]}], ";", "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"Print", "[", "spaceParameters", "]"}], ";"}], "*)"}], 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"-", "2"}], " ", "closepack"}], ",", 
-            RowBox[{
-             RowBox[{"-", "1"}], " ", "coalesce"}], ",", " ", 
-            RowBox[{
-             RowBox[{"-", "3"}], " ", "relative", " ", "volume", " ", 
-             "sizeR"}], ",", " ", 
-            RowBox[{
-             RowBox[{"else", " ", "spaceparameters"}], " ", "=", " ", 
-             RowBox[{"distance", " ", "to", " ", "move"}]}]}], "*)"}], "\n", 
-          "\n", "\n", 
-          RowBox[{"(*", "\n", 
-           RowBox[{
-            RowBox[{"transcriptionPara", "[", 
-             RowBox[{"[", "1", "]"}], "]"}], " ", "is", " ", "the", " ", 
-            "gene", " ", "network", "\n", 
-            RowBox[{"transcriptionPara", "[", 
-             RowBox[{"[", "2", "]"}], "]"}], " ", "probability", " ", "of", 
-            " ", "transcripts", " ", "remaining", " ", "in", " ", "the", " ", 
-            "system", "\n", 
-            RowBox[{"transcriptionPara", "[", 
-             RowBox[{"[", "3", "]"}], "]"}], " ", "ploidy", " ", "level", 
-            "\n", 
-            RowBox[{"transcriptionPara", "[", 
-             RowBox[{"[", "4", "]"}], "]"}], " ", "cell", " ", "cycle", " ", 
-            "increments", "\n", 
-            RowBox[{"transcriptionPara", "[", 
-             RowBox[{"[", "5", "]"}], "]"}], " ", "rnaPolII", " ", "rate", 
-            " ", "0", " ", "is", " ", "no", " ", "rate"}], "\n", "*)"}], "\n", 
           RowBox[{"ploidy", "=", 
            RowBox[{"transcriptionPara", "[", 
             RowBox[{"[", "3", "]"}], "]"}]}], ";", "\n", 
@@ -1519,38 +1541,103 @@ Cell[BoxData[
            RowBox[{"Range", "[", 
             RowBox[{"1", ",", 
              RowBox[{"Length", "[", "tissue", "]"}]}], "]"}]}], ";", "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"spaceParameters", "[", 
-              RowBox[{"[", "1", "]"}], "]"}], "==", "1"}], ",", "\n", 
-            RowBox[{
-             RowBox[{"oneCycle", "=", 
-              RowBox[{"RandomSample", "[", 
-               RowBox[{"Range", "[", 
-                RowBox[{"1", ",", 
-                 RowBox[{"Length", "[", "tissue", "]"}]}], "]"}], "]"}]}], 
-             ";"}]}], "\n", "]"}], ";", "\n", "\n", 
-          RowBox[{"newtissue", "=", "tissue"}], ";", "\n", 
+          "\n", 
           RowBox[{"(*", 
            RowBox[{
-            RowBox[{"Print", "[", "newtissue", "]"}], ";"}], "*)"}], "\n", 
+            RowBox[{"oneCycle", "=", 
+             RowBox[{"RandomSample", "[", 
+              RowBox[{"Range", "[", 
+               RowBox[{"1", ",", 
+                RowBox[{"Length", "[", "tissue", "]"}]}], "]"}], "]"}]}], 
+            ";"}], "*)"}], 
+          RowBox[{"(*", 
+           RowBox[{
+           "identifies", " ", "the", " ", "shortest", " ", "cell", " ", 
+            "cycle", " ", "duration"}], "*)"}], "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+            "the", " ", "shortest", " ", "cell", " ", "cycle", " ", "is", " ",
+              "the", " ", "difference", " ", "between", " ", "the", " ", 
+             "total", " ", "cell", " ", "cycle", " ", "time", " ", "and", " ",
+              "the", " ", "time", " ", "that", " ", "has", " ", "passed"}], 
+            ",", " ", 
+            RowBox[{
+             RowBox[{"[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "is", " ", "the", 
+             " ", "total", " ", "cell", " ", "cycle", " ", "duration"}], ",", 
+            " ", 
+            RowBox[{
+             RowBox[{"and", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "is", " ", "the", 
+             " ", "time", " ", "that", " ", "has", " ", "relatively", " ", 
+             "passed", "\n", "example", " ", 
+             RowBox[{"if", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "is", " ", "2", 
+             "hrs", " ", 
+             RowBox[{"and", " ", "[", 
+              RowBox[{"[", 
+               RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "is", " ", "1.5"}],
+             ",", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "3"}], "]"}], "]"}], "-", 
+              RowBox[{"[", 
+               RowBox[{"[", 
+                RowBox[{"4", ",", "4"}], "]"}], "]"}]}], "=", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"0.5", ".", " ", "it"}], " ", "means", " ", "there", 
+               " ", "is", " ", "only", " ", "half", " ", "hour", " ", "for", 
+               " ", "this", " ", "cell", " ", "to", " ", 
+               RowBox[{"divde", ".", " ", "\n", "We"}], " ", "calcualte", " ",
+                "this", " ", "value", " ", "for", " ", "evey", " ", "cell", 
+               " ", "and", " ", "get", " ", "the", " ", "shortest", " ", "in",
+                " ", "the", " ", 
+               RowBox[{"tissue", ".", " ", "\n", "All"}], " ", "cells", " ", 
+               "that", " ", "have", " ", "a", " ", "value"}], " ", 
+              "\[LessEqual]", " ", 
+              RowBox[{"shortestToMphase", " ", "will", " ", "divide"}]}]}]}], 
+           "\n", "*)"}], "\n", "\n", 
+          RowBox[{"shortestToMphase", "=", 
+           RowBox[{"Min", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Subtract", "@@", "#"}], "&"}], "/@", 
+             RowBox[{"tissue", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", "4", ",", 
+                RowBox[{"3", ";;", "4"}]}], "]"}], "]"}]}], "]"}]}], ";", 
+          "\n", "\n", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"last", " ", "cell", " ", "cycle"}], " ", "-", " ", 
+            RowBox[{"next", " ", "cell", " ", "cycle"}]}], "*)"}], "\n", 
+          RowBox[{"newtissue", "=", "tissue"}], ";", "\n", 
+          RowBox[{
+           RowBox[{"newtissue", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "4", ",", "5"}], "]"}], "]"}], "=", 
+           "shortestToMphase"}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", "newtissue", "]"}], ";"}], "*)"}], 
           RowBox[{"(*", 
            RowBox[{
            "for", " ", "each", " ", "cell", " ", "currently", " ", "in", " ", 
-            "the", " ", "tissue"}], "*)"}], "\n", 
+            "the", " ", "tissue"}], "*)"}], 
           RowBox[{"(*", 
            RowBox[{
             RowBox[{
              RowBox[{
               RowBox[{
                RowBox[{"cellCR", " ", "--"}], "\[Rule]", " ", "center"}], ",",
-               " ", "radius", ",", " ", 
-              RowBox[{"divisions", " ", 
-               RowBox[{"{", 
-                RowBox[{",", 
-                 RowBox[{"Number", " ", "of", " ", "divisions"}], ",", 
-                 RowBox[{"polarity", " ", "direction"}]}], "}"}]}], ",", 
+               " ", "radius", ",", " ", "divisions", ",", 
               RowBox[{"cellCycleInfo", " ", 
                RowBox[{"{", 
                 RowBox[{",", "phase", ",", " ", 
@@ -1582,7 +1669,7 @@ Cell[BoxData[
                 RowBox[{
                  RowBox[{"transcripts", " ", "..."}], "ineages"}], "..."}], 
                "."}]}], "}"}], " ", "for", " ", "last", " ", "timestep"}], 
-           "*)"}], "\n", 
+           "*)"}], "\n", "\n", 
           RowBox[{"(*", 
            RowBox[{
             RowBox[{"xC", "=", 
@@ -1608,7 +1695,8 @@ Cell[BoxData[
                  "negative", " ", "values", " ", "ensure", " ", "no", " ", 
                   "transcription", " ", "time"}], "*)"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"1", ",", " ", "genomeI"}], "}"}], ",", 
+                 RowBox[{"1", ",", " ", 
+                  RowBox[{"{", "genomeI", "}"}]}], "}"}], ",", 
                 RowBox[{"{", 
                  RowBox[{
                   RowBox[{"{", "1", "}"}], ",", 
@@ -1626,51 +1714,118 @@ Cell[BoxData[
                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
                   RowBox[{"{", 
                    RowBox[{"1", ",", "genome", ",", " ", "genomeI"}], "}"}]}],
-                  "}"}]}], "*)"}], "}"}]}], ";"}], "*)"}], "\n", 
-          RowBox[{"(*", 
-           RowBox[{"updates", " ", "the", " ", "cell", " ", "cycles"}], 
-           "*)"}], "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{
-            "calculated", " ", "the", " ", "time", " ", "to", " ", "the", " ",
-              "first", " ", "Mphase"}], ",", " ", 
-            RowBox[{
-            "that", " ", "is", " ", "the", " ", "shortest", " ", "cycle"}]}], 
-           "*)"}], "\n", 
-          RowBox[{"shortestToMphase", "=", 
-           RowBox[{"Min", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Subtract", "@@", "#"}], "&"}], "/@", 
-             RowBox[{"newtissue", "[", 
-              RowBox[{"[", 
-               RowBox[{"All", ",", "4", ",", 
-                RowBox[{"3", ";;", "4"}]}], "]"}], "]"}]}], "]"}]}], ";", 
-          "\n", 
+                  "}"}]}], "*)"}], "}"}]}], ";"}], "*)"}], 
           RowBox[{"For", "[", 
            RowBox[{
             RowBox[{"cpos", "=", "1"}], ",", 
             RowBox[{"cpos", "<=", 
              RowBox[{"Length", "[", "oneCycle", "]"}]}], ",", 
-            RowBox[{"cpos", "++"}], ",", "\n", "\n", 
+            RowBox[{"cpos", "++"}], ",", "\n", 
             RowBox[{
+             RowBox[{"lineage", "=", 
+              RowBox[{"{", "}"}]}], ";", "\n", 
              RowBox[{"icell", "=", 
               RowBox[{"oneCycle", "[", 
                RowBox[{"[", "cpos", "]"}], "]"}]}], ";", " ", 
              RowBox[{"(*", 
-              RowBox[{"cell", " ", "number"}], "*)"}], "\n", 
+              RowBox[{"cell", " ", "number"}], "*)"}], "\n", "\n", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"if", " ", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"4", ",", "3"}], "]"}], "]"}], " ", "<", " ", 
+                RowBox[{
+                 RowBox[{"[", 
+                  RowBox[{"[", 
+                   RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "then", " ", 
+                 "that", " ", "means", " ", "the", " ", "cell", " ", "has", 
+                 " ", "passed", " ", "enough", " ", "time", " ", "to", " ", 
+                 "divide", " ", "so", " ", "it", " ", "enters", " ", "Mphase",
+                  "\n", 
+                 RowBox[{"if", " ", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"4", ",", "3"}], "]"}], "]"}]}], " ", ">", " ", 
+                RowBox[{
+                 RowBox[{"[", 
+                  RowBox[{"[", 
+                   RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "then", " ", 
+                 "that", " ", "means", " ", "the", " ", "cell", " ", "cannot",
+                  " ", "reach", " ", "Mphase", " ", "and", " ", "it", " ", 
+                 "will", " ", "be", " ", "in", " ", "a", " ", "particular", 
+                 " ", "cell", " ", "phase", " ", "either", " ", "in", " ", 
+                 "G1"}]}], ",", " ", 
+               RowBox[{"S", " ", "and", " ", "G2"}]}], "\n", "*)"}], "\n", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{"Print", "[", "\"\<b0\>\"", "]"}], ";"}], "*)"}], 
+             "\[IndentingNewLine]", "\n", 
              RowBox[{"cyclePhase", "=", 
               RowBox[{"getCellPhase", "[", 
                RowBox[{
                 RowBox[{"newtissue", "[", 
                  RowBox[{"[", "icell", "]"}], "]"}], ",", 
                 "shortestToMphase"}], "]"}]}], ";", "\n", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{"Print", "[", "\"\<b1\>\"", "]"}], ";"}], "*)"}], "\n", 
              RowBox[{
               RowBox[{"newtissue", "[", 
                RowBox[{"[", 
                 RowBox[{"icell", ",", "4", ",", "1"}], "]"}], "]"}], "=", 
-              "cyclePhase"}], ";", "\n", "\n", " ", 
+              "cyclePhase"}], ";", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{"**", "in"}], " ", "V1", " ", "competition"}], 
+              "***)"}], "\n", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"newCell", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"4", ",", "4"}], "]"}], "]"}], " ", "stores", " ", 
+                "how", " ", "much", " ", "time", " ", "a", " ", "cell", " ", 
+                "has", " ", "currently", " ", "cycled"}], ",", " ", 
+               RowBox[{
+               "if", " ", "it", " ", "is", " ", "0", " ", "means", " ", "it", 
+                " ", "just", " ", "divided"}]}], "*)"}], "\n", "\n", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "4", ",", "4"}], "]"}], "]"}], "==",
+                     "0"}], "&&", 
+                   RowBox[{
+                    RowBox[{"Union", "[", 
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], 
+                    "]"}], "!=", 
+                    RowBox[{"{", "0", "}"}]}]}], ")"}], " ", 
+                 RowBox[{"(*", 
+                  RowBox[{
+                  "occurs", " ", "only", " ", "if", " ", "the", " ", "cell", 
+                   " ", "just", " ", "divided"}], "*)"}], ",", "\n", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"newtissue", "[", 
+                    RowBox[{"[", "icell", "]"}], "]"}], "=", 
+                   RowBox[{
+                   "cellRelatedFunctions`oneCellTranscriptCompetition", "[", 
+                    RowBox[{
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", "icell", "]"}], "]"}], ",", 
+                    RowBox[{"transcriptionPara", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "ploidy"}], "]"}]}], 
+                  ";"}]}], " ", "\n", "]"}], ";"}], "*)"}], "\n", 
+             RowBox[{"(*", 
+              RowBox[{
+               RowBox[{"Print", "[", "\"\<b2\>\"", "]"}], ";"}], "*)"}], "\n", 
              RowBox[{"(*", " ", 
               RowBox[{
                RowBox[{"maintaining", " ", "trancript", " ", "probability"}], 
@@ -1681,7 +1836,7 @@ Cell[BoxData[
                RowBox[{
                "this", " ", "may", " ", "be", " ", "improved", " ", "by", " ",
                  "relating", " ", "it", " ", "to", " ", "length"}]}], "*)"}], 
-             "\n", 
+             "\[IndentingNewLine]", "\n", 
              RowBox[{"If", "[", 
               RowBox[{
                RowBox[{"(", 
@@ -1689,170 +1844,66 @@ Cell[BoxData[
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", 
                    RowBox[{"icell", ",", "4", ",", "4"}], "]"}], "]"}], "==", 
-                 "0"}], ")"}], " ", ",", "\n", 
+                 "0"}], ")"}], " ", 
+               RowBox[{"(*", 
+                RowBox[{
+                "occurs", " ", "only", " ", "if", " ", "the", " ", "cell", 
+                 " ", "just", " ", "divided"}], "*)"}], " ", ",", "\n", 
                RowBox[{
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], "==", "0"}], ")"}], "||", 
-                   
-                   RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "==", 
-                    RowBox[{"{", "}"}]}], ")"}]}], ",", 
-                  RowBox[{
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
-                   
-                   RowBox[{"{", "}"}]}], ",", "\n", 
-                  RowBox[{
-                   RowBox[{"If", "[", 
-                    RowBox[{
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], "<", "1"}], ")"}], ",", 
-                    "\n", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
-                    
-                    RowBox[{"parentalTranscripts", "[", 
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
-                    
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}]}], "\n", 
-                    
-                    RowBox[{"(*", 
-                    RowBox[{
-                    "random", " ", "transcripts", " ", "remain", " ", "upto", 
-                    " ", "a", " ", "probability", " ", 
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}]}], "*)"}], "\n", "]"}], 
-                   ";"}]}], " ", "\n", "]"}], ";"}]}], "\n", "]"}], ";", "\n",
-              "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-              "calcualte", " ", "current", " ", "trancription", " ", "time", 
-               " ", "available", " ", "for", " ", "a", " ", "cell"}], "*)"}], 
-             "\n", "\n", 
-             RowBox[{"transcriptionTime", "=", 
-              RowBox[{"Min", "[", 
-               RowBox[{"{", 
                 RowBox[{
                  RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "4", ",", "3"}], "]"}], "]"}], ",", 
-                 RowBox[{
-                  RowBox[{"newtissue", "[", 
-                   RowBox[{"[", 
-                    RowBox[{"icell", ",", "4", ",", "4"}], "]"}], "]"}], "+", 
-                  "shortestToMphase"}]}], "}"}], "]"}]}], ";", "\n", 
+                  RowBox[{"[", "icell", "]"}], "]"}], "=", 
+                 RowBox[{"transcriptDegredation", "[", 
+                  RowBox[{
+                   RowBox[{"newtissue", "[", 
+                    RowBox[{"[", "icell", "]"}], "]"}], ",", 
+                   RowBox[{"transcriptionPara", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}]}], "\n", 
+              "]"}], ";", "\n", 
              RowBox[{"(*", 
               RowBox[{
-               RowBox[{"Print", "[", "\"\<Not 1\>\"", "]"}], ";"}], "*)"}], 
-             "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-               RowBox[{
-               "calculates", " ", "the", " ", "trancripts", " ", "possible", 
-                " ", "and", " ", "their", " ", "copies", " ", "based", " ", 
-                "on", " ", "time", " ", "and", " ", "ploidy"}], ",", " ", 
-               RowBox[{
-               "we", " ", "can", " ", "add", " ", "an", " ", "inefficiacy", 
-                " ", "term", " ", "later"}]}], "*)"}], "\n", 
-             RowBox[{"(*", 
-              RowBox[{"genome", " ", "=", " ", 
-               RowBox[{"Transpose", "[", 
-                RowBox[{"{", 
-                 RowBox[{"genomeName", ",", "genomeLength"}], "}"}], "]"}]}], 
-              "*)"}], "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-               RowBox[{"active", " ", "genes"}], " ", "=", " ", 
-               RowBox[{"newtissue", "[", 
-                RowBox[{"[", 
-                 RowBox[{"icell", ",", "6", ",", "2"}], "]"}], "]"}]}], 
-              "*)"}], "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-               RowBox[{
-                RowBox[{
-                "transcriptionPara5", " ", "rpolII", " ", "rate", " ", "0"}], 
-                "=", " ", 
-                RowBox[{"no", " ", "change"}]}], ",", " ", 
-               RowBox[{
-                RowBox[{
-                "2", " ", "is", " ", "up", " ", "to", " ", "2", "x", " ", 
-                 "faster", " ", "or"}], " ", "-", 
-                RowBox[{"2", " ", "slower"}]}], ",", 
-               RowBox[{
-               "i", " ", "didnt", " ", "try", " ", "both", " ", "fast", " ", 
-                "and", " ", "slow"}]}], "*)"}], "\n", 
-             RowBox[{"copies", "=", 
-              RowBox[{"copiesT", "[", 
-               RowBox[{"ploidy", ",", 
-                RowBox[{"newtissue", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"icell", ",", "6", ",", "2"}], "]"}], "]"}], " ", 
-                RowBox[{"(*", "activegenes", "*)"}], ",", 
-                RowBox[{"transcriptionPara", "[", 
-                 RowBox[{"[", "5", "]"}], "]"}], 
-                RowBox[{"(*", "rnalpol", "*)"}], ",", "transcriptionTime", 
-                ",", "genome"}], "]"}]}], ";", "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-              "places", " ", "the", " ", "transcripts", " ", "in", " ", "the",
-                " ", "temp", " ", "sections", " ", "until", " ", "division", 
-               " ", "occurs"}], "*)"}], "\n", 
+               RowBox[{"Print", "[", "\"\<b3\>\"", "]"}], ";"}], "*)"}], "\n", 
              RowBox[{
               RowBox[{"newtissue", "[", 
-               RowBox[{"[", 
-                RowBox[{"icell", ",", "7", ",", "2"}], "]"}], "]"}], "=", 
-              RowBox[{"transcriptsT", "[", 
-               RowBox[{"copies", ",", 
+               RowBox[{"[", "icell", "]"}], "]"}], "=", 
+              RowBox[{"transcriptCopyNumber", "[", 
+               RowBox[{
+                RowBox[{"newtissue", "[", 
+                 RowBox[{"[", "icell", "]"}], "]"}], ",", "shortestToMphase", 
+                ",", 
+                RowBox[{"transcriptionPara", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], ",", 
                 RowBox[{"genome", "[", 
                  RowBox[{"[", 
-                  RowBox[{"All", ",", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
+                  RowBox[{"All", ",", "2"}], "]"}], "]"}]}], "]"}]}], ";", 
              "\n", 
              RowBox[{"(*", 
               RowBox[{
-               RowBox[{"Print", "[", "\"\<Not 2\>\"", "]"}], ";"}], "*)"}], 
-             "\n", 
+               RowBox[{"Print", "[", "\"\<b4\>\"", "]"}], ";"}], "*)"}], "\n", 
              RowBox[{"(*", 
               RowBox[{
                RowBox[{
-               "temporary", " ", "vs", " ", "fixed", " ", "transcripts"}], 
-               ",", " ", 
-               RowBox[{
-               "they", " ", "only", " ", "become", " ", "fixed", " ", "right",
-                 " ", "before", " ", "division"}]}], "*)"}], "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-               RowBox[{"Print", "[", "\"\<Not 3\>\"", "]"}], ";"}], "*)"}], 
-             "\n", "\n", 
+                RowBox[{"Cell", " ", "Cycle", " ", "Phases", " ", "1"}], 
+                "\[Rule]", " ", "G1"}], ",", " ", 
+               RowBox[{"2", "\[Rule]", " ", "S"}], ",", " ", 
+               RowBox[{"3", "\[Rule]", " ", "G2"}], ",", 
+               RowBox[{"4", "\[Rule]", "M"}]}], "*)"}], "\n", 
              RowBox[{"If", "[", 
               RowBox[{
                RowBox[{"cyclePhase", "<=", "3"}], ",", " ", 
                RowBox[{"(*", 
-                RowBox[{"No", " ", "Division", " ", "Yet"}], "*)"}], "\n", 
+                RowBox[{
+                 RowBox[{
+                 "Cell", " ", "is", " ", "not", " ", "in", " ", "Mphase"}], 
+                 ";", " ", 
+                 RowBox[{"No", " ", "Division", " ", "Yet"}]}], "*)"}], "\n", 
+               
                RowBox[{
                 RowBox[{
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", 
                    RowBox[{"icell", ",", "2"}], "]"}], "]"}], "=", "1"}], ";",
-                 " ", "\n", 
+                 " ", 
                 RowBox[{
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", 
@@ -1861,168 +1912,95 @@ Cell[BoxData[
                   RowBox[{"newtissue", "[", 
                    RowBox[{"[", 
                     RowBox[{"icell", ",", "4", ",", "4"}], "]"}], "]"}], "+", 
-                  "shortestToMphase"}]}], ";"}], "\n", "\n", 
-               RowBox[{"(*", "growth", "*)"}], "\n", 
-               RowBox[{"(*", 
-                RowBox[{"keeps", " ", "transcripts", " ", "in", " ", "temp"}],
-                 "*)"}], "\n", 
+                  "shortestToMphase"}]}], ";"}], 
                RowBox[{"(*", 
                 RowBox[{
-                "changes", " ", "the", " ", "cell", " ", "cycle", " ", 
-                 "duration", " ", "either", " ", "based", " ", "on", " ", "a",
-                  " ", "normal", " ", "distributions", " ", "or", " ", "some",
-                  " ", "determined", " ", "incremental", " ", "value"}], 
-                "*)"}], "\n", "\n", ",", "\n", 
+                "growth", " ", "will", " ", "only", " ", "happen", " ", "in", 
+                 " ", "S", " ", "phase"}], "*)"}], "\n", 
                RowBox[{"(*", 
-                RowBox[{"(*", 
-                 RowBox[{
-                 "only", " ", "at", " ", "M", "  ", "phase", " ", "does", " ",
-                   "cell", " ", "cycle", " ", "changes"}], "*)"}], "*)"}], 
-               "\n", "\n", 
+                RowBox[{
+                "during", " ", "these", " ", "phases", " ", "we", " ", "keep",
+                  " ", "transcripts", " ", "in", " ", "temp"}], "*)"}], "\n", 
+               
+               RowBox[{"(*", 
+                RowBox[{
+                 RowBox[{"Print", "[", "\"\<b5\>\"", "]"}], ";"}], "*)"}], 
+               "\n", "\n", ",", "\n", 
+               RowBox[{"(*", "Mphase", "*)"}], "\n", "\t", 
+               RowBox[{"(*", 
+                RowBox[{
+                 RowBox[{"Print", "[", "\"\<b6\>\"", "]"}], ";"}], "*)"}], 
+               "\n", 
+               RowBox[{"(*", 
+                RowBox[{
+                "move", " ", "transcripts", " ", "out", " ", "of", " ", 
+                 "temp"}], "*)"}], "\n", 
                RowBox[{
-                RowBox[{"newcellcylceduration", "=", 
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}]}], ";",
-                 "\n", "\n", 
                 RowBox[{"If", "[", 
                  RowBox[{
-                  RowBox[{"sigma", ">", "0"}], ",", "\n", 
+                  RowBox[{
+                   RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "2"}], "]"}], "]"}], "!=", 
+                   RowBox[{"{", "}"}]}], ",", 
                   RowBox[{"(*", 
                    RowBox[{
-                    RowBox[{"Print", "[", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"cellRelatedFunctions`cellcycleChangeOPT", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"Max", "[", 
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "1", ",", "#"}], "]"}], 
-                    "]"}], ",", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "2", ",", "#"}], "]"}], 
-                    "]"}]}], "}"}], "]"}], "+", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "4", "]"}], "]"}], "*", "sigma"}], ")"}]}], 
-                    ",", "sigma", ",", "0"}], "}"}], ",", 
-                    RowBox[{"-", "3"}]}], "]"}], "&"}], "/@", 
-                    RowBox[{"Range", "[", 
-                    RowBox[{"1", ",", "cyclePhase"}], "]"}]}], "]"}], ";"}], 
-                   "*)"}], "\n", 
+                   "there", " ", "is", " ", "no", " ", "need", " ", "to", " ",
+                     "do", " ", "anything", " ", "if", " ", "it", " ", "is", 
+                    " ", "empty"}], "*)"}], "\n", 
                   RowBox[{
-                   RowBox[{"newcellcylceduration", "=", 
+                   RowBox[{"If", "[", 
                     RowBox[{
-                    RowBox[{
-                    RowBox[{"cellcycleChangeOPT", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"Max", "[", 
-                    RowBox[{"{", 
                     RowBox[{
                     RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "1", ",", "#"}], "]"}], 
-                    "]"}], ",", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "2", ",", "#"}], "]"}], 
-                    "]"}]}], "}"}], "]"}], "+", 
-                    RowBox[{"(", 
-                    RowBox[{
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "4", "]"}], "]"}], "*", "sigma"}], ")"}]}], 
-                    ",", "sigma", ",", "0"}], "}"}], ",", 
-                    RowBox[{"-", "3"}]}], "]"}], "&"}], "/@", 
-                    RowBox[{"Range", "[", 
-                    RowBox[{"1", ",", "cyclePhase"}], "]"}]}]}], ";"}]}], 
-                 "]"}], ";", "\n", 
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{"sigma", "<", 
-                   RowBox[{"-", "5"}]}], ",", "\n", 
-                  RowBox[{
-                   RowBox[{"newcellcylceduration", "=", 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"cellcycleChangeOPT", "[", 
-                    RowBox[{
-                    RowBox[{"{", 
+                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "==", 
+                    RowBox[{"{", "}"}]}], ",", 
                     RowBox[{
                     RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "1", ",", "#"}], "]"}], 
-                    "]"}], ",", 
+                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
+                    
                     RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "2", ",", "#"}], "]"}], 
-                    "]"}], ",", 
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", 
-                    RowBox[{"-", "5"}]}], "]"}], "&"}], "/@", 
-                    RowBox[{"Range", "[", 
-                    RowBox[{"1", ",", "cyclePhase"}], "]"}]}]}], ";"}]}], 
-                 "]"}], ";", "\n", "\n", 
-                RowBox[{
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}], "=", 
-                 "newcellcylceduration"}], ";", "\n", "\n", 
-                RowBox[{"(*", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}], "=", 
-                   
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{"-", "100"}], "&"}], "/@", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}]}]}], 
-                  ";"}], "*)"}], "\n", "\n", "\n", "\n", 
-                RowBox[{"(*", 
-                 RowBox[{
-                 "move", " ", "transcripts", " ", "out", " ", "of", " ", 
-                  "temp"}], "*)"}], "\n", 
-                RowBox[{
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
-                 RowBox[{"Join", "[", 
-                  RowBox[{
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
-                   
-                   RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
                     RowBox[{"icell", ",", "7", ",", "2"}], "]"}], "]"}]}], 
-                  "]"}]}], ";", "\n", 
+                    ",", "\n", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
+                    
+                    RowBox[{"Plus", "[", 
+                    RowBox[{
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
+                    
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "2"}], "]"}], "]"}]}], 
+                    "]"}]}], ";"}]}], "\n", "]"}], ";"}]}], "\n", "]"}], ";", 
+                "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "resets", " ", "everything", " ", "to", " ", "zero"}], 
+                 "*)"}], "\n", 
                 RowBox[{
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", 
                    RowBox[{"icell", ",", "7", ",", "2"}], "]"}], "]"}], "=", 
-                 RowBox[{"{", "}"}]}], ";", "\n", 
+                 RowBox[{
+                  RowBox[{"newtissue", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "2"}], "]"}], "]"}], "/.", 
+                  RowBox[{
+                   RowBox[{"_", "?", "NumberQ"}], ":>", "0"}]}]}], ";", "\n", 
+                
                 RowBox[{"(*", 
                  RowBox[{
-                  RowBox[{"Print", "[", 
-                   RowBox[{"\"\<div1\>\"", ",", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5"}], "]"}], "]"}]}], "]"}], ";"}],
-                  "*)"}], "\n", "\n", "\n", 
+                  RowBox[{"Print", "[", "\"\<div1\>\"", "]"}], ";"}], "*)"}], 
+                "\n", 
                 RowBox[{
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", 
@@ -2033,7 +2011,7 @@ Cell[BoxData[
                   RowBox[{"go", " ", "back", " ", "to", " ", "G1"}], " ", "=", 
                   RowBox[{
                   "0", "in", " ", "cell", " ", "cycle", " ", "time"}]}], 
-                 "*)"}], "\n", "\n", 
+                 "*)"}], 
                 RowBox[{
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", 
@@ -2046,67 +2024,52 @@ Cell[BoxData[
                   RowBox[{"newtissue", "[", 
                    RowBox[{"[", 
                     RowBox[{"icell", ",", "4", ",", "3"}], "]"}], "]"}]}]}], 
-                ";", 
+                ";", " ", 
                 RowBox[{"(*", 
                  RowBox[{
                  "accumulated", " ", "cell", " ", "cycle", " ", "time"}], 
                  "*)"}], "\n", "\n", 
-                RowBox[{
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "4", ",", "3"}], "]"}], "]"}], "=", 
-                 RowBox[{"Total", "[", 
+                RowBox[{"(*", 
+                 RowBox[{"track", " ", "lineage"}], "*)"}], "\n", 
+                RowBox[{"lineage", "=", 
+                 RowBox[{"{", 
                   RowBox[{
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}], "/.",
-                    " ", 
-                   RowBox[{
-                    RowBox[{"_", "?", "Negative"}], "->", "0"}]}], "]"}]}], 
-                ";", "\n", "\n", 
-                RowBox[{"(*", 
-                 RowBox[{"current", " ", "cycle", " ", "time"}], "*)"}], "\n",
-                 "\n", 
-                RowBox[{"(*", 
-                 RowBox[{"increase", " ", "divisions"}], "*)"}], "\n", 
-                RowBox[{"(*", 
-                 RowBox[{"direction", " ", "of", " ", "division"}], "*)"}], 
-                "\n", 
-                RowBox[{
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"icell", ",", "3", ",", "3"}], "]"}], "]"}], "=", 
-                 RowBox[{"getunitDirectionOfDivision", "[", 
-                  RowBox[{"icell", ",", 
-                   RowBox[{"spaceParameters", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "newtissue", ",", 
-                   "\n", 
-                   RowBox[{"{", "}"}], ",", "polarityOpt"}], "]"}]}], ";", 
-                "\n", 
-                RowBox[{"(*", 
-                 RowBox[{
-                  RowBox[{"Print", "[", 
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "3", ",", "3"}], "]"}], "]"}], 
-                   "]"}], ";"}], "*)"}], "\n", 
-                RowBox[{"(*", "division", "*)"}], "\n", 
-                RowBox[{"tempCell", "=", 
-                 RowBox[{"cellDivision", "[", 
-                  RowBox[{"icell", ",", "newtissue", ",", 
+                   RowBox[{"{", "timestep", "}"}], ",", 
                    RowBox[{"{", 
                     RowBox[{
-                    RowBox[{"spaceParameters", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", 
-                    RowBox[{"1", "-", 
-                    RowBox[{"spaceParameters", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], ",", 
-                   RowBox[{"newtissue", "[", 
+                    RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
-                    RowBox[{"icell", ",", "3", ",", "3"}], "]"}], "]"}], ",", 
-                   
-                   RowBox[{"spaceParameters", "[", 
-                    RowBox[{"[", "9", "]"}], "]"}]}], "]"}]}], ";", "\n", 
+                    RowBox[{"icell", ",", "6", ",", "2"}], "]"}], "]"}], ",", 
+                    
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
+                    
+                    RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "4", ",", "3"}], "]"}], "]"}]}], 
+                    "}"}]}], "}"}]}], ";", "\n", "\n", 
+                RowBox[{"(*", 
+                 RowBox[{"Cell", " ", "DIVISION"}], "*)"}], "\n", 
+                RowBox[{"(*", 
+                 RowBox[{"divide", ",", " ", 
+                  RowBox[{"increase", " ", "divisions"}]}], "*)"}], "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"creates", " ", "2", " ", "new", " ", "cells"}], 
+                  ",", " ", 
+                  RowBox[{"in", " ", "2", "D"}], ",", " ", 
+                  RowBox[{
+                  "space", " ", "is", " ", "not", " ", "important"}]}], 
+                 "*)"}], "\n", 
+                RowBox[{"tempCell", "=", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"newtissue", "[", 
+                    RowBox[{"[", "icell", "]"}], "]"}], ",", 
+                   RowBox[{"newtissue", "[", 
+                    RowBox[{"[", "icell", "]"}], "]"}]}], "}"}]}], ";", "\n", 
+                
                 RowBox[{
                  RowBox[{
                   RowBox[{"tempCell", "[", 
@@ -2133,97 +2096,214 @@ Cell[BoxData[
                     RowBox[{"[", 
                     RowBox[{"2", ",", "3"}], "]"}], "]"}], "[", 
                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}]}], ";", "\n", 
+                "\n", 
+                RowBox[{"(*", 
+                 RowBox[{"(*", 
+                  RowBox[{
+                  "during", " ", "M", "  ", "phase", " ", "the", " ", "cell", 
+                   " ", "cycle", " ", "changes"}], "*)"}], "*)"}], "\n", "\n", 
                 RowBox[{"(*", 
                  RowBox[{
+                 "changes", " ", "the", " ", "cell", " ", "cycle", " ", 
+                  "duration", " ", "either", " ", "based", " ", "on", " ", 
+                  "a", " ", "normal", " ", "distributions", " ", "or", " ", 
+                  "some", " ", "determined", " ", "incremental", " ", 
+                  "value"}], "*)"}], 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"newcellcylceduration", "=", 
+                   RowBox[{"newtissue", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}]}], 
+                  ";"}], "*)"}], "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<div2\>\"", "]"}], ";"}], "*)"}], 
+                "\[IndentingNewLine]", "\n", 
+                RowBox[{"newcellcylceduration", "=", 
+                 RowBox[{
                   RowBox[{
-                   RowBox[{
-                    RowBox[{"tempCell", "[", 
+                   RowBox[{"cellcycleChangeOPT", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
-                    RowBox[{"1", ",", "3"}], "]"}], "]"}], "[", 
-                    RowBox[{"[", "3", "]"}], "]"}], "=", 
-                   RowBox[{
-                    RowBox[{"tempCell", "[", 
+                    RowBox[{"icell", ",", "5", ",", "1", ",", "#"}], "]"}], 
+                    "]"}], ",", 
+                    RowBox[{"cellCycleOpts", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                    RowBox[{"cellCycleOpts", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ",", 
+                    RowBox[{"cellCycleOpts", "[", 
                     RowBox[{"[", 
-                    RowBox[{"1", ",", "3"}], "]"}], "]"}], "[", 
-                    RowBox[{"[", "3", "]"}], "]"}]}], ";", 
-                  RowBox[{"(*", 
-                   RowBox[{"division", " ", "tracking"}], "*)"}], "\n", 
-                  RowBox[{
-                   RowBox[{
-                    RowBox[{"tempCell", "[", 
+                    RowBox[{"4", ",", "All", ",", "#"}], "]"}], "]"}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
-                    RowBox[{"2", ",", "3"}], "]"}], "]"}], "[", 
-                    RowBox[{"[", "3", "]"}], "]"}], "=", 
-                   RowBox[{
-                    RowBox[{"tempCell", "[", 
+                    RowBox[{"icell", ",", "5", ",", "1"}], "]"}], "]"}], "==", 
+                    RowBox[{"cellCycleOpts", "[", 
                     RowBox[{"[", 
-                    RowBox[{"1", ",", "3"}], "]"}], "]"}], "[", 
-                    RowBox[{"[", "3", "]"}], "]"}]}], ";"}], "*)"}], "\n", 
+                    RowBox[{"4", ",", "1"}], "]"}], "]"}]}], ")"}], ",", "1", 
+                    ",", "0"}], "]"}]}], " ", "}"}], ",", 
+                    RowBox[{"cellCycleOpts", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "&"}], "/@", 
+                  RowBox[{"Range", "[", 
+                   RowBox[{"1", ",", "cyclePhase"}], "]"}]}]}], ";", "\n", 
                 "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "each", " ", "phase", " ", "changes", " ", "independently", 
+                  " ", "based", " ", "on", " ", "a", " ", "function"}], 
+                 "*)"}], "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "newcellcylceduration", "]"}], ";"}], 
+                 "*)"}], "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"Print", "[", 
+                   RowBox[{"newcellcylceduration", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}], ";"}], 
+                 "*)"}], "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<div3\>\"", "]"}], ";"}], "*)"}], 
+                "\n", 
+                RowBox[{
+                 RowBox[{"tempCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "5", ",", "1"}], "]"}], "]"}], "=", 
+                 "newcellcylceduration"}], ";", "\n", 
+                RowBox[{
+                 RowBox[{"tempCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"2", ",", "5", ",", "1"}], "]"}], "]"}], "=", 
+                 "newcellcylceduration"}], ";", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"cellCycleOpts", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "==", 
+                    RowBox[{"-", "7"}]}], "||", 
+                    RowBox[{
+                    RowBox[{"cellCycleOpts", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "==", 
+                    RowBox[{"-", "6"}]}], "||", 
+                    RowBox[{
+                    RowBox[{"cellCycleOpts", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "==", 
+                    "\"\<stemlike\>\""}]}], ")"}], ",", "\n", 
+                  RowBox[{"(*", 
+                   RowBox[{
+                   "this", " ", "is", " ", "the", " ", "case", " ", "where", 
+                    " ", "two", " ", "daughtercells", " ", "have", " ", "a", 
+                    " ", "proportion", " ", "of", " ", "the", " ", "parental",
+                     " ", "cell"}], "*)"}], "\n", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"tempCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "5", ",", "1"}], "]"}], "]"}], "=", 
+                    RowBox[{"newcellcylceduration", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", "\n", 
+                   RowBox[{
+                    RowBox[{"tempCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "5", ",", "1"}], "]"}], "]"}], "=", 
+                    RowBox[{"newcellcylceduration", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";"}]}], "\n", 
+                 "]"}], ";", "\n", "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "accumulated", " ", "cell", " ", "cycle", " ", "time"}], 
+                 "*)"}], 
+                RowBox[{
+                 RowBox[{"tempCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "4", ",", "3"}], "]"}], "]"}], "=", 
+                 RowBox[{"Total", "[", 
+                  RowBox[{
+                   RowBox[{"tempCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "5", ",", "1"}], "]"}], "]"}], "/.", 
+                   " ", 
+                   RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "->", "0"}]}], "]"}]}], 
+                ";", "\n", 
+                RowBox[{
+                 RowBox[{"tempCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"2", ",", "4", ",", "3"}], "]"}], "]"}], "=", 
+                 RowBox[{"Total", "[", 
+                  RowBox[{
+                   RowBox[{"tempCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "5", ",", "1"}], "]"}], "]"}], "/.", 
+                   " ", 
+                   RowBox[{
+                    RowBox[{"_", "?", "Negative"}], "->", "0"}]}], "]"}]}], 
+                ";", "\n", "\n", 
                 RowBox[{"(*", 
                  RowBox[{"distributes", " ", "the", " ", "transcripts"}], 
                  "*)"}], "\n", 
                 RowBox[{"If", "[", 
                  RowBox[{
                   RowBox[{
-                   RowBox[{"Length", "[", 
+                   RowBox[{"Union", "[", 
                     RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
                     RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], 
-                    "]"}], ">", "0"}], ",", "\n", 
+                    "]"}], "!=", 
+                   RowBox[{"{", "0", "}"}]}], ",", "\n", 
                   RowBox[{
-                   RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
-                    
-                    RowBox[{"RandomSample", "[", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], 
-                    "]"}]}], ";", "\n", 
                    RowBox[{"tCell", "=", 
-                    RowBox[{"randDistofT", "[", 
-                    RowBox[{"Length", "[", 
+                    RowBox[{"randDistofT2", "[", 
                     RowBox[{"newtissue", "[", 
                     RowBox[{"[", 
                     RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], 
-                    "]"}], "]"}]}], ";", "\n", 
+                    "]"}]}], ";", 
                    RowBox[{
                     RowBox[{"tempCell", "[", 
                     RowBox[{"[", 
                     RowBox[{"1", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
-                    RowBox[{"Take", "[", 
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
-                    
                     RowBox[{"tCell", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";", "\n", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], ";", 
                    RowBox[{
                     RowBox[{"tempCell", "[", 
                     RowBox[{"[", 
                     RowBox[{"2", ",", "7", ",", "1"}], "]"}], "]"}], "=", 
-                    RowBox[{"Take", "[", 
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"icell", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
-                    
                     RowBox[{"tCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}]}], "\n", 
-                 "]"}], ";", "\n", "\n", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], ";"}]}], "\n", "]"}], 
+                ";", "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<div4\>\"", "]"}], ";"}], "*)"}], 
+                "\n", 
                 RowBox[{
                  RowBox[{"tempCell", "[", 
                   RowBox[{"[", 
                    RowBox[{"1", ",", "2"}], "]"}], "]"}], "=", "1"}], ";", 
-                "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "cell", " ", "size", " ", "stay", " ", "at", " ", "1"}], 
+                 "*)"}], "\n", 
                 RowBox[{
                  RowBox[{"tempCell", "[", 
                   RowBox[{"[", 
                    RowBox[{"2", ",", "2"}], "]"}], "]"}], "=", "1"}], ";", 
-                "\n", 
+                RowBox[{"(*", 
+                 RowBox[{
+                 "cell", " ", "size", " ", "stay", " ", "at", " ", "1"}], 
+                 "*)"}], 
                 RowBox[{
                  RowBox[{"tempCell", "[", 
                   RowBox[{"[", 
@@ -2233,7 +2313,9 @@ Cell[BoxData[
                    RowBox[{"[", 
                     RowBox[{"1", ",", "8"}], "]"}], "]"}], "<>", 
                   RowBox[{"ToString", "[", "icell", "]"}], "<>", 
-                  "\"\<1\>\""}]}], ";", "\n", 
+                  "\"\<1\>\""}]}], ";", 
+                RowBox[{"(*", 
+                 RowBox[{"name", " ", "of", " ", "the", " ", "cell"}], "*)"}], 
                 RowBox[{
                  RowBox[{"tempCell", "[", 
                   RowBox[{"[", 
@@ -2243,193 +2325,78 @@ Cell[BoxData[
                    RowBox[{"[", 
                     RowBox[{"2", ",", "8"}], "]"}], "]"}], "<>", 
                   RowBox[{"ToString", "[", "icell", "]"}], "<>", 
-                  "\"\<2\>\""}]}], ";", "\n", "\n", 
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{"fileNameSis", "!=", " ", "\"\<nosave\>\""}], ",", 
-                  "\n", 
-                  RowBox[{
-                   RowBox[{"str", " ", "=", " ", 
-                    RowBox[{"OpenAppend", "[", "fileNameSis", "]"}]}], ";", 
-                   "\n", "\t", 
-                   RowBox[{"Write", "[", 
-                    RowBox[{"str", ",", 
+                  "\"\<2\>\""}]}], ";", "\n", 
+                RowBox[{"(*", 
+                 RowBox[{"name", " ", "of", " ", "the", " ", "cell"}], "*)"}],
+                 "\n", 
+                RowBox[{"lineage", "=", 
+                 RowBox[{"Join", "[", 
+                  RowBox[{"lineage", ",", 
+                   RowBox[{"{", 
                     RowBox[{"{", 
-                    RowBox[{"timestep", ",", 
+                    RowBox[{
                     RowBox[{"tempCell", "[", 
                     RowBox[{"[", 
-                    RowBox[{"1", ",", "8"}], "]"}], "]"}], ",", 
+                    RowBox[{"1", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
                     RowBox[{"tempCell", "[", 
                     RowBox[{"[", 
-                    RowBox[{"2", ",", "8"}], "]"}], "]"}]}], "}"}]}], "]"}], 
-                   ";", "\n", "\t", 
-                   RowBox[{"Close", "[", "str", "]"}], ";"}]}], "\n", "]"}], 
-                ";", "\n", "\n", 
+                    RowBox[{"2", ",", "7", ",", "1"}], "]"}], "]"}], ",", 
+                    RowBox[{"tempCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "4", ",", "3"}], "]"}], "]"}], ",", 
+                    RowBox[{"tempCell", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "4", ",", "3"}], "]"}], "]"}]}], "}"}], 
+                    "}"}]}], "]"}]}], ";", "\n", "\n", 
+                RowBox[{
+                 RowBox[{"tempCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "9"}], "]"}], "]"}], "=", "lineage"}], 
+                ";", "\n", 
+                RowBox[{
+                 RowBox[{"tempCell", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"2", ",", "9"}], "]"}], "]"}], "=", "lineage"}], 
+                ";", "\n", 
+                RowBox[{"(*", 
+                 RowBox[{"lineage", " ", "=", " ", 
+                  RowBox[{"{", 
+                   RowBox[{"timestep", ",", " ", 
+                    RowBox[{"parental", " ", "genotype"}], ",", 
+                    RowBox[{"parental", " ", "phenotype"}], ",", " ", 
+                    RowBox[{"parental", " ", "cell", " ", "cycle"}], ",", " ", 
+                    RowBox[{"offspring1", " ", "phenotype"}], ",", 
+                    RowBox[{"offspring2", " ", "phenotype"}], ",", " ", 
+                    RowBox[{
+                    "offspring1", " ", "cell", " ", "cycle", " ", 
+                    "duration"}], ",", 
+                    RowBox[{
+                    "offspring2", " ", "cell", " ", "cycle", " ", 
+                    "duration"}]}], "}"}]}], "*)"}], "\n", 
                 RowBox[{
                  RowBox[{"newtissue", "[", 
                   RowBox[{"[", "icell", "]"}], "]"}], "=", 
                  RowBox[{"tempCell", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}]}], ";", "\n", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], ";", 
                 RowBox[{"newtissue", "=", 
                  RowBox[{"AppendTo", "[", 
                   RowBox[{"newtissue", ",", 
                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}]}], "\n", 
-              
-              RowBox[{"(*", "closepack", "*)"}], "\n", "\n", "]"}], ";"}]}], 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+              RowBox[{"(*", "closepack", "*)"}], "\n", "]"}], ";"}]}], 
            RowBox[{"(*", 
             RowBox[{
              RowBox[{"if", " ", "m", " ", "phase", " ", 
               RowBox[{"(", "4", ")"}], " ", "or", " ", "not"}], " ", 
              "\[LessEqual]", "3"}], "*)"}], "\n", "]"}], ";", 
-          RowBox[{"(*", "for", "*)"}], "\n", "\n", "\n", 
           RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"Print", "[", "\"\<Problem13\>\"", "]"}], ";"}], "*)"}], 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-           "change", " ", "the", " ", "cell", " ", "cycle", " ", "based", " ",
-             "on", " ", "distance"}], "*)"}], "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"sigma", "==", 
-              RowBox[{"-", "5"}]}], "&&", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"Length", "[", "newtissue", "]"}], "==", "2"}], 
-              ")"}]}], ",", "\n", 
-            RowBox[{"(*", 
-             RowBox[{
-              RowBox[{"tempCell", "=", 
-               RowBox[{
-               "cellRelatedFunctions`averageTissueSize", "[", "newtissue", 
-                "]"}]}], ";"}], "*)"}], "\n", 
-            RowBox[{
-             RowBox[{"tempCell", "=", 
-              RowBox[{"Last", "[", 
-               RowBox[{"Sort", "[", 
-                RowBox[{
-                 RowBox[{
-                  RowBox[{"{", 
-                   RowBox[{
-                    RowBox[{"EuclideanDistance", "[", 
-                    RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"#", ",", "1"}], "]"}], "]"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "]"}], ",", 
-                    "#"}], "}"}], "&"}], "/@", 
-                 RowBox[{"Range", "[", 
-                  RowBox[{"1", ",", 
-                   RowBox[{"Length", "[", "newtissue", "]"}]}], "]"}]}], 
-                "]"}], "]"}]}], ";", "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-               RowBox[{"Print", "[", 
-                RowBox[{"\"\<-5 \>\"", ",", 
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5"}], "]"}], 
-                  "]"}]}], "]"}], ";"}], "*)"}], "\n", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"If", "[", 
-                RowBox[{
-                 RowBox[{
-                  RowBox[{"newtissue", "[", 
-                   RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5", ",", "1", ",", 
-                    "#"}], "]"}], "]"}], "<", "0"}], ",", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5", ",", "2", ",", 
-                    "#"}], "]"}], "]"}], "=", 
-                   RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5", ",", "1", ",", 
-                    "#"}], "]"}], "]"}], "+", 
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "4", "]"}], "]"}]}]}], ";"}], ",", "\n", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5", ",", "1", ",", 
-                    "#"}], "]"}], "]"}], "=", 
-                   RowBox[{
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5", ",", "1", ",", 
-                    "#"}], "]"}], "]"}], "+", 
-                    RowBox[{"transcriptionPara", "[", 
-                    RowBox[{"[", "4", "]"}], "]"}]}]}], ";"}]}], "]"}], "&"}],
-               "/@", 
-              RowBox[{"Range", "[", 
-               RowBox[{"1", ",", "cyclePhase"}], "]"}]}], ";", "\n", 
-             RowBox[{"(*", 
-              RowBox[{
-               RowBox[{"Print", "[", 
-                RowBox[{"\"\<-5 after \>\"", ",", 
-                 RowBox[{"newtissue", "[", 
-                  RowBox[{"[", 
-                   RowBox[{
-                    RowBox[{"tempCell", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], ",", "5"}], "]"}], 
-                  "]"}]}], "]"}], ";"}], "*)"}], "\n", 
-             RowBox[{"Table", "[", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"newtissue", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"i", ",", "3", ",", "1"}], "]"}], "]"}], "=", 
-                RowBox[{
-                 RowBox[{"If", "[", 
-                  RowBox[{
-                   RowBox[{
-                    RowBox[{"Flatten", "[", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"i", ",", "7"}], "]"}], "]"}], "]"}], "==", 
-                    RowBox[{"{", "}"}]}], ",", "0", ",", 
-                   RowBox[{"Median", "[", 
-                    RowBox[{"Flatten", "[", 
-                    RowBox[{"newtissue", "[", 
-                    RowBox[{"[", 
-                    RowBox[{"i", ",", "7"}], "]"}], "]"}], "]"}], "]"}]}], 
-                  "]"}], "/", 
-                 RowBox[{"Max", "[", 
-                  RowBox[{"genome", "[", 
-                   RowBox[{"[", 
-                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}]}]}], ",", 
-               RowBox[{"{", 
-                RowBox[{"i", ",", 
-                 RowBox[{"Length", "[", "newtissue", "]"}]}], "}"}]}], "]"}], 
-             ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+           RowBox[{"for", " ", "each", " ", "cell"}], "*)"}], "\n", "\n", 
           RowBox[{"Remove", "[", 
            RowBox[{
-           "oneCycle", ",", "cellCycles", ",", "cellorder", ",", "cpos", ",", 
-            "icell", ",", "transcriptionTime", ",", "cyclePhase", ",", 
-            "copies", ",", "ploidy", ",", "tCell", ",", "str", ",", 
-            "timerange", ",", "tempCell"}], "]"}], ";", "\n", "newtissue"}]}],
-         "\n", "]"}]}]}], "}"}]}]}], "]"}]], "Input",
+           "oneCycle", ",", "cellCycles", ",", "cpos", ",", "icell", ",", 
+            "cyclePhase", ",", "ploidy", ",", "tCell", ",", "tempCell"}], 
+           "]"}], ";", "\n", "\n", "newtissue"}]}], "\n", "]"}]}]}], 
+     "}"}]}]}], "]"}]], "Input",
  CellChangeTimes->{{3.7767759270482407`*^9, 3.776775946565825*^9}, {
    3.776775990196795*^9, 3.7767759954863777`*^9}, {3.7767760351363287`*^9, 
    3.776776083755659*^9}, 3.7767761686325607`*^9, {3.776776218789012*^9, 
@@ -2479,102 +2446,120 @@ Cell[BoxData[
    3.779146014311561*^9}, {3.77914606001436*^9, 3.7791460910232983`*^9}, {
    3.779146147086814*^9, 3.7791461506143703`*^9}, {3.7791464199134293`*^9, 
    3.779146421360413*^9}, 3.779146541905778*^9, {3.7791466512487803`*^9, 
-   3.779146662150004*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
+   3.779146662150004*^9}, {3.78087209297688*^9, 3.7808721014719763`*^9}, {
+   3.7808721657039757`*^9, 3.780872209141766*^9}, {3.7808723613031683`*^9, 
+   3.780872362117291*^9}, {3.780872410378112*^9, 3.780872410892103*^9}, {
+   3.780872483989889*^9, 3.7808725687148046`*^9}, {3.780872673371972*^9, 
+   3.7808726743125257`*^9}, {3.7808727808184767`*^9, 3.78087281459166*^9}, {
+   3.780872956545951*^9, 3.7808730004576693`*^9}, {3.780873094293805*^9, 
+   3.780873158191828*^9}, 3.824396798705254*^9, {3.824396848118927*^9, 
+   3.824396938628729*^9}, {3.8243969708398857`*^9, 3.8243969720566673`*^9}, {
+   3.824397018131785*^9, 3.824397023859486*^9}, 3.8243970597496147`*^9, {
+   3.82439710418895*^9, 3.824397136517976*^9}, {3.824397228241769*^9, 
+   3.824397269096451*^9}, {3.8243973369506617`*^9, 3.824397355408422*^9}, {
+   3.8243974681275883`*^9, 3.824397477376893*^9}, 3.824398592646002*^9, {
+   3.82439863183316*^9, 3.824398687741733*^9}, {3.824398718470811*^9, 
+   3.824398747385564*^9}, {3.824398796082971*^9, 3.824398813658626*^9}, {
+   3.824399053039493*^9, 3.824399063486754*^9}, 3.8244608641363983`*^9, {
+   3.824460922212986*^9, 3.824461009563952*^9}, {3.824461106230074*^9, 
+   3.8244611206737137`*^9}, {3.824461189397276*^9, 3.824461202277248*^9}, {
+   3.8244614540998507`*^9, 3.824461465093586*^9}, {3.8244615941689177`*^9, 
+   3.8244616566743927`*^9}, {3.8244617134110317`*^9, 
+   3.8244617510631857`*^9}, {3.824461823210367*^9, 3.824461839398031*^9}, 
+   3.824461897335618*^9, {3.8244620615846453`*^9, 3.824462073098884*^9}, {
+   3.82446215397871*^9, 3.824462156284717*^9}, {3.824462194747806*^9, 
+   3.824462307574986*^9}, 3.824462359451833*^9, {3.8244624311204777`*^9, 
+   3.824462436475917*^9}, {3.824462487769968*^9, 3.824462503974063*^9}, {
+   3.824462545055541*^9, 3.824462565950384*^9}, {3.824462633551635*^9, 
+   3.8244626348660383`*^9}, {3.8244626955504293`*^9, 3.824462700182729*^9}, {
+   3.824462734587718*^9, 3.824462738973461*^9}, {3.82446288060771*^9, 
+   3.824462880893091*^9}, {3.824462947823892*^9, 3.82446299588804*^9}, {
+   3.8244630334960613`*^9, 3.824463034912101*^9}, {3.824463088311727*^9, 
+   3.82446313092418*^9}, {3.824463200751086*^9, 3.824463202496509*^9}, {
+   3.824463242368335*^9, 3.8244632734718723`*^9}, {3.824463324690096*^9, 
+   3.824463357036357*^9}, {3.8244634157962418`*^9, 3.824463479822257*^9}, {
+   3.8260408976515083`*^9, 3.826041057405795*^9}, 3.826041113401761*^9, {
+   3.826041160988923*^9, 3.826041178101066*^9}, {3.826041386837413*^9, 
+   3.8260414203246202`*^9}, {3.826041539241827*^9, 3.8260415468529587`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`ccT$$ = 2, $CellContext`ccTsigma$$ = 
-    0, $CellContext`cDivisions$$ = 2, $CellContext`G$$ = 
-    3, $CellContext`incCycle$$ = 0, $CellContext`L1$$ = 1, $CellContext`LG$$ =
-     3, $CellContext`maternal$$ = 0, $CellContext`ploidy$$ = 1, 
+   DynamicModuleBox[{$CellContext`ccT$$ = 8.57, $CellContext`ccTsigma$$ = 
+    0, $CellContext`cDivisions$$ = 3, $CellContext`G$$ = 
+    12, $CellContext`incCycle$$ = 1.58, $CellContext`L1$$ = 
+    1, $CellContext`LG$$ = 7.61, $CellContext`maternal$$ = 
+    0, $CellContext`ploidy$$ = 2, $CellContext`\[CapitalOmega]$$ = 3.35, 
     Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`L1$$], 1, "L1"}, 1, 10}, {{
        Hold[$CellContext`LG$$], 3, "LG"}, 1, 10}, {{
-       Hold[$CellContext`G$$], 3, "G"}, 1, 10, 1}, {{
+       Hold[$CellContext`G$$], 3, "G"}, 1, 20, 1}, {{
        Hold[$CellContext`maternal$$], 0, "Half-Life"}, 0, 1}, {{
        Hold[$CellContext`cDivisions$$], 2, "Cell Divisions"}, 1, 10, 1}, {{
        Hold[$CellContext`ccTsigma$$], 0, "Gaussian sigma"}, 0, 1}, {{
        Hold[$CellContext`ccT$$], 2, "Cell Cycle"}, 1, 10}, {{
        Hold[$CellContext`incCycle$$], 0, "increments"}, 0, 10}, {{
-       Hold[$CellContext`ploidy$$], 1, "ploidy"}, 1, 5, 1}}, 
-    Typeset`size$$ = {519., {157., 161.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = 
-    False, $CellContext`L1$5620$$ = 0, $CellContext`LG$5621$$ = 
-    0, $CellContext`G$5622$$ = 0, $CellContext`maternal$5623$$ = 
-    0, $CellContext`cDivisions$5624$$ = 0, $CellContext`ccTsigma$5625$$ = 
-    0, $CellContext`ccT$5626$$ = 0, $CellContext`incCycle$5627$$ = 
-    0, $CellContext`ploidy$5628$$ = 0}, 
+       Hold[$CellContext`ploidy$$], 1, "ploidy"}, 1, 5, 1}, {{
+       Hold[$CellContext`\[CapitalOmega]$$], 0.25, 
+       "RNA-pol re-initation distance, \[CapitalOmega]"}, 0, 5}}, 
+    Typeset`size$$ = {538., {193.134033203125, 198.865966796875}}, 
+    Typeset`update$$ = 3.826027191674546`16.335323041404354*^9, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, 
       "Variables" :> {$CellContext`ccT$$ = 2, $CellContext`ccTsigma$$ = 
         0, $CellContext`cDivisions$$ = 2, $CellContext`G$$ = 
         3, $CellContext`incCycle$$ = 0, $CellContext`L1$$ = 
         1, $CellContext`LG$$ = 3, $CellContext`maternal$$ = 
-        0, $CellContext`ploidy$$ = 1}, "ControllerVariables" :> {
-        Hold[$CellContext`L1$$, $CellContext`L1$5620$$, 0], 
-        Hold[$CellContext`LG$$, $CellContext`LG$5621$$, 0], 
-        Hold[$CellContext`G$$, $CellContext`G$5622$$, 0], 
-        Hold[$CellContext`maternal$$, $CellContext`maternal$5623$$, 0], 
-        Hold[$CellContext`cDivisions$$, $CellContext`cDivisions$5624$$, 0], 
-        Hold[$CellContext`ccTsigma$$, $CellContext`ccTsigma$5625$$, 0], 
-        Hold[$CellContext`ccT$$, $CellContext`ccT$5626$$, 0], 
-        Hold[$CellContext`incCycle$$, $CellContext`incCycle$5627$$, 0], 
-        Hold[$CellContext`ploidy$$, $CellContext`ploidy$5628$$, 0]}, 
+        0, $CellContext`ploidy$$ = 1, $CellContext`\[CapitalOmega]$$ = 0.25}, 
+      "ControllerVariables" :> {}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
         Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, 
-      "Body" :> ($CellContext`genomeLength = 
+         Typeset`skipInitDone$$}, "Body" :> (Off[
+         MessageName[Eigenvalues, "mindet"]]; $CellContext`genomeLength = 
         Range[$CellContext`L1$$, $CellContext`LG$$, \
 $CellContext`LG$$/$CellContext`G$$]; $CellContext`genomeName = Range[1, 
-          
-          Length[$CellContext`genomeLength]]; $CellContext`xC = {{{0, 0, 0}, 
-           1, {0, 0.1, {}}, {0, 0, 
+          Length[$CellContext`genomeLength]]; $CellContext`emptList = 
+        ReplaceAll[$CellContext`genomeName, PatternTest[
+            Blank[], NumberQ] :> 0]; $CellContext`genomeI = Part[
+          Tuples[{1}, 
+           Length[$CellContext`genomeLength]], 
+          1]; $CellContext`xC = {{{0, 0, 0}, 1, {0, 0.1, {}}, {0, 0, 
             Total[
-             ReplaceAll[$CellContext`ccT$$, PatternTest[
-                Blank[], Negative] -> 0]], 
-            0}, {{$CellContext`ccT$$, -5, -5, -5}, {-100, -100, -100, -100}}, \
-{1, 
-            Part[
-             Tuples[{1}, 
-              Length[$CellContext`genomeLength]], 1]}, {{}, {}}, 
+             ReplaceAll[{$CellContext`ccT$$, -500, -500, -500}, PatternTest[
+                Blank[], Negative] -> 0]], 0, 
+            0}, {{$CellContext`ccT$$, -500, -500, -500}}, {1, 
+            Map[$CellContext`genomeI& , 
+             Range[
+             1, $CellContext`ploidy$$]]}, {$CellContext`emptList, \
+$CellContext`emptList}, 
            StringJoin[
-            ToString[0], "-1"]}}; 
-       Table[$CellContext`xC = 
-          cellCycleHypothesis`oneFullCycleV0[$CellContext`xC, \
-$CellContext`timestep, $CellContext`ccTsigma$$, 
-            Transpose[{$CellContext`genomeName, $CellContext`genomeLength}], 
-            "nosave", {
+            ToString[1], "-1"], {}}}; 
+       Table[$CellContext`xC = $CellContext`oneFullCycleV01[$CellContext`xC, \
+$CellContext`timestep, {$CellContext`ccTsigma$$, $CellContext`incCycle$$, -3, \
+{{$CellContext`ccT$$, -500, -500, -500}}}, 
+            Transpose[{$CellContext`genomeName, $CellContext`genomeLength}], {
+            
              Part[
               Tuples[{Blank[] -> 1}, {
                 Length[$CellContext`genomeName], 
                 Length[$CellContext`genomeName]}], 
-              1], $CellContext`maternal$$, $CellContext`ploidy$$, \
-$CellContext`incCycle$$, {0, 0}}, 
-            Join[{0, 0.5, {0, 0, 0, 0, 0}}, {0, 0, 0, 0, 0, 0}], {
-            0}]; $CellContext`tt = Map[Flatten[{
+              1], $CellContext`maternal$$, $CellContext`ploidy$$, {-1, \
+$CellContext`\[CapitalOmega]$$}}]; $CellContext`tt = Map[Flatten[{
               Part[#, 8], 
               Part[#, 4, 1], 
-              StringJoin[
-               Map[ToString[#]& , 
-                Part[#, 6, 2]]], 
+              Part[#, 4, 5], 
               Total[
                ReplaceAll[
                 Part[#, 5], PatternTest[
-                  Blank[], Negative] -> 0]], $CellContext`temp = Counts[
-                 Flatten[
-                  Part[#, 7]]]; $CellContext`tt = Part[
-                 Tuples[{0}, 
-                  Length[$CellContext`genomeName]], 1]; 
-              Map[(Part[$CellContext`tt, #] = $CellContext`temp[#])& , 
-                
-                Keys[$CellContext`temp]]; $CellContext`tt}]& , \
-$CellContext`xC]; 
+                  Blank[], Negative] -> 0]], 
+              Total[
+               Part[#, 7]]}]& , $CellContext`xC]; 
          Null, {$CellContext`timestep, 
           0, $CellContext`cDivisions$$}]; $CellContext`tt = 
         Part[$CellContext`tt, All, -
@@ -2602,277 +2587,113 @@ $CellContext`xC];
                Max[
                 Part[$CellContext`col1, $CellContext`i]]]]], {
             0}], {$CellContext`i, 1, 
-            Length[$CellContext`col1]}]); 
-       BoxWhiskerChart[{$CellContext`pp}, ChartStyle -> {
-           Lighter[Orange, 0.2], 
-           ColorData["ThermometerColors"][0.15], 
-           ColorData[24][8]}, BarSpacing -> {0, 2, 4}, 
-         ChartLabels -> {{$CellContext`ccT$$}, {"short", "medium", "long"}}, 
-         ChartLegends -> {
-           StringJoin["Short \[LessEqual]", 
-            ToString[$CellContext`LG$$/3 + 0.05]], 
-           StringJoin["Medium \[LessEqual]", 
-            ToString[2 ($CellContext`LG$$/3) + 0.05]], 
-           StringJoin["Long \[LessEqual]", 
-            ToString[$CellContext`LG$$ + 0.05]]}, FrameStyle -> Black, 
-         FrameLabel -> {
-          "Cell Cycle Duration (hrs)", "Transcript Count per Cell"}, 
-         PlotLabel -> Style["Simulation", Black], 
-         BaseStyle -> {18, Black, "Helvetica"}, ImageSize -> 400]), 
+            Length[$CellContext`col1]}]); TableForm[{
+          BoxWhiskerChart[{$CellContext`pp}, ChartStyle -> {
+             Lighter[Orange, 0.2], 
+             ColorData["ThermometerColors"][0.15], 
+             ColorData[24][8]}, BarSpacing -> {0, 2, 4}, 
+           ChartLabels -> {{$CellContext`ccT$$}, {"short", "medium", "long"}},
+            ChartLegends -> {
+             StringJoin["Short \[LessEqual]", 
+              ToString[$CellContext`LG$$/3 + 0.05]], 
+             StringJoin["Medium \[LessEqual]", 
+              ToString[2 ($CellContext`LG$$/3) + 0.05]], 
+             StringJoin["Long \[LessEqual]", 
+              ToString[$CellContext`LG$$ + 0.05]]}, FrameStyle -> Black, 
+           FrameLabel -> {
+            "Cell Cycle Duration (hrs)", "Transcript Count per Cell"}, 
+           PlotLabel -> Style["Simulation", Black], 
+           BaseStyle -> {18, Black, "Helvetica"}, ImageSize -> 400], 
+          Text[
+           StringJoin["Transcriptome Diversity = ", 
+            ToString[
+             Length[
+              Union[$CellContext`tt]]]]], 
+          Text[
+           StringJoin["Clusters = ", 
+            ToString[
+             Length[
+              FindClusters[$CellContext`tt]]]]], 
+          "results from one iteration"}]), 
       "Specifications" :> {{{$CellContext`L1$$, 1, "L1"}, 1, 
          10}, {{$CellContext`LG$$, 3, "LG"}, 1, 
-         10}, {{$CellContext`G$$, 3, "G"}, 1, 10, 
+         10}, {{$CellContext`G$$, 3, "G"}, 1, 20, 
          1}, {{$CellContext`maternal$$, 0, "Half-Life"}, 0, 
          1}, {{$CellContext`cDivisions$$, 2, "Cell Divisions"}, 1, 10, 1, 
          ContinuousAction -> 
          False}, {{$CellContext`ccTsigma$$, 0, "Gaussian sigma"}, 0, 
          1}, {{$CellContext`ccT$$, 2, "Cell Cycle"}, 1, 10, ContinuousAction -> 
          False}, {{$CellContext`incCycle$$, 0, "increments"}, 0, 
-         10}, {{$CellContext`ploidy$$, 1, "ploidy"}, 1, 5, 1}}, 
+         10}, {{$CellContext`ploidy$$, 1, "ploidy"}, 1, 5, 
+         1}, {{$CellContext`\[CapitalOmega]$$, 0.25, 
+          "RNA-pol re-initation distance, \[CapitalOmega]"}, 0, 5}}, 
       "Options" :> {
        ControlPlacement -> Left, SynchronousUpdating -> False, 
         AutorunSequencing -> {Automatic, 0}, ContinuousAction -> None, 
         LabelStyle -> Directive[{"Helvetica", 
            GrayLevel[0], 14}]}, "DefaultOptions" :> {}],
-     ImageSizeCache->{892., {186., 192.}},
+     ImageSizeCache->{1025., {224., 229.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
     Initialization:>({
-       SeedRandom[Method -> "MersenneTwister"], ContinuousAction -> False, 
-       coalescingToPackingFunctions`getUnitVector[
-         Pattern[$CellContext`vectA, 
-          Blank[]], 
-         Pattern[$CellContext`vectB, 
-          Blank[]]] := If[
-         Or[$CellContext`vectA == $CellContext`vectB, 
-          EuclideanDistance[$CellContext`vectA, $CellContext`vectB] == 
-          0], $CellContext`vectA, ($CellContext`vectA - $CellContext`vectB)/
-         EuclideanDistance[$CellContext`vectA, $CellContext`vectB]], 
-       coalescingToPackingFunctions`centerDistance[
-         Pattern[$CellContext`rA, 
-          Blank[]], 
-         Pattern[$CellContext`rB, 
-          Blank[]], 
-         Pattern[$CellContext`angle, 
-          Blank[]]] := N[
-         Sqrt[$CellContext`rA^2 + $CellContext`rB^2 - (
-           2 $CellContext`rA $CellContext`rB) Cos[$CellContext`angle]]], 
-       coalescingToPackingFunctions`relativeVolume[
-         Pattern[$CellContext`orgRadius, 
-          Blank[]], 
-         Pattern[$CellContext`sizeRatio, 
-          Blank[]]] := Part[
-         ReplaceAll[
-          Abs[$CellContext`orgRadius], 
-          
-          Solve[((4/3) 
-             Pi $CellContext`orgRadius^3) $CellContext`sizeRatio == (4/3) 
-            Pi $CellContext`radius^3, $CellContext`radius, WorkingPrecision -> 
-           10]], 1], coalescingToPackingFunctions`moveTwospheres[
-         Pattern[$CellContext`spheres, 
-          Blank[]], 
-         Pattern[$CellContext`dist, 
-          Blank[]]] := 
-       Module[{$CellContext`cells, $CellContext`d}, $CellContext`cells = \
-$CellContext`spheres; $CellContext`d = 
-          coalescingToPackingFunctions`getUnitVector[
-             Part[$CellContext`spheres, 1, 1], 
-             Part[$CellContext`spheres, 2, 1]] $CellContext`dist; 
-         If[EuclideanDistance[
-            Part[$CellContext`spheres, 1, 1] - $CellContext`d, 
-             Part[$CellContext`spheres, 1, 1] - 
-             Part[$CellContext`spheres, 1, 1]] <= 0.01, {
-            Part[$CellContext`cells, 1], 
-            ReplacePart[
-             Part[$CellContext`cells, 2], 1 -> 
-             Part[$CellContext`cells, 1, 1] + $CellContext`d]}, {
-            Part[$CellContext`cells, 1], 
-            ReplacePart[
-             Part[$CellContext`cells, 2], 1 -> 
-             Part[$CellContext`cells, 1, 1] - $CellContext`d]}]], 
-       cellRelatedFunctions`cellDivision[
-         Pattern[$CellContext`icell, 
-          Blank[]], 
-         Pattern[$CellContext`organtissue, 
-          Blank[]], 
-         Pattern[$CellContext`sizeRatio, 
-          Blank[]], 
-         Pattern[$CellContext`directionVector, 
-          Blank[]], 
-         Optional[
-          Pattern[$CellContext`cp, 
-           Blank[]], -2]] := 
-       Module[{$CellContext`cell1, $CellContext`cell2}, $CellContext`cell2 = \
-($CellContext`cell1 = Part[$CellContext`organtissue, $CellContext`icell]); 
-         Part[$CellContext`cell2, 2] = 
-          coalescingToPackingFunctions`relativeVolume[
-            Part[$CellContext`organtissue, $CellContext`icell, 2], 
-            Part[$CellContext`sizeRatio, 2]]; 
-         Part[$CellContext`cell1, 2] = 
-          coalescingToPackingFunctions`relativeVolume[
-            Part[$CellContext`organtissue, $CellContext`icell, 2], 
-            Part[$CellContext`sizeRatio, 1]]; 
-         Part[$CellContext`cell1, 1] = 
-          Part[$CellContext`organtissue, $CellContext`icell, 
-             1] - $CellContext`directionVector (Part[$CellContext`cell1, 2]/
-            2); Part[$CellContext`cell2, 1] = 
-          Part[$CellContext`organtissue, $CellContext`icell, 
-             1] + $CellContext`directionVector (Part[$CellContext`cell2, 2]/
-             2); coalescingToPackingFunctions`moveTwospheres[{$CellContext`\
-cell1, $CellContext`cell2}, 
-           Which[$CellContext`cp == -1, 
-            coalescingToPackingFunctions`centerDistance[
-             Part[$CellContext`cell1, 2], 
-             Part[$CellContext`cell2, 2], Pi (60/180)], $CellContext`cp == -2,
-             Part[$CellContext`cell1, 2] + 
-            Part[$CellContext`cell2, 2], $CellContext`cp >= 
-            0., $CellContext`cp]]], 
-       cellRelatedFunctions`getunitDirectionOfDivision[
-         Pattern[$CellContext`icell, 
-          Blank[]], 
-         Pattern[$CellContext`sizeR, 
-          Blank[]], 
-         Pattern[$CellContext`organtissue, 
-          Blank[]], 
-         Pattern[$CellContext`neighPos, 
-          Blank[]], 
-         Pattern[$CellContext`polarityOpt, 
-          Blank[]]] := 
-       Module[{$CellContext`c2N, $CellContext`res, $CellContext`relv, \
-$CellContext`uv}, If[
-           And[
-           Part[$CellContext`polarityOpt, 1] > 0, 
-            Part[$CellContext`polarityOpt, 1] <= 3], $CellContext`c2N = If[
-              Or[
-              Length[$CellContext`neighPos] < 1, 
-               Length[$CellContext`organtissue] < 2], {}, 
-              Complement[
-               Take[
-                Part[$CellContext`neighPos, 3], 
-                Count[
-                 Part[$CellContext`neighPos, 1], 1]], {$CellContext`icell}]]; 
-           Null, $CellContext`c2N = {}; Null]; $CellContext`relv = 
-          coalescingToPackingFunctions`relativeVolume[
-            
-            Part[$CellContext`organtissue, $CellContext`icell, 
-             2], $CellContext`sizeR]; If[
-           Or[
-            And[
-            Length[$CellContext`c2N] < 1, Part[$CellContext`polarityOpt, 1] <= 
-             3], 
-            And[
-            Part[$CellContext`organtissue, $CellContext`icell, 3, 3] == {}, 
-             Part[$CellContext`polarityOpt, 1] == 4], 
-            And[
-            Part[$CellContext`polarityOpt, 2] == {}, 
-             Part[$CellContext`polarityOpt, 1] == 5], 
-            Part[$CellContext`polarityOpt, 1] == 0], 
-           Do[$CellContext`relv = 
-              coalescingToPackingFunctions`relativeVolume[
-                
-                Part[$CellContext`organtissue, $CellContext`icell, 
-                 2], $CellContext`sizeR]; $CellContext`res = {
-                Part[$CellContext`organtissue, $CellContext`icell, 1], 
-                Part[$CellContext`organtissue, $CellContext`icell, 1] + 
-                RandomReal[{-$CellContext`relv, $CellContext`relv}, 3]}; 
-             If[EuclideanDistance[
-                 Part[$CellContext`organtissue, $CellContext`icell, 1], 
-                 Part[$CellContext`res, 2]] == 0, $CellContext`k = 0]; 
-             Null, {$CellContext`k, 1, 1}]; Null, 
-           Which[Part[$CellContext`polarityOpt, 1] == 1, $CellContext`res = {
-                Part[$CellContext`organtissue, $CellContext`icell, 1], 
-                Part[$CellContext`organtissue, 
-                  RandomChoice[$CellContext`c2N], 1] + 
-                RandomReal[{-$CellContext`relv, $CellContext`relv}, 3]}; Null,
-              Part[$CellContext`polarityOpt, 1] == 2, $CellContext`res = {
-                Part[$CellContext`organtissue, $CellContext`icell, 1], Mean[
-                  Map[
-                  Part[$CellContext`organtissue, #, 1]& , $CellContext`c2N]] + 
-                RandomReal[{-$CellContext`relv, $CellContext`relv}, 3]}; Null,
-              Part[$CellContext`polarityOpt, 1] == 3, $CellContext`res = {
-                Part[$CellContext`organtissue, $CellContext`icell, 1], 
-                Part[$CellContext`organtissue, 
-                  Last[$CellContext`c2N], 1] + 
-                RandomReal[{-$CellContext`relv, $CellContext`relv}, 3]}; Null,
-              Part[$CellContext`polarityOpt, 1] == 4, $CellContext`res = {
-                Part[$CellContext`organtissue, $CellContext`icell, 3, 3], 
-                Part[$CellContext`organtissue, $CellContext`icell, 3, 3]}; 
-             Null, Part[$CellContext`polarityOpt, 1] == 
-             5, $CellContext`res = Part[
-                RandomSample[
-                 Part[$CellContext`polarityOpt, 2], 1], 
-                1]; $CellContext`res = {$CellContext`res, $CellContext`res}; 
-             Null]; Null]; $CellContext`uv = 
-          coalescingToPackingFunctions`getUnitVector[
-            Part[$CellContext`organtissue, $CellContext`icell, 1], 
-            Part[$CellContext`res, 1]]; 
-         Which[Part[$CellContext`polarityOpt, 3] == 
-           1, $CellContext`uv = $CellContext`uv {1, 0, 0}; Null, 
-           Part[$CellContext`polarityOpt, 3] == 
-           2, $CellContext`uv = $CellContext`uv {1, 1, 0}; 
-           Null]; $CellContext`uv], cellRelatedFunctions`cellcycle03[
+       SeedRandom[Method -> "MersenneTwister"], ContinuousAction -> 
+       False, $CellContext`cellcycle01[
+         Pattern[$CellContext`val, 
+          Blank[]]] := RandomReal[
+          Part[$CellContext`val, 1], WorkingPrecision -> 2] + 
+        Part[$CellContext`val, 2] + 
+        Part[$CellContext`val, 3], $CellContext`cellcycle02[
+         Pattern[$CellContext`val, 
+          Blank[]]] := RandomVariate[
+          PoissonDistribution[
+           Part[$CellContext`val, 1]]] + Part[$CellContext`val, 2] + 
+        Part[$CellContext`val, 3], $CellContext`cellcycle03[
          Pattern[$CellContext`val, 
           Blank[]]] := RandomVariate[
           NormalDistribution[
            Part[$CellContext`val, 1], 
-           Part[$CellContext`val, 2]]] + Part[$CellContext`val, 3], 
-       cellRelatedFunctions`cellcycleChangeOPT[
+           Part[$CellContext`val, 2]]] + 
+        Part[$CellContext`val, 3], $CellContext`cellcycle04[
+         Pattern[$CellContext`val, 
+          Blank[]]] := RandomVariate[
+          NormalDistribution[
+          Part[$CellContext`val, 1] + 
+           Part[$CellContext`val, 2] Part[$CellContext`val, 3], 
+           Part[$CellContext`val, 2]]] + 
+        Part[$CellContext`val, 3], $CellContext`cellcycleChangeOPT[
          Pattern[$CellContext`val, 
           Blank[]], 
          Pattern[$CellContext`opt, 
           Blank[]]] := 
        Which[$CellContext`opt == 0, Part[$CellContext`val, 3] + 
          Part[$CellContext`val, 1], $CellContext`opt == -1, 
-         cellRelatedFunctions`cellcycle01[$CellContext`val], $CellContext`opt == \
--2, 
-         cellRelatedFunctions`cellcycle02[$CellContext`val], $CellContext`opt == \
--3, 
-         cellRelatedFunctions`cellcycle03[$CellContext`val], $CellContext`opt == \
--4, 
-         Max[{1, 
-           
-           cellRelatedFunctions`cellcycle03[$CellContext`val]}], \
-$CellContext`opt == -5, Max[{
+         $CellContext`cellcycle01[$CellContext`val], $CellContext`opt == -2, 
+         $CellContext`cellcycle02[$CellContext`val], $CellContext`opt == -3, 
+         If[Part[$CellContext`val, 2] > 0, 
+          $CellContext`cellcycle03[$CellContext`val], 
+          Part[$CellContext`val, 1]], $CellContext`opt == -4, 
+         If[Part[$CellContext`val, 2] > 0, 
+          $CellContext`cellcycle04[$CellContext`val], 
+          Part[$CellContext`val, 1]], $CellContext`opt == -5, Max[{
              Part[$CellContext`val, 1], 
              Part[$CellContext`val, 2]}] Part[$CellContext`val, 3] + Max[{
             Part[$CellContext`val, 1], 
-            Part[$CellContext`val, 2]}]], cellRelatedFunctions`copiesT[
-         Pattern[$CellContext`ploidy, 
-          Blank[]], 
-         Pattern[$CellContext`cellactivegeneList, 
-          Blank[]], 
-         Pattern[$CellContext`rnaPolRate, 
-          Blank[]], 
-         Pattern[$CellContext`transcriptionTime, 
-          Blank[]], 
-         Pattern[$CellContext`genome, 
-          Blank[]]] := 
-       Block[{$CellContext`transcriptTime = $CellContext`transcriptionTime/If[
-           Part[$CellContext`rnaPolRate, 2] > 0, 
-            Map[1& , 
-             Part[$CellContext`genome, All, 2]], 
-            
-            Part[$CellContext`genome, All, 
-             2]]}, $CellContext`cellactivegeneList $CellContext`ploidy Floor[
-           Map[Total[# {
-                If[Part[$CellContext`rnaPolRate, 2] > 0, 0, 1], 
-                If[Part[$CellContext`rnaPolRate, 1] != 0, 
-                 RandomReal[
-                  Sort[{0, 
-                    Part[$CellContext`rnaPolRate, 1]}]], 0]}] + 
-            Part[$CellContext`rnaPolRate, 
-              2]& , $CellContext`transcriptTime]]], 
-       cellRelatedFunctions`parentalTranscripts[
-         Pattern[$CellContext`transcripts, 
-          Blank[]], 
-         Pattern[$CellContext`probability, 
-          Blank[]]] := RandomSample[$CellContext`transcripts, 
-         UpTo[
-          ReplaceAll[
-           Floor[Length[$CellContext`transcripts] $CellContext`probability], 
-           PatternTest[
-             Blank[], Negative] -> 0]]], cellRelatedFunctions`transcriptsT[
+            Part[$CellContext`val, 2]}], $CellContext`opt == -6, 
+         If[Part[$CellContext`val, 2] > 0, 
+          ({Part[$CellContext`val, 1] - #, #}& )[
+           $CellContext`cellcycle03[$CellContext`val]], {Abs[
+             Part[$CellContext`val, 3]] Part[$CellContext`val, 1], (1 - Abs[
+             Part[$CellContext`val, 3]]) 
+           Part[$CellContext`val, 1]}], $CellContext`opt == -7, ({1 - #, #}& )[
+           $CellContext`cellcycle03[{
+             Part[$CellContext`val, 3], 
+             Part[$CellContext`val, 2], 0}]] 
+         Part[$CellContext`val, 1], $CellContext`opt == "stemlike", 
+         If[Part[$CellContext`val, 5] == 1, 
+          Part[$CellContext`val, 4], {
+           Part[$CellContext`val, 1], 
+           Part[$CellContext`val, 1]}]], $CellContext`transcriptsT[
          Pattern[$CellContext`copies, 
           Blank[]], 
          Pattern[$CellContext`activegenome, 
@@ -2881,12 +2702,109 @@ $CellContext`opt == -5, Max[{
            Tuples[{
              Part[#, 1]}, 
             Part[#, 2]], 1]& , 
-          Transpose[{$CellContext`activegenome, $CellContext`copies}]]], 
-       cellRelatedFunctions`randDistofT[
-         Pattern[$CellContext`transcriptLength, 
-          Blank[]]] := {$CellContext`transcriptLength, 0} - 
-        RandomInteger[{1, $CellContext`transcriptLength}], 
-       cellRelatedFunctions`getCellPhase[
+          
+          Transpose[{$CellContext`activegenome, $CellContext`copies}]]], \
+$CellContext`randDistofT2[
+         Pattern[$CellContext`transcriptValues, 
+          Blank[]]] := 
+       With[{$CellContext`tt = 
+          Map[RandomInteger, $CellContext`transcriptValues]}, \
+{$CellContext`transcriptValues - $CellContext`tt, $CellContext`tt}], \
+$CellContext`transcriptDegredation[
+         Pattern[$CellContext`oneCell, 
+          Blank[]], 
+         Pattern[$CellContext`prob, 
+          Blank[]]] := 
+       Module[{$CellContext`newCell}, $CellContext`newCell = \
+$CellContext`oneCell; If[
+           
+           Or[$CellContext`prob == 0, Part[$CellContext`newCell, 7, 1] == {}, 
+            Union[
+              Part[$CellContext`newCell, 7, 1]] == {0}], 
+           Part[$CellContext`newCell, 7, 1] = ReplaceAll[
+              Part[$CellContext`newCell, 7, 1], PatternTest[
+                Blank[], NumberQ] :> 0]; Null, 
+           If[$CellContext`prob < 1, 
+             Part[$CellContext`newCell, 7, 
+                1] = $CellContext`parentalTranscriptsAssociation[
+                Part[$CellContext`newCell, 7, 1], $CellContext`prob]; Null]; 
+           Null]; $CellContext`newCell], $CellContext`copiesT[
+         Pattern[$CellContext`cellactivegeneList, 
+          Blank[]], 
+         Pattern[$CellContext`rnaPolRate, 
+          Blank[]], 
+         Pattern[$CellContext`transcriptionTime, 
+          Blank[]], 
+         Pattern[$CellContext`genomeLength, 
+          Blank[]]] := ReplaceAll[
+          Floor[
+           Map[Total[
+             Map[
+              Function[$CellContext`dum, $CellContext`ratePol = 
+                If[Part[$CellContext`rnaPolRate, 1] > 0, 
+                  Abs[
+                   RandomVariate[
+                    NormalDistribution[
+                    Abs[
+                    Part[$CellContext`rnaPolRate, 1]], 
+                    Abs[
+                    Part[$CellContext`rnaPolRate, 1]]]]], 
+                  Abs[
+                   Part[$CellContext`rnaPolRate, 1]]]; ReplaceAll[
+                 
+                 Floor[($CellContext`transcriptionTime $CellContext`ratePol - \
+$CellContext`dum/$CellContext`ratePol)/#], PatternTest[
+                   Blank[], Negative] :> 0]], 
+              If[
+               Or[
+               Part[$CellContext`rnaPolRate, 2] <= 0, 
+                Part[$CellContext`rnaPolRate, 2] <= 0., 
+                Part[$CellContext`rnaPolRate, 2] > #], {0}, 
+               DeleteCases[
+                Range[0, #, 
+                 Part[$CellContext`rnaPolRate, 2]], 
+                N[#]]]]]& , $CellContext`genomeLength]], PatternTest[
+            Blank[], Negative] :> 
+          0] $CellContext`cellactivegeneList, \
+$CellContext`parentalTranscriptsAssociation[
+         Pattern[$CellContext`transcripts, 
+          Blank[]], 
+         Pattern[$CellContext`probability, 
+          Blank[]]] := 
+       With[{$CellContext`tt = 
+          RandomChoice[$CellContext`transcripts -> 
+            Range[1, $CellContext`transcripts], 
+            ReplaceAll[
+             Floor[
+             Total[$CellContext`transcripts] (1 - $CellContext`probability)], 
+             PatternTest[
+               Blank[], Negative] -> 0]]}, 
+         ReplaceAll[$CellContext`transcripts - ReplacePart[
+           ReplaceAll[$CellContext`transcripts, PatternTest[
+              Blank[], NumberQ] -> 0], 
+           Normal[
+            Counts[$CellContext`tt]]], PatternTest[
+            Blank[], Negative] -> 0]], $CellContext`transcriptCopyNumber[
+         Pattern[$CellContext`oneCell, 
+          Blank[]], 
+         Pattern[$CellContext`shortestToMphase, 
+          Blank[]], 
+         Pattern[$CellContext`rnapol, 
+          Blank[]], 
+         Pattern[$CellContext`genomeLength, 
+          Blank[]]] := 
+       Module[{$CellContext`newCell, $CellContext`transcriptionTime}, \
+$CellContext`newCell = $CellContext`oneCell; $CellContext`transcriptionTime = 
+          Min[{
+             Part[$CellContext`newCell, 4, 3], 
+             Part[$CellContext`newCell, 4, 
+               4] + $CellContext`shortestToMphase}]; 
+         Part[$CellContext`newCell, 7, 2] = Total[
+            
+            Map[$CellContext`copiesT[#, $CellContext`rnapol, \
+$CellContext`transcriptionTime, $CellContext`genomeLength]& , 
+             Part[$CellContext`newCell, 6, 2]]]; 
+         Null; $CellContext`newCell], $CellContext`getCellPhase[
          Pattern[$CellContext`cell, 
           Blank[]], 
          Pattern[$CellContext`shortestToMphase, 
@@ -2907,154 +2825,129 @@ $CellContext`a = Select[
               Part[#, 2] <= $CellContext`shortestToMphase& ]; 
            If[$CellContext`a == {}, 1, 
              Part[
-              Last[$CellContext`a], 2]], 4]], 
-       cellCycleHypothesis`oneFullCycleV0[
+              Last[$CellContext`a], 2]], 4]], $CellContext`oneFullCycleV01[
          Pattern[$CellContext`tissue, 
           Blank[]], 
          Pattern[$CellContext`timestep, 
           Blank[]], 
-         Pattern[$CellContext`sigma, 
+         Pattern[$CellContext`cellCycleOpts, 
           Blank[]], 
          Pattern[$CellContext`genome, 
           Blank[]], 
-         Pattern[$CellContext`fileNameSis, 
-          Blank[]], 
-         Optional[
-          Pattern[$CellContext`transcriptionPara, 
-           Blank[]], {}], 
-         Optional[
-          Pattern[$CellContext`spaceParameters1, 
-           Blank[]], {1, 0.5, 0, -2, 0.35, -2}], 
-         Optional[
-          Pattern[$CellContext`growthParameters, 
-           Blank[]], {0}]] := 
-       Module[{$CellContext`newtissue, $CellContext`oneCycle, \
-$CellContext`cellCycles, $CellContext`cellorder, $CellContext`cpos, \
-$CellContext`icell, $CellContext`transcriptionTime, $CellContext`cyclePhase, \
-$CellContext`copies, $CellContext`ploidy, $CellContext`tCell, \
-$CellContext`str, $CellContext`timerange, $CellContext`tempCell, \
-$CellContext`spaceParameters, $CellContext`polarityOpt, \
-$CellContext`newcellcylceduration, $CellContext`shortestToMphase}, \
-$CellContext`spaceParameters = $CellContext`spaceParameters1; \
-$CellContext`polarityOpt = 
-          Part[$CellContext`spaceParameters1, 3]; $CellContext`ploidy = 
+         Pattern[$CellContext`transcriptionPara, 
+          Blank[]]] := 
+       Module[{$CellContext`ploidy, $CellContext`oneCycle, \
+$CellContext`shortestToMphase, $CellContext`cellCycles, \
+$CellContext`stemstate, $CellContext`newtissue, $CellContext`cpos, \
+$CellContext`icell, $CellContext`cyclePhase, $CellContext`tempCell, \
+$CellContext`tCell, $CellContext`newcellcylceduration, $CellContext`lineage}, \
+$CellContext`ploidy = 
           Part[$CellContext`transcriptionPara, 3]; $CellContext`oneCycle = 
           Range[1, 
-            Length[$CellContext`tissue]]; 
-         If[Part[$CellContext`spaceParameters, 1] == 
-           1, $CellContext`oneCycle = RandomSample[
-              Range[1, 
-               Length[$CellContext`tissue]]]; 
-           Null]; $CellContext`newtissue = $CellContext`tissue; \
-$CellContext`shortestToMphase = Min[
+            Length[$CellContext`tissue]]; $CellContext`shortestToMphase = 
+          Min[
             Map[Apply[Subtract, #]& , 
-             Part[$CellContext`newtissue, All, 4, 
-              Span[3, 4]]]]; 
+             Part[$CellContext`tissue, All, 4, 
+              Span[3, 4]]]]; $CellContext`newtissue = $CellContext`tissue; 
+         Part[$CellContext`newtissue, All, 4, 
+            5] = $CellContext`shortestToMphase; 
          For[$CellContext`cpos = 1, $CellContext`cpos <= 
            Length[$CellContext`oneCycle], 
            
-           Increment[$CellContext`cpos], $CellContext`icell = 
+           Increment[$CellContext`cpos], $CellContext`lineage = {}; \
+$CellContext`icell = 
             Part[$CellContext`oneCycle, $CellContext`cpos]; \
-$CellContext`cyclePhase = cellRelatedFunctions`getCellPhase[
+$CellContext`cyclePhase = $CellContext`getCellPhase[
               
               Part[$CellContext`newtissue, $CellContext`icell], \
 $CellContext`shortestToMphase]; 
            Part[$CellContext`newtissue, $CellContext`icell, 4, 
               1] = $CellContext`cyclePhase; 
            If[Part[$CellContext`newtissue, $CellContext`icell, 4, 4] == 0, 
-             If[
-               Or[
-               Part[$CellContext`transcriptionPara, 2] == 0, 
-                Part[$CellContext`newtissue, $CellContext`icell, 7, 1] == {}],
-                Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = {}, 
-               If[
-                Part[$CellContext`transcriptionPara, 2] < 1, 
-                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = 
-                  cellRelatedFunctions`parentalTranscripts[
-                    Part[$CellContext`newtissue, $CellContext`icell, 7, 1], 
-                    Part[$CellContext`transcriptionPara, 2]]; Null]; Null]; 
-             Null]; $CellContext`transcriptionTime = Min[{
-               Part[$CellContext`newtissue, $CellContext`icell, 4, 3], 
-               Part[$CellContext`newtissue, $CellContext`icell, 4, 
-                 4] + $CellContext`shortestToMphase}]; $CellContext`copies = 
-            cellRelatedFunctions`copiesT[$CellContext`ploidy, 
-              Part[$CellContext`newtissue, $CellContext`icell, 6, 2], 
+             Part[$CellContext`newtissue, $CellContext`icell] = \
+$CellContext`transcriptDegredation[
+                Part[$CellContext`newtissue, $CellContext`icell], 
+                Part[$CellContext`transcriptionPara, 2]]; Null]; 
+           Part[$CellContext`newtissue, $CellContext`icell] = \
+$CellContext`transcriptCopyNumber[
               
-              Part[$CellContext`transcriptionPara, 
-               5], $CellContext`transcriptionTime, $CellContext`genome]; 
-           Part[$CellContext`newtissue, $CellContext`icell, 7, 2] = 
-            cellRelatedFunctions`transcriptsT[$CellContext`copies, 
-              Part[$CellContext`genome, All, 1]]; 
+              Part[$CellContext`newtissue, $CellContext`icell], \
+$CellContext`shortestToMphase, 
+              Part[$CellContext`transcriptionPara, 4], 
+              Part[$CellContext`genome, All, 2]]; 
            If[$CellContext`cyclePhase <= 3, 
              Part[$CellContext`newtissue, $CellContext`icell, 2] = 1; 
              Part[$CellContext`newtissue, $CellContext`icell, 4, 4] = 
               Part[$CellContext`newtissue, $CellContext`icell, 4, 
-                 4] + $CellContext`shortestToMphase; 
-             Null, $CellContext`newcellcylceduration = 
-              Part[$CellContext`newtissue, $CellContext`icell, 5, 1]; 
-             If[$CellContext`sigma > 
-               0, $CellContext`newcellcylceduration = 
-                Map[cellRelatedFunctions`cellcycleChangeOPT[{Max[{
-                    Part[$CellContext`newtissue, $CellContext`icell, 5, 1, #], 
-                    
-                    Part[$CellContext`newtissue, $CellContext`icell, 5, 
-                    2, #]}] + 
-                    Part[$CellContext`transcriptionPara, 
-                    4] $CellContext`sigma, $CellContext`sigma, 0}, -3]& , 
-                  Range[1, $CellContext`cyclePhase]]; Null]; 
-             If[$CellContext`sigma < -5, $CellContext`newcellcylceduration = 
-                Map[cellRelatedFunctions`cellcycleChangeOPT[{
-                    Part[$CellContext`newtissue, $CellContext`icell, 5, 1, #], 
-                    Part[$CellContext`newtissue, $CellContext`icell, 5, 2, #], 
-                    Part[$CellContext`transcriptionPara, 4]}, -5]& , 
-                  Range[1, $CellContext`cyclePhase]]; Null]; 
-             Part[$CellContext`newtissue, $CellContext`icell, 5, 
-                1] = $CellContext`newcellcylceduration; 
-             Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = Join[
-                Part[$CellContext`newtissue, $CellContext`icell, 7, 1], 
-                Part[$CellContext`newtissue, $CellContext`icell, 7, 2]]; 
-             Part[$CellContext`newtissue, $CellContext`icell, 7, 2] = {}; 
+                 4] + $CellContext`shortestToMphase; Null, 
+             If[Part[$CellContext`newtissue, $CellContext`icell, 7, 2] != {}, 
+               If[Part[$CellContext`newtissue, $CellContext`icell, 7, 
+                   1] == {}, 
+                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = 
+                 Part[$CellContext`newtissue, $CellContext`icell, 7, 2], 
+                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = 
+                  Part[$CellContext`newtissue, $CellContext`icell, 7, 1] + 
+                   Part[$CellContext`newtissue, $CellContext`icell, 7, 2]; 
+                 Null]; Null]; 
+             Part[$CellContext`newtissue, $CellContext`icell, 7, 2] = 
+              ReplaceAll[
+                Part[$CellContext`newtissue, $CellContext`icell, 7, 2], 
+                PatternTest[
+                  Blank[], NumberQ] :> 0]; 
              Part[$CellContext`newtissue, $CellContext`icell, 4, 4] = 0; 
              Part[$CellContext`newtissue, $CellContext`icell, 4, 2] = 
               Part[$CellContext`newtissue, $CellContext`icell, 4, 2] + 
-               Part[$CellContext`newtissue, $CellContext`icell, 4, 3]; 
-             Part[$CellContext`newtissue, $CellContext`icell, 4, 3] = Total[
-                ReplaceAll[
-                 Part[$CellContext`newtissue, $CellContext`icell, 5, 1], 
-                 PatternTest[
-                   Blank[], Negative] -> 0]]; 
-             Part[$CellContext`newtissue, $CellContext`icell, 3, 3] = 
-              cellRelatedFunctions`getunitDirectionOfDivision[$CellContext`\
-icell, 
-                
-                Part[$CellContext`spaceParameters, 
-                 2], $CellContext`newtissue, {}, $CellContext`polarityOpt]; \
-$CellContext`tempCell = 
-              cellRelatedFunctions`cellDivision[$CellContext`icell, \
-$CellContext`newtissue, {
-                 Part[$CellContext`spaceParameters, 2], 1 - 
-                 Part[$CellContext`spaceParameters, 2]}, 
-                Part[$CellContext`newtissue, $CellContext`icell, 3, 3], 
-                Part[$CellContext`spaceParameters, 9]]; Part[
+               Part[$CellContext`newtissue, $CellContext`icell, 4, 
+                 3]; $CellContext`lineage = {{$CellContext`timestep}, {
+                 Part[$CellContext`newtissue, $CellContext`icell, 6, 2], 
+                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1], 
+                 
+                 Part[$CellContext`newtissue, $CellContext`icell, 4, 
+                  3]}}; $CellContext`tempCell = {
+                Part[$CellContext`newtissue, $CellContext`icell], 
+                Part[$CellContext`newtissue, $CellContext`icell]}; Part[
                 Part[$CellContext`tempCell, 1, 3], 2] = Part[
                  Part[$CellContext`tempCell, 1, 3], 2] + 1; Part[
                 Part[$CellContext`tempCell, 2, 3], 2] = Part[
-                 Part[$CellContext`tempCell, 2, 3], 2] + 1; If[Length[
-                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1]] > 0, 
-               Part[$CellContext`newtissue, $CellContext`icell, 7, 1] = 
-                RandomSample[
-                  
-                  Part[$CellContext`newtissue, $CellContext`icell, 7, 
-                   1]]; $CellContext`tCell = 
-                cellRelatedFunctions`randDistofT[
-                  Length[
-                   Part[$CellContext`newtissue, $CellContext`icell, 7, 1]]]; 
-               Part[$CellContext`tempCell, 1, 7, 1] = Take[
-                  Part[$CellContext`newtissue, $CellContext`icell, 7, 1], 
-                  Part[$CellContext`tCell, 1]]; 
-               Part[$CellContext`tempCell, 2, 7, 1] = Take[
-                  Part[$CellContext`newtissue, $CellContext`icell, 7, 1], 
-                  Part[$CellContext`tCell, 2]]; Null]; 
+                 Part[$CellContext`tempCell, 2, 3], 2] + 
+               1; $CellContext`newcellcylceduration = 
+              Map[$CellContext`cellcycleChangeOPT[{
+                  Part[$CellContext`newtissue, $CellContext`icell, 5, 1, #], 
+                  Part[$CellContext`cellCycleOpts, 1], 
+                  Part[$CellContext`cellCycleOpts, 2], 
+                  Part[$CellContext`cellCycleOpts, 4, All, #], 
+                  If[
+                  Part[$CellContext`newtissue, $CellContext`icell, 5, 1] == 
+                   Part[$CellContext`cellCycleOpts, 4, 1], 1, 0]}, 
+                 Part[$CellContext`cellCycleOpts, 3]]& , 
+                Range[1, $CellContext`cyclePhase]]; 
+             Part[$CellContext`tempCell, 1, 5, 
+                1] = $CellContext`newcellcylceduration; 
+             Part[$CellContext`tempCell, 2, 5, 
+                1] = $CellContext`newcellcylceduration; If[
+               Or[
+               Part[$CellContext`cellCycleOpts, 3] == -7, 
+                Part[$CellContext`cellCycleOpts, 3] == -6, 
+                Part[$CellContext`cellCycleOpts, 3] == "stemlike"], 
+               Part[$CellContext`tempCell, 1, 5, 1] = 
+                Part[$CellContext`newcellcylceduration, All, 1]; 
+               Part[$CellContext`tempCell, 2, 5, 1] = 
+                Part[$CellContext`newcellcylceduration, All, 2]; Null]; 
+             Part[$CellContext`tempCell, 1, 4, 3] = Total[
+                ReplaceAll[
+                 Part[$CellContext`tempCell, 1, 5, 1], PatternTest[
+                   Blank[], Negative] -> 0]]; 
+             Part[$CellContext`tempCell, 2, 4, 3] = Total[
+                ReplaceAll[
+                 Part[$CellContext`tempCell, 2, 5, 1], PatternTest[
+                   Blank[], Negative] -> 0]]; If[Union[
+                 Part[$CellContext`newtissue, $CellContext`icell, 7, 1]] != {
+                0}, $CellContext`tCell = $CellContext`randDistofT2[
+                  Part[$CellContext`newtissue, $CellContext`icell, 7, 1]]; 
+               Part[$CellContext`tempCell, 1, 7, 1] = 
+                Part[$CellContext`tCell, 1]; 
+               Part[$CellContext`tempCell, 2, 7, 1] = 
+                Part[$CellContext`tCell, 2]; Null]; 
              Part[$CellContext`tempCell, 1, 2] = 1; 
              Part[$CellContext`tempCell, 2, 2] = 1; 
              Part[$CellContext`tempCell, 1, 8] = StringJoin[
@@ -3062,54 +2955,22 @@ $CellContext`newtissue, {
                 ToString[$CellContext`icell], "1"]; 
              Part[$CellContext`tempCell, 2, 8] = StringJoin[
                 Part[$CellContext`tempCell, 2, 8], 
-                ToString[$CellContext`icell], "2"]; 
-             If[$CellContext`fileNameSis != 
-               "nosave", $CellContext`str = 
-                OpenAppend[$CellContext`fileNameSis]; 
-               Write[$CellContext`str, {$CellContext`timestep, 
-                  Part[$CellContext`tempCell, 1, 8], 
-                  Part[$CellContext`tempCell, 2, 8]}]; 
-               Close[$CellContext`str]; Null]; 
+                ToString[$CellContext`icell], "2"]; $CellContext`lineage = 
+              Join[$CellContext`lineage, {{
+                  Part[$CellContext`tempCell, 1, 7, 1], 
+                  Part[$CellContext`tempCell, 2, 7, 1], 
+                  Part[$CellContext`tempCell, 1, 4, 3], 
+                  Part[$CellContext`tempCell, 2, 4, 3]}}]; 
+             Part[$CellContext`tempCell, 1, 9] = $CellContext`lineage; 
+             Part[$CellContext`tempCell, 2, 9] = $CellContext`lineage; 
              Part[$CellContext`newtissue, $CellContext`icell] = 
               Part[$CellContext`tempCell, 1]; $CellContext`newtissue = 
               AppendTo[$CellContext`newtissue, 
-                Part[$CellContext`tempCell, 2]]; Null]; Null]; If[
-           
-           And[$CellContext`sigma == -5, Length[$CellContext`newtissue] == 
-            2], $CellContext`tempCell = Last[
-              Sort[
-               Map[{
-                 EuclideanDistance[
-                  Part[$CellContext`newtissue, #, 1], {1, 0, 0}], #}& , 
-                Range[1, 
-                 Length[$CellContext`newtissue]]]]]; 
-           Map[If[Part[$CellContext`newtissue, 
-                Part[$CellContext`tempCell, 2], 5, 1, #] < 0, 
-              Part[$CellContext`newtissue, 
-                 Part[$CellContext`tempCell, 2], 5, 2, #] = 
-               Part[$CellContext`newtissue, 
-                  Part[$CellContext`tempCell, 2], 5, 1, #] + 
-                Part[$CellContext`transcriptionPara, 4]; Null, 
-              Part[$CellContext`newtissue, 
-                 Part[$CellContext`tempCell, 2], 5, 1, #] = 
-               Part[$CellContext`newtissue, 
-                  Part[$CellContext`tempCell, 2], 5, 1, #] + 
-                Part[$CellContext`transcriptionPara, 4]; Null]& , 
-             Range[1, $CellContext`cyclePhase]]; 
-           Table[Part[$CellContext`newtissue, $CellContext`i, 3, 1] = 
-             If[Flatten[
-                  Part[$CellContext`newtissue, $CellContext`i, 7]] == {}, 0, 
-                Median[
-                 Flatten[
-                  Part[$CellContext`newtissue, $CellContext`i, 7]]]]/Max[
-               Part[$CellContext`genome, All, 2]], {$CellContext`i, 
-              Length[$CellContext`newtissue]}]; Null]; 
+                Part[$CellContext`tempCell, 2]]; Null]; Null]; 
          Remove[$CellContext`oneCycle, $CellContext`cellCycles, \
-$CellContext`cellorder, $CellContext`cpos, $CellContext`icell, \
-$CellContext`transcriptionTime, $CellContext`cyclePhase, $CellContext`copies, \
-$CellContext`ploidy, $CellContext`tCell, $CellContext`str, \
-$CellContext`timerange, $CellContext`tempCell]; $CellContext`newtissue]}; 
-     Typeset`initDone$$ = True),
+$CellContext`cpos, $CellContext`icell, $CellContext`cyclePhase, \
+$CellContext`ploidy, $CellContext`tCell, $CellContext`tempCell]; \
+$CellContext`newtissue]}; Typeset`initDone$$ = True),
     SynchronousInitialization->True,
     UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
     UnsavedVariables:>{Typeset`initDone$$},
@@ -3126,14 +2987,41 @@ $CellContext`timerange, $CellContext`tempCell]; $CellContext`newtissue]};
    3.777064584534823*^9, 3.777064605774994*^9}, {3.777064689993823*^9, 
    3.777064720066184*^9}, {3.777064902273741*^9, 3.777064929046606*^9}, {
    3.777065382317428*^9, 3.777065401578887*^9}, 3.7791463202786617`*^9, 
-   3.779146546699082*^9, {3.7791466920303593`*^9, 3.779146700074847*^9}},
- CellLabel->"Out[2]=",ExpressionUUID->"7a6bdf22-20b7-4e15-b4f8-53f9517c5b33"]
-}, {2}]]
+   3.779146546699082*^9, {3.7791466920303593`*^9, 3.779146700074847*^9}, {
+   3.780872102323893*^9, 3.780872118263418*^9}, 3.780872413996209*^9, 
+   3.780872541483059*^9, 3.7808725752398643`*^9, 3.780872818408827*^9, 
+   3.7808729664782867`*^9, 3.780873002645269*^9, {3.78087313795457*^9, 
+   3.780873159176374*^9}, 3.824460774049645*^9, 3.824461018925641*^9, 
+   3.824461121162681*^9, 3.824461478984314*^9, 3.824461786422111*^9, 
+   3.824461858700685*^9, 3.8244619051041193`*^9, 3.8244620758182383`*^9, 
+   3.824462158457045*^9, 3.8244622449479637`*^9, 3.824462292890646*^9, 
+   3.8244624371716223`*^9, 3.824462513165642*^9, 3.824462545674904*^9, 
+   3.8244626355853567`*^9, 3.824462700981061*^9, 3.824462739592494*^9, 
+   3.824462882062166*^9, 3.824462951460278*^9, 3.82446299814744*^9, 
+   3.824463097482088*^9, 3.8244631317835217`*^9, 3.8244632035985813`*^9, 
+   3.8244634235216846`*^9, 3.824463482621195*^9, {3.826040679561453*^9, 
+   3.826040708867981*^9}, 3.826041058949719*^9, 3.826041179295847*^9, 
+   3.826041209693935*^9, {3.8260412488435717`*^9, 3.826041280087345*^9}, 
+   3.826041421803739*^9, {3.826041452937429*^9, 3.8260414733434753`*^9}, {
+   3.826041547511489*^9, 3.826041576268599*^9}},
+ CellLabel->"Out[4]=",ExpressionUUID->"c8712b71-84bc-45ba-83ad-4f2ddf5d5d64"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.824472940884685*^9, 3.824472984104457*^9}, {
+   3.824473033113298*^9, 3.8244730423042583`*^9}, 3.824473227378695*^9, 
+   3.82447337271255*^9, 3.824473525023554*^9, {3.824473579968183*^9, 
+   3.824473604333701*^9}, {3.824473643451911*^9, 3.824473645959305*^9}, 
+   3.824478172766633*^9},ExpressionUUID->"d6989342-36b3-47df-872e-\
+d67b7d41fe79"]
 },
-WindowSize->{1128, 732},
-WindowMargins->{{38, Automatic}, {Automatic, 0}},
-FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
-StyleDefinitions->"Default.nb"
+WindowSize->{1105, 732},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.2 for Mac OS X x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"41e6a2eb-5b5d-4650-b0ac-898547a6bc61"
 ]
 (* End of Notebook Content *)
 
@@ -3147,11 +3035,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[1510, 35, 103116, 2447, 7213, "Input",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
-Cell[104629, 2484, 32244, 645, 397, "Output",ExpressionUUID->"7a6bdf22-20b7-4e15-b4f8-53f9517c5b33"]
-}, {2}]]
+Cell[422, 15, 105783, 2468, 6730, "Input",ExpressionUUID->"8cff46a2-83c5-49e4-8afe-53f15c89564f"],
+Cell[106208, 2485, 26148, 521, 472, "Output",ExpressionUUID->"c8712b71-84bc-45ba-83ad-4f2ddf5d5d64"]
+}, Open  ]],
+Cell[132371, 3009, 472, 8, 94, "Input",ExpressionUUID->"d6989342-36b3-47df-872e-d67b7d41fe79"]
 }
 ]
 *)
 
-(* NotebookSignature 5vpZS3oIv6uN5Aw@ASyacSxL *)
