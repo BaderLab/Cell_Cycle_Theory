@@ -20,4 +20,5 @@ we use R, Biomart and ensembl to download the genome and pathway data we analyse
 R version 3.6.1 (2019-07-05)
 file is bioMart_2021.Rmd
 
-
+Please see our publication: Control of tissue development and cell diversity by cell cycle dependent transcriptional filtering
+ https://elifesciences.org/articles/64951 for more information.
